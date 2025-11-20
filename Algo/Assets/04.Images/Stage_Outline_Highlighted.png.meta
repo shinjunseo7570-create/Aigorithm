@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 95c15b377ee89c94699e07971bac7347
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5931731669897639301
+    second: Stage_Outline_Highlighted_0
+  - first:
+      213: -2335756817462085447
+    second: Stage_Outline_Highlighted_1
+  - first:
+      213: 2047942563639972033
+    second: Stage_Outline_Highlighted_2
+  - first:
+      213: 1599801579814051760
+    second: Stage_Outline_Highlighted_3
+  - first:
+      213: -5036506862010435189
+    second: Stage_Outline_Highlighted_4
+  - first:
+      213: 5516224237747661495
+    second: Stage_Outline_Highlighted_5
+  - first:
+      213: 9168392146840862317
+    second: Stage_Outline_Highlighted_6
+  - first:
+      213: 2127119536951581245
+    second: Stage_Outline_Highlighted_7
+  - first:
+      213: -5000120653749868098
+    second: Stage_Outline_Highlighted_8
+  - first:
+      213: -3656361956407447615
+    second: Stage_Outline_Highlighted_9
+  - first:
+      213: -8535648439495467844
+    second: Stage_Outline_Highlighted_10
+  - first:
+      213: -4153378023969657847
+    second: Stage_Outline_Highlighted_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Stage_Outline_Highlighted_0
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 287
+        width: 70
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7a01d059714eada0800000000000000
+      internalID: -5931731669897639301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_Outline_Highlighted_1
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 330
+        width: 70
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b8b975cc89b59fd0800000000000000
+      internalID: -2335756817462085447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_Outline_Highlighted_2
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 287
+        width: 71
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c0d92249e0cb6c10800000000000000
+      internalID: 2047942563639972033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_Outline_Highlighted_3
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 228
+        width: 44
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bfdceb8f03a33610800000000000000
+      internalID: 1599801579814051760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_Outline_Highlighted_4
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 227
+        width: 43
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b89fc0d81bbba1ab0800000000000000
+      internalID: -5036506862010435189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_Outline_Highlighted_5
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 141
+        width: 16
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ba6950d7b09d8c40800000000000000
+      internalID: 5516224237747661495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_Outline_Highlighted_6
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 141
+        width: 17
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6e3ee1d41cac3f70800000000000000
+      internalID: 9168392146840862317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_Outline_Highlighted_7
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 69
+        width: 44
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3adacae2fb058d10800000000000000
+      internalID: 2127119536951581245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_Outline_Highlighted_8
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 25
+        width: 70
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb92527d1c00c9ab0800000000000000
+      internalID: -5000120653749868098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_Outline_Highlighted_9
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 26
+        width: 71
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cfe4124c2ef14dc0800000000000000
+      internalID: -3656361956407447615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_Outline_Highlighted_10
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 70
+        width: 42
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbc5144d7f84b8980800000000000000
+      internalID: -8535648439495467844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage_Outline_Highlighted_11
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 0
+        width: 70
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90cef5751bc3c56c0800000000000000
+      internalID: -4153378023969657847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Stage_Outline_Highlighted_0: -5931731669897639301
+      Stage_Outline_Highlighted_1: -2335756817462085447
+      Stage_Outline_Highlighted_10: -8535648439495467844
+      Stage_Outline_Highlighted_11: -4153378023969657847
+      Stage_Outline_Highlighted_2: 2047942563639972033
+      Stage_Outline_Highlighted_3: 1599801579814051760
+      Stage_Outline_Highlighted_4: -5036506862010435189
+      Stage_Outline_Highlighted_5: 5516224237747661495
+      Stage_Outline_Highlighted_6: 9168392146840862317
+      Stage_Outline_Highlighted_7: 2127119536951581245
+      Stage_Outline_Highlighted_8: -5000120653749868098
+      Stage_Outline_Highlighted_9: -3656361956407447615
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
