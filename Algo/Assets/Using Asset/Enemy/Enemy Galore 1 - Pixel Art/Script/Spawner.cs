@@ -64,6 +64,10 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        if(rounds == null)
+        {
+            return;
+        }
         if (currentRound >= rounds.Length)
         {
             Ending();
@@ -74,6 +78,11 @@ public class Spawner : MonoBehaviour
 
         RoundData round = rounds[currentRound];
 
+        if (round == null)
+        {
+            currentRound++; // 다음 라운드로 건너뛰기
+            return;
+        }
         // 1) 몹 소환 중
         if (isSpawning)
         {
@@ -101,28 +110,70 @@ public class Spawner : MonoBehaviour
 
     void SpawnMob(RoundData round)
     {
+        if (poolManager == null)
+        {
+            Debug.LogError("PoolManager가 Spawner 인스펙터에 할당되지 않았습니다!");
+            return;
+        }
+        if (round.mobSpawnData == null)
+        {
+            Debug.LogError($"Round {currentRound}의 mobSpawnData가 null입니다!");
+            return;
+        }
         GameObject enemyObj = poolManager.Get(round.mobSpawnData.spriteType);
+        if (enemyObj == null)
+        {
+            Debug.LogError($"PoolManager.Get({round.mobSpawnData.spriteType})에서 Null이 반환되었습니다. 풀링 설정 확인이 필요합니다.");
+            return;
+        }
         Enemy enemy = enemyObj.GetComponent<Enemy>();
+        if (enemy == null)
+        {
+            Debug.LogError("스폰된 객체에 Enemy 컴포넌트가 없습니다!");
+            return;
+        }
 
         int rand = Random.Range(0, spawnPoint.Length);
-
+        if (spawnPoint == null || spawnPoint.Length == 0)
+        {
+            Debug.LogError("SpawnPoint가 할당되지 않았거나 자식 Transform이 없습니다.");
+            return;
+        }
+        if (spawnPoint[rand] == null)
+        {
+            Debug.LogError($"SpawnPoint[{rand}] Transform이 null입니다. 자식 오브젝트를 확인하세요.");
+            return;
+        }
+        if (GameManager.instance == null)
+        {
+            Debug.LogError("GameManager.instance가 null입니다. 싱글톤 초기화 상태를 확인하세요.");
+            // 이 경우 아래 로직을 건너뜁니다.
+        }
+        else if (GameManager.instance.player == null)
+        {
+            Debug.LogWarning("GameManager.instance.player가 null입니다. 플레이어 객체 할당을 확인하세요.");
+            // 이 경우에도 아래 로직을 건너뜁니다.
+        }
         Vector3 pos = spawnPoint[rand].position;
 
         pos.x = Mathf.Clamp(pos.x, -8f, 8f);
         pos.y = Mathf.Clamp(pos.y, -4f, 4f);
         enemyObj.transform.position = pos;
 
-        Vector3 playerPos = GameManager.instance.player.transform.position;
+        if (GameManager.instance != null && GameManager.instance.player != null)
+        {
+            Vector3 playerPos = GameManager.instance.player.transform.position;
 
-        float minDistance = 2f;
-        if (Vector3.Distance(pos, playerPos) < minDistance)
-            return;
+            float minDistance = 2f;
+            if (Vector3.Distance(pos, playerPos) < minDistance)
+                return; // 몬스터 소환 취소 (여전히 spawnedCount는 증가하지 않음)
+        }
 
-        
 
-        
 
-        
+
+
+
         enemy.isBoss = false;
 
         
@@ -137,12 +188,31 @@ public class Spawner : MonoBehaviour
 
     void SpawnBoss(RoundData round)
     {
+        if (GameManager.instance == null)
+        {
+            Debug.LogError("GameManager.instance가 null입니다. 보스 소환 실패.");
+            return;
+        }
+        if (GameManager.instance.pool == null)
+        {
+            Debug.LogError("GameManager.instance.pool이 null입니다. 풀링 초기화 상태를 확인하세요.");
+            return;
+        }
         GameObject boss = GameManager.instance.pool.Get(0);
-
+        if (boss == null)
+        {
+            Debug.LogError($"GameManager.instance.pool.Get(0)에서 Null이 반환되었습니다. 보스 풀링 설정 확인이 필요합니다.");
+            return;
+        }
         Vector3 pos = new Vector3(0f, 0f, 0f);
         boss.transform.position = pos;
 
         Enemy enemyComp = boss.GetComponent<Enemy>();
+        if (enemyComp == null)
+        {
+            Debug.LogError("스폰된 보스 객체에 Enemy 컴포넌트가 없습니다!");
+            return;
+        }
         enemyComp.isBoss = true;
         enemyComp.Init(round.bossSpawnData);
 

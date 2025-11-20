@@ -14014,17 +14014,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8328494215038516754, guid: ba360eb9f8f842c4e8d40963954bdc8d, type: 3}
   m_PrefabInstance: {fileID: 6064433657735281471}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &37717533 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4045307627806264429, guid: ba360eb9f8f842c4e8d40963954bdc8d, type: 3}
-  m_PrefabInstance: {fileID: 6064433657735281471}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 37717530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf06e7649fb58b149910a9aeb365062d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
 --- !u!114 &37717538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21175,8 +21164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   gameTime: 0
   maxGameTime: 20
-  player: {fileID: 37717533}
-  pool: {fileID: 57610579}
+  player: {fileID: 0}
+  pool: {fileID: 0}
 --- !u!4 &665325635
 Transform:
   m_ObjectHideFlags: 0
@@ -21857,7 +21846,7 @@ MonoBehaviour:
       Speed: 2
       Range: 1
   poolManager: {fileID: 57610579}
-  spawnDelay: 0
+  spawnDelay: 10
 --- !u!1 &1497414295
 GameObject:
   m_ObjectHideFlags: 0
@@ -27370,7 +27359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4045307627806264429, guid: ba360eb9f8f842c4e8d40963954bdc8d, type: 3}
       propertyPath: sprintDistance
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4604892569329188900, guid: ba360eb9f8f842c4e8d40963954bdc8d, type: 3}
       propertyPath: m_Radius
