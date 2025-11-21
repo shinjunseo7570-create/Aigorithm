@@ -21,9 +21,9 @@ public class BgMove : MonoBehaviour
     {
         Vector3 initPosition1 = new Vector3(0, 0, 0);
         Vector3 initPosition2 = new Vector3(0, 0, 0);
-        transform_bg_l.pivot = Vector2.zero;
+        transform_bg_l.pivot = Vector3.zero;
         transform_bg_l.position = (initPosition1);
-        transform_bg_r.pivot = Vector2.zero;
+        transform_bg_r.pivot = Vector3.zero;
         transform_bg_r.position = (initPosition2);
 
     }
@@ -34,7 +34,6 @@ public class BgMove : MonoBehaviour
         Update_MousePosition_Lobby();
     }
 
-    //CodeFinder 코드파인더
     //From https://codefinder.janndk.com/ 
     private void Update_MousePosition_Lobby()
     {
@@ -42,10 +41,11 @@ public class BgMove : MonoBehaviour
 
         if (backgrounds.gameObject.activeSelf == true)
         {
-            Vector2 mousePos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
             double a = mousePos.x * density;
             double b = mousePos.y * density;
-            Vector2 bgPos = new Vector2(0 - (float)a, 0 - (float)b);
+            double c = mousePos.z * density;
+            Vector3 bgPos = new Vector3(0 - (float)a, 0 - (float)b, 0 - (float)c);
             transform_bg_l.position = (bgPos);
 
             string message = mousePos.ToString();

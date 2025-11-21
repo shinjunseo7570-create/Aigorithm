@@ -13,7 +13,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] float sprintCooltime = 2f; // 쿨타임 2초
 
     // [SerializeField] float runSpeed = 10;
-
+    public static int stemina = 100;
     Vector2 moveInput;
     Vector2 lastMoveDir = Vector2.right;
 
