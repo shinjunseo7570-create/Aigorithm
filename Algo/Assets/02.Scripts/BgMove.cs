@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -6,9 +6,8 @@ using UnityEngine.UI;
 
 public class BgMove : MonoBehaviour
 {
+    [Header("Settings")]
     public RectTransform transform_bg_l;
-    public RectTransform transform_bg_r;
-    public Text text_mouse;
     public float density;
 
     // Start is called before the first frame update
@@ -23,8 +22,6 @@ public class BgMove : MonoBehaviour
         Vector3 initPosition2 = new Vector3(0, 0, 0);
         transform_bg_l.pivot = Vector3.zero;
         transform_bg_l.position = (initPosition1);
-        transform_bg_r.pivot = Vector3.zero;
-        transform_bg_r.position = (initPosition2);
 
     }
 
@@ -34,6 +31,7 @@ public class BgMove : MonoBehaviour
         Update_MousePosition_Lobby();
     }
 
+    //CodeFinder 코드파인더
     //From https://codefinder.janndk.com/ 
     private void Update_MousePosition_Lobby()
     {
@@ -47,10 +45,6 @@ public class BgMove : MonoBehaviour
             double c = mousePos.z * density;
             Vector3 bgPos = new Vector3(0 - (float)a, 0 - (float)b, 0 - (float)c);
             transform_bg_l.position = (bgPos);
-
-            string message = mousePos.ToString();
-            text_mouse.text = message;
-            Debug.Log(message);
         }
     }
 
