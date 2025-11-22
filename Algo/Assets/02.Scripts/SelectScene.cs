@@ -8,6 +8,7 @@ public class SelectScene : MonoBehaviour
         if (targetScene != null)
         {
             Debug.Log("씬 로드중: " + targetScene);
+            PlayerInteract.stemina -= 10;
             LoadingSceneManager.LoadScene(targetScene);
         }
         else
