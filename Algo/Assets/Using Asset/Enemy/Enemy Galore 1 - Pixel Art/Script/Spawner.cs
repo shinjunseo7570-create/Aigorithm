@@ -21,6 +21,7 @@ public class Spawner : MonoBehaviour
 
     bool bossSpawned = false;
     bool isSpawning = true;
+    bool usingScene = true;
 
     void Awake()
     {
@@ -67,9 +68,9 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        nowTime += Time.deltaTime;
         if (!(roundEnd))
         {
-            nowTime += Time.deltaTime;
             if (nowTime > limitTime && !(roundEnd))
             {
                 roundEnd = true;
@@ -121,6 +122,10 @@ public class Spawner : MonoBehaviour
                     SpawnBoss(round);
                 }
             }
+        }else if(nowTime >= limitTime + 10f && usingScene)
+        {
+            usingScene = false;
+            LoadingSceneManager.LoadScene("Main");
         }
     }
 
