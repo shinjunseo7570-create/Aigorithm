@@ -7,7 +7,7 @@ public class Map07Mechanism : MonoBehaviour
     public Transform[] spawnPoint;
     public RoundData07[] rounds;
 
-    public PoolManager poolManager;
+    public PoolManager07 poolManager;
 
     int currentRound = 0;
 
@@ -124,7 +124,6 @@ public class Map07Mechanism : MonoBehaviour
 
 
 
-        enemy07.isBoss = false;
 
         
         enemy07.Init(round.mob1SpawnData);
