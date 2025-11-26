@@ -18,12 +18,13 @@ public class Map07Mechanism : MonoBehaviour
     int aliveCount = 0;
     bool isSpawning = true;
     bool usingScene = true;
+    bool mimicSpawned;
 
     void Awake()
     {
         roundEnd = false;
         Transform[] points = GetComponentsInChildren<Transform>();
-
+        mimicSpawned = false;
         spawnPoint = new Transform[points.Length - 1];
 
         for (int i = 1; i < points.Length; i++)
@@ -53,20 +54,19 @@ public class Map07Mechanism : MonoBehaviour
     {
         if (!(roundEnd))
         {
+            
             if (rounds == null)
             {
                 return;
             }
-            if (currentRound >= rounds.Length && !(roundEnd))
+            if ( spawnedCount!=0 && aliveCount == 0 && !(roundEnd))
             {
                 roundEnd = true;
                 Ending();
                 return;
             }
-
-            timer += Time.deltaTime;
-
             RoundData07 round = rounds[currentRound];
+            timer += Time.deltaTime;
 
             if (round == null)
             {
@@ -88,6 +88,11 @@ public class Map07Mechanism : MonoBehaviour
                     SpawnMob(round);
                 }
             }
+            if (!mimicSpawned)
+            {
+                mimicSpawned = true;
+                SpawnMimic(round);
+            }
         }/*else if("플레이어가 이 맵을 나가는 방법을 정한 후 그 행위를 실행했다면")
         {
             usingScene = false;
@@ -98,9 +103,8 @@ public class Map07Mechanism : MonoBehaviour
     void SpawnMob(RoundData07 round)
     {
         GameObject enemyObj = poolManager.Get(round.mob1SpawnData.spriteType);
-        
         Enemy07 enemy07 = enemyObj.GetComponent<Enemy07>();
-        //Mimic mimic = ene
+        
         
         int rand = Random.Range(0, spawnPoint.Length);
         
@@ -119,20 +123,25 @@ public class Map07Mechanism : MonoBehaviour
                 return; // 몬스터 소환 취소 (여전히 spawnedCount는 증가하지 않음)
         }
 
-
-
-
-
-
-
-        
         enemy07.Init(round.mob1SpawnData);
-
-        aliveCount++;
         spawnedCount++;
-
+        aliveCount++;
         
         //Debug.Log($"[SpawnMob] Round {currentRound}, spriteType = {round.mobSpawnData.spriteType}");
+    }
+
+    void SpawnMimic(RoundData07 round)
+    {
+        for(int i = 0; i < 6; i++)
+        {
+            GameObject mimicObj = poolManager.Get(round.mob2SpawnData.spriteType);
+            Mimic mimic = mimicObj.GetComponent<Mimic>();
+            Vector3 pos = spawnPoint[i].position;
+            pos.x = Mathf.Clamp(pos.x, -8f, 8f);
+            pos.y = Mathf.Clamp(pos.y, -4f, 4f);
+            mimicObj.transform.position = pos;
+            mimic.Init(round.mob2SpawnData);
+        }
     }
 
     void Ending()
@@ -156,6 +165,5 @@ public class RoundData07
 {
     public SpawnData07 mob1SpawnData;
     public SpawnData07 mob2SpawnData;
-    public SpawnData07 mob3SpawnData;
-    public int mobCount = 100;
+    public int mobCount;
 }

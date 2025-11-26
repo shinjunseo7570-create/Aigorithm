@@ -21524,21 +21524,16 @@ MonoBehaviour:
   - {fileID: 2010064551}
   rounds:
   - mob1SpawnData:
-      spriteType: 1
-      Health: 1
-      Speed: 0
+      spriteType: 0
+      Health: 10
+      Speed: 1
       Range: 1
     mob2SpawnData:
       spriteType: 1
-      Health: 1
-      Speed: 0
+      Health: 10
+      Speed: 1
       Range: 1
-    mob3SpawnData:
-      spriteType: 1
-      Health: 1
-      Speed: 0
-      Range: 1
-    mobCount: 1
+    mobCount: 3
   poolManager: {fileID: 418804459}
   spawnDelay: 0
   roundEnd: 0
