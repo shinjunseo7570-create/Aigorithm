@@ -8,6 +8,8 @@ public class Map07Mechanism : MonoBehaviour
     public RoundData07[] rounds;
 
     public PoolManager07 poolManager;
+    public Enemy07 enemyScript;
+    public Mimic mimicScript;
 
     int currentRound = 0;
 
@@ -104,8 +106,9 @@ public class Map07Mechanism : MonoBehaviour
     {
         GameObject enemyObj = poolManager.Get(round.mob1SpawnData.spriteType);
         Enemy07 enemy07 = enemyObj.GetComponent<Enemy07>();
-        
-        
+        mimicScript = enemyObj.GetComponent<Mimic>();
+        mimicScript.enabled = false;
+
         int rand = Random.Range(0, spawnPoint.Length);
         
         Vector3 pos = spawnPoint[rand].position;
@@ -136,6 +139,8 @@ public class Map07Mechanism : MonoBehaviour
         {
             GameObject mimicObj = poolManager.Get(round.mob2SpawnData.spriteType);
             Mimic mimic = mimicObj.GetComponent<Mimic>();
+            enemyScript = mimicObj.GetComponent<Enemy07>();
+            enemyScript.enabled = false;
             Vector3 pos = spawnPoint[i].position;
             pos.x = Mathf.Clamp(pos.x, -8f, 8f);
             pos.y = Mathf.Clamp(pos.y, -4f, 4f);

@@ -65,7 +65,7 @@ public class Mimic : MonoBehaviour
         }
 
         // 3) 사정거리 안 + 쿨타임 끝났으면 공격 시작
-        if (distance <= attackRange && attackTimer >= attackDelay)
+        if (distance <= attackRange && attackTimer >= attackDelay && isMove)
         {
             attackTimer = 0f;
             StartCoroutine(AttackRoutine());
@@ -153,9 +153,10 @@ public class Mimic : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        isMove = true;
+        
         if (collision.CompareTag("Skill"))
         {
+            isMove = true;
             SkillController skill = collision.GetComponent<SkillController>();
 
             if (skill == null)
