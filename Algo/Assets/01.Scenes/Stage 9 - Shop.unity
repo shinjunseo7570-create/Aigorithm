@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 640503199}
   - component: {fileID: 640503198}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Subtitle Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3194,7 +3194,7 @@ GameObject:
   - component: {fileID: 2099424625}
   - component: {fileID: 2099424624}
   m_Layer: 0
-  m_Name: Subtitle
+  m_Name: Subtitle Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

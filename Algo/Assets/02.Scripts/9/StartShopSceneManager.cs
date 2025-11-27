@@ -21,6 +21,7 @@ public class StartShopSceneManager : MonoBehaviour
         // DialogueManager가 연결되어 있다면
         if (dialogueManager != null)
         {
+            //StartMessage의 텍스트를 출력합니다.
             dialogueManager.ShowMessage(startMessage);
         }
         else
