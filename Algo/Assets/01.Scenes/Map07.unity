@@ -21525,16 +21525,18 @@ MonoBehaviour:
   rounds:
   - mob1SpawnData:
       spriteType: 0
-      Health: 10
+      Health: 10000
       Speed: 1
       Range: 1
     mob2SpawnData:
       spriteType: 1
-      Health: 10
+      Health: 10000
       Speed: 1
       Range: 1
     mobCount: 3
   poolManager: {fileID: 418804459}
+  enemyScript: {fileID: 0}
+  mimicScript: {fileID: 0}
   spawnDelay: 0
   roundEnd: 0
 --- !u!1 &1134518826

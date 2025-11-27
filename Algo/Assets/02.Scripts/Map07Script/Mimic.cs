@@ -161,10 +161,12 @@ public class Mimic : MonoBehaviour
 
             if (skill == null)
                 return;
-
+            Debug.Log("스킬 데미지: " + skill.Damage);
             float finalDamage = skill.Damage;
+            Debug.Log("최종 데미지: " +  finalDamage);
+            Debug.Log("공격 받기 전 HP: " + health);
             health -= finalDamage;
-
+            Debug.Log("공격 받은 후 HP: " + health);
 
             if (health <= 0)
             {

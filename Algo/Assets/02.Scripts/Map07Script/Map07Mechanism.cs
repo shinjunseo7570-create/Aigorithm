@@ -107,7 +107,7 @@ public class Map07Mechanism : MonoBehaviour
         GameObject enemyObj = poolManager.Get(round.mob1SpawnData.spriteType);
         Enemy07 enemy07 = enemyObj.GetComponent<Enemy07>();
         mimicScript = enemyObj.GetComponent<Mimic>();
-        mimicScript.enabled = false;
+        Destroy(mimicScript);
 
         int rand = Random.Range(0, spawnPoint.Length);
         
@@ -140,7 +140,7 @@ public class Map07Mechanism : MonoBehaviour
             GameObject mimicObj = poolManager.Get(round.mob2SpawnData.spriteType);
             Mimic mimic = mimicObj.GetComponent<Mimic>();
             enemyScript = mimicObj.GetComponent<Enemy07>();
-            enemyScript.enabled = false;
+            Destroy(enemyScript);
             Vector3 pos = spawnPoint[i].position;
             pos.x = Mathf.Clamp(pos.x, -8f, 8f);
             pos.y = Mathf.Clamp(pos.y, -4f, 4f);
