@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class DevilShop : MonoBehaviour
 {
     public PlayerStatus player; // 플레이어 참조
-    [Header("UI 매니저 연결")]
-    // ↓↓↓ 새로 추가된 부분 ↓↓↓
+    [Header("연결")]
     public DialogueManager dialogueManager;
+    public StartShopSceneManager startShopSceneManager;
+
+    [Header("스탯 표시 텍스트 연결")]
+    public TextMeshProUGUI statusText;
 
     // 버튼에 이 함수를 연결하고, 해당 버튼이 파는 아이템 데이터(ScriptableObject)를 인자로 넣습니다.
     public void TryBuyItem(ShopItemData itemData)
@@ -20,6 +24,7 @@ public class DevilShop : MonoBehaviour
             GameObject.Find("Character Image").transform.Find("Image 1").gameObject.SetActive(true);
 
             dialogueManager.ShowMessage("거래가 성사되었다... (히죽)");
+            startShopSceneManager.ShowCurrentStatus();
         }
         else
         {

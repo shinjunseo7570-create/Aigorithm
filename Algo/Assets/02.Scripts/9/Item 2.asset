@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Item 2
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: "\uD53C\uC758 \uD65C\uB825"
-  description: "\uD53C\uB97C \uD758\uB824 \uC2A4\uD14C\uBBF8\uB098\uB97C \uD68C\uBCF5."
+  description: "\uD53C\uB97C \uD758\uB824 \uC2A4\uD14C\uBBF8\uB098\uB97C \uD68C\uBCF5\uD569\uB2C8."
   costType: 1
   costAmount: 1
   rewardType: 1
-  rewardAmount: 50
+  rewardAmount: 10
