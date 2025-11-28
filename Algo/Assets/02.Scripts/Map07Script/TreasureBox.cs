@@ -15,7 +15,7 @@ public class TreasureBox : MonoBehaviour
         if (collision.CompareTag("Skill"))
         {
             gameObject.SetActive(false);
-            Debug.Log("���ڰ� ���ݹ޾� �ı�����");
+            Debug.Log("보물상자 파괴됨");
         }
     }
 
@@ -25,7 +25,7 @@ public class TreasureBox : MonoBehaviour
         {
             PlayerInteract player = collision.gameObject.GetComponent<PlayerInteract>();
             //���� �ִ� ��ũ��Ʈ
-            Debug.Log("���ڿ� ��ȣ�ۿ��Ͽ� ���� ȹ��");
+            Debug.Log("보물 획득");
             gameObject.SetActive(false);
         }
     }
