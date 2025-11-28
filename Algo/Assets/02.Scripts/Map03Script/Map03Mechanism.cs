@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Map03Mechanism : MonoBehaviour
+public class Map07Mechanism : MonoBehaviour
 {
     public Transform[] spawnPoint;
     public RoundData07[] rounds;
@@ -156,19 +156,3 @@ public class Map03Mechanism : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public class SpawnData07
-{
-    public int spriteType;
-    public int Health;
-    public int Speed;
-    public float Range; // 사정거리
-}
-
-[System.Serializable]
-public class RoundData07
-{
-    public SpawnData07 mob1SpawnData;
-    public SpawnData07 mob2SpawnData;
-    public int mobCount;
-}

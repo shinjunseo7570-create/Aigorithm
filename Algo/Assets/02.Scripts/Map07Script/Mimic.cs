@@ -12,7 +12,6 @@ public class Mimic : MonoBehaviour
     public RuntimeAnimatorController[] animCon;
     public Rigidbody2D target;
     public bool isMove = false;
-
     public bool isBoss = false;
 
     public static Action<Mimic> OnEnemyDead;
@@ -33,7 +32,7 @@ public class Mimic : MonoBehaviour
     Rigidbody2D rigid;
     Animator anim;
     SpriteRenderer spriter;
-
+    Vector2 origin;
     int typeId;
 
     void Awake()
@@ -63,9 +62,13 @@ public class Mimic : MonoBehaviour
         {
             Chase();
         }
+        else if (origin != null)
+        {
+            FixPosition();
+        }
 
         // 3) 사정거리 안 + 쿨타임 끝났으면 공격 시작
-        if (distance <= attackRange && attackTimer >= attackDelay)
+        if (distance <= attackRange && attackTimer >= attackDelay && isMove)
         {
             attackTimer = 0f;
             StartCoroutine(AttackRoutine());
@@ -137,6 +140,16 @@ public class Mimic : MonoBehaviour
         spawnTime = Time.time;
     }
 
+    void FixPosition()
+    {
+        this.transform.position = origin;
+    }
+
+    public void SetPosition(Vector2 oripos)
+    {
+        origin = oripos;
+    }
+
     public void Init(SpawnData07 data)
     {
         typeId = data.spriteType;
@@ -153,17 +166,20 @@ public class Mimic : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        isMove = true;
+        
         if (collision.CompareTag("Skill"))
         {
+            isMove = true;
             SkillController skill = collision.GetComponent<SkillController>();
 
             if (skill == null)
                 return;
-
+            Debug.Log("스킬 데미지: " + skill.Damage);
             float finalDamage = skill.Damage;
+            Debug.Log("최종 데미지: " +  finalDamage);
+            Debug.Log("공격 받기 전 HP: " + health);
             health -= finalDamage;
-
+            Debug.Log("공격 받은 후 HP: " + health);
 
             if (health <= 0)
             {
