@@ -132,7 +132,6 @@ public class Map07Mechanism : MonoBehaviour
         
         //Debug.Log($"[SpawnMob] Round {currentRound}, spriteType = {round.mobSpawnData.spriteType}");
     }
-
     void SpawnMimic(RoundData07 round)
     {
         for(int i = 0; i < 6; i++)
@@ -146,6 +145,7 @@ public class Map07Mechanism : MonoBehaviour
             pos.y = Mathf.Clamp(pos.y, -4f, 4f);
             mimicObj.transform.position = pos;
             mimic.Init(round.mob2SpawnData);
+            mimic.SetPosition(pos);
         }
     }
 

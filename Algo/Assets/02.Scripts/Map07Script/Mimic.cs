@@ -12,7 +12,6 @@ public class Mimic : MonoBehaviour
     public RuntimeAnimatorController[] animCon;
     public Rigidbody2D target;
     public bool isMove = false;
-
     public bool isBoss = false;
 
     public static Action<Mimic> OnEnemyDead;
@@ -33,7 +32,7 @@ public class Mimic : MonoBehaviour
     Rigidbody2D rigid;
     Animator anim;
     SpriteRenderer spriter;
-
+    Vector2 origin;
     int typeId;
 
     void Awake()
@@ -62,6 +61,10 @@ public class Mimic : MonoBehaviour
         if (isMove)
         {
             Chase();
+        }
+        else if (origin != null)
+        {
+            FixPosition();
         }
 
         // 3) 사정거리 안 + 쿨타임 끝났으면 공격 시작
@@ -135,6 +138,16 @@ public class Mimic : MonoBehaviour
         attackTimer = 0f;
         isAttacking = false;
         spawnTime = Time.time;
+    }
+
+    void FixPosition()
+    {
+        this.transform.position = origin;
+    }
+
+    public void SetPosition(Vector2 oripos)
+    {
+        origin = oripos;
     }
 
     public void Init(SpawnData07 data)
