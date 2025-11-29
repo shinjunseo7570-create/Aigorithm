@@ -4,202 +4,93 @@ using UnityEngine;
 
 public class Stage10Spawner : MonoBehaviour
 {
+    [Header("스폰 설정")]
     public Transform[] spawnPoint;
-    public RoundData10[] rounds;
 
-    public PoolManager10 poolManager10;
+    [Header("프리팹 연결")]
+    public GameObject bansheePrefab; // 벤시 (Enemy10) 프리팹
+    public GameObject clonePrefab;   // 도플갱어 (EnemyClone) 프리팹
 
-    public float limitTime = 10f;
-    public float nowTime = 0;
+    [Header("밴시 설정")]
+    public int initialBansheeCount = 3; // 처음에 미리 깔아둘 개수
+    public SpawnData10 bansheeData;  // 벤시 스탯 (속도 등 설정을 위해 필요)
+    public float spawnInterval = 2f; // 벤시 스폰 딜레이
 
-    int currentRound = 0;
-
-    float timer;
-    public float spawnDelay = 2f;
-    public bool roundEnd;
-    int spawnedCount = 0;
-    int aliveCount = 0;
-
-    bool bossSpawned = false;
-    bool isSpawning = true;
-    bool usingScene = true;
+    float timer = 0f;
 
     void Awake()
     {
-        roundEnd = false;
         Transform[] points = GetComponentsInChildren<Transform>();
 
         spawnPoint = new Transform[points.Length - 1];
 
-        for (int i = 1; i < points.Length; i++)
+        // 포인트가 1개 이상일 경우에만
+        if (points.Length > 1)
         {
-            spawnPoint[i - 1] = points[i];
+            spawnPoint = new Transform[points.Length - 1];
+            for (int i = 1; i < points.Length; i++)
+            {
+                spawnPoint[i - 1] = points[i];
+            }
         }
     }
-
-    void OnEnable()
+    void Start()
     {
-        Enemy10.OnEnemyDead += HandleEnemyDead;
-    }
+        // 1. 보스 소환 (한 번만)
+        SpawnBoss();
 
-    void OnDisable()
-    {
-        Enemy10.OnEnemyDead -= HandleEnemyDead;
-    }
-
-    void HandleEnemyDead(Enemy10 enemy)
-    {
-        aliveCount--;
-
-
-        if (aliveCount <= 0 && bossSpawned)
+        // 2. 처음에 기본으로 몇 마리 깔아두기
+        for (int i = 0; i < initialBansheeCount; i++)
         {
-            currentRound++;
-            ResetRoundState();
+            SpawnRandomBanshee();
         }
     }
-
-    void ResetRoundState()
-    {
-        spawnedCount = 0;
-        bossSpawned = false;
-        isSpawning = true;
-        timer = 0f;
-    }
-
     void Update()
     {
-        nowTime += Time.deltaTime;
-        if (!(roundEnd))
+        // ★ 핵심: 시간이 흐르면 벤시를 하나씩 계속 소환
+        timer += Time.deltaTime;
+
+        if (timer >= spawnInterval)
         {
-            if (nowTime > limitTime && !(roundEnd))
-            {
-                roundEnd = true;
-                Fail();
-            }
-
-
-
-            if (rounds == null)
-            {
-                return;
-            }
-            if (currentRound >= rounds.Length && !(roundEnd))
-            {
-                roundEnd = true;
-                Ending();
-                return;
-            }
-
-            timer += Time.deltaTime;
-
-            RoundData10 round = rounds[currentRound];
-
-            if (round == null)
-            {
-                currentRound++; // 다음 라운드로 건너뛰기
-                return;
-            }
-            // 1) 몹 소환 중
-            if (isSpawning)
-            {
-                if (spawnedCount >= round.mobCount)
-                {
-                    isSpawning = false;
-                    return;
-                }
-
-                if (timer >= spawnDelay)
-                {
-                    timer = 0f;
-                    SpawnMob(round);
-                }
-            }
-            // 2) 몹 다 소환했고, 아직 보스 안 나왔을 때
-            else if (!bossSpawned)
-            {
-                if (aliveCount <= 0)
-                {
-                    SpawnBoss(round);
-                }
-            }
-        }else if(nowTime >= limitTime + 10f && usingScene)
-        {
-            usingScene = false;
-            LoadingSceneManager.LoadScene("Main");
+            timer = 0f; // 타이머 초기화
+            SpawnRandomBanshee(); // 벤시 한 마리 소환
         }
     }
-
-    void SpawnMob(RoundData10 round)
+    // 벤시 한 마리를 랜덤한 위치에 소환하는 함수
+    void SpawnRandomBanshee()
     {
-        GameObject enemyObj = poolManager10.Get(round.mobSpawnData.spriteType);
-        
-        Enemy enemy = enemyObj.GetComponent<Enemy>();
-        
+        if (bansheePrefab == null || spawnPoint.Length == 0) return;
+
+        // 1. 랜덤 위치 선정
         int rand = Random.Range(0, spawnPoint.Length);
-        
         Vector3 pos = spawnPoint[rand].position;
 
+        // 2. 맵 밖으로 안 나가게 보정
         pos.x = Mathf.Clamp(pos.x, -8f, 8f);
         pos.y = Mathf.Clamp(pos.y, -4f, 4f);
-        enemyObj.transform.position = pos;
 
-        if (GameManager.instance != null && GameManager.instance.player != null)
+        // 3. 생성
+        GameObject bansheeObj = Instantiate(bansheePrefab, pos, Quaternion.identity);
+
+        // 4. 데이터 초기화
+        Enemy10 enemyScript = bansheeObj.GetComponent<Enemy10>();
+        if (enemyScript != null)
         {
-            Vector3 playerPos = GameManager.instance.player.transform.position;
-
-            float minDistance = 2f;
-            if (Vector3.Distance(pos, playerPos) < minDistance)
-                return; // 몬스터 소환 취소 (여전히 spawnedCount는 증가하지 않음)
+            enemyScript.isBoss = false;
+            enemyScript.Init(bansheeData);
         }
-
-
-
-
-
-
-        enemy.isBoss = false;
-
-        
-        enemy.Init(round.mobSpawnData);
-
-        aliveCount++;
-        spawnedCount++;
-
-        
-        //Debug.Log($"[SpawnMob] Round {currentRound}, spriteType = {round.mobSpawnData.spriteType}");
     }
 
-    void SpawnBoss(RoundData10 round)
+    void SpawnBoss()
     {
-       
-        GameObject boss = GameManager.instance.pool.Get(0);
-        
-        Vector3 pos = new Vector3(0f, 0f, 0f);
-        boss.transform.position = pos;
+        if (clonePrefab == null) return;
 
-        Enemy enemyComp = boss.GetComponent<Enemy>();
-        
-        enemyComp.isBoss = true;
-        enemyComp.Init(round.bossSpawnData);
+        Vector3 pos = Vector3.zero;
+        if (spawnPoint.Length > 0) pos = spawnPoint[0].position;
 
-        aliveCount++;
-        bossSpawned = true;
-
-        // Debug.Log($"[SpawnBoss] Round {currentRound}, spriteType = {round.bossSpawnData.spriteType}");
+        Instantiate(clonePrefab, pos, Quaternion.identity);
     }
 
-    void Ending()
-    {
-        Debug.Log($"Game Clear!");
-        return;
-    }
-    void Fail()
-    {
-        PlayerInteract.stemina -= 10;
-        Debug.Log($"Game Over...." + PlayerInteract.stemina);
-        return;
-    }
 }
 
 [System.Serializable]
@@ -210,12 +101,3 @@ public class SpawnData10
     public int Speed;
     public float Range; // 사정거리
 }
-
-[System.Serializable]
-public class RoundData10
-{
-    public SpawnData mobSpawnData;
-    public int mobCount = 100;
-    public SpawnData bossSpawnData;
-}
-

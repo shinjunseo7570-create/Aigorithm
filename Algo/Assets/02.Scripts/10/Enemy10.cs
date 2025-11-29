@@ -32,9 +32,14 @@ public class Enemy10 : MonoBehaviour
     Rigidbody2D rigid;
     Animator anim;
     SpriteRenderer spriter;
+    Collider2D myCollider;
+
+    [Header("흐려지는 시간 설정")]
+    [SerializeField] float fadeDuration = 1.0f; // 흐려지는 시간 (기본값 1초)
 
     int typeId;
 
+    // 몬스터 종류(typeId)와 공격의 속성(elem)을 비교해서 데미지를 2배로 주거나 아예 안 받게(0배) 합니다.
     float CalcElementMultiplier(ElementType elem)
     {
         // 데미지 연산
@@ -82,6 +87,7 @@ public class Enemy10 : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriter = GetComponent<SpriteRenderer>();
+        myCollider = GetComponent<Collider2D>();
     }
 
     void FixedUpdate()
@@ -157,9 +163,9 @@ public class Enemy10 : MonoBehaviour
 
     void OnEnable()
     {
-        if (GameManager.instance != null && GameManager.instance.player != null)
+        if (GameManager10.instance != null && GameManager10.instance.player != null)
         {
-            target = GameManager.instance.player.GetComponent<Rigidbody2D>();
+            target = GameManager10.instance.player.GetComponent<Rigidbody2D>();
         }
         else
         {
@@ -173,9 +179,18 @@ public class Enemy10 : MonoBehaviour
         attackTimer = 0f;
         isAttacking = false;
         spawnTime = Time.time;
+
+        // 재활용할 때 콜라이더와 색상을 원래대로 돌려놓음.
+        if (myCollider != null) myCollider.enabled = true;
+        if (spriter != null)
+        {
+            Color c = spriter.color;
+            spriter.color = new Color(c.r, c.g, c.b, 1f);
+        }
     }
 
-    public void Init(SpawnData data)
+    // 소환될 때, 데이터에 적힌 번호(spriteType)에 맞는 애니메이션으로 갈아입음
+    public void Init(SpawnData10 data)
     {
         typeId = data.spriteType;
 
@@ -213,29 +228,40 @@ public class Enemy10 : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && isAttacking)
+        // 벤시(Enemy10)는 공격 중이든 아니든 몸에 닿으면 스턴을 건다고 가정했습니다.
+        // 만약 공격 모션 중에만 걸고 싶다면 && isAttacking 조건을 다시 넣으세요.
+        if (collision.gameObject.CompareTag("Player"))
         {
             PlayerInteract player = collision.gameObject.GetComponent<PlayerInteract>();
 
+            // 무적 상태가 아닐 때만 스턴
             if (player != null && !player.IsInvincible)
             {
-                Damaged();
+                // 데미지 함수(Damaged) 대신 스턴 함수 호출
+                // 플레이어 스크립트에 추가한 GetStunned(1.0f)를 호출합니다.
+                player.GetStunned(1.0f);
+
+                // 1초동안 사라지는 연출을 시작합니다.
+                StartCoroutine(DisappearRoutine(fadeDuration));
             }
         }
     }
 
+    // 부딪힌 순간에만 스턴 적용하려면 주석처리
+    /*
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && isAttacking)
+        if (collision.gameObject.CompareTag("Player"))
         {
             PlayerInteract player = collision.gameObject.GetComponent<PlayerInteract>();
 
             if (player != null && !player.IsInvincible)
             {
-                Damaged();
+                player.GetStunned(1.0f);
             }
         }
     }
+    */
 
     void Damaged()
     {
@@ -249,6 +275,34 @@ public class Enemy10 : MonoBehaviour
 
         OnEnemyDead?.Invoke(this);
 
+        gameObject.SetActive(false);
+    }
+
+    IEnumerator DisappearRoutine(float fadeDuration)
+    {
+        // 1. 즉각적인 물리 판정 제거
+        isLive = false;
+        rigid.linearVelocity = Vector2.zero; // 속도 0으로
+        if (myCollider != null) myCollider.enabled = false; // 충돌 끄기
+
+        StopCoroutine("AttackRoutine");
+        anim.SetBool("isAttack", false);
+
+        // 2. 천천히 시각적 사라짐 (페이드 아웃)
+        float timer = 0f;
+        Color startColor = spriter.color;
+
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            float newAlpha = Mathf.Lerp(1f, 0f, timer / fadeDuration);
+            spriter.color = new Color(startColor.r, startColor.g, startColor.b, newAlpha);
+            yield return null;
+        }
+
+        // 3. 뒷정리
+        spriter.color = new Color(startColor.r, startColor.g, startColor.b, 0f);
+        OnEnemyDead?.Invoke(this);
         gameObject.SetActive(false);
     }
 }
