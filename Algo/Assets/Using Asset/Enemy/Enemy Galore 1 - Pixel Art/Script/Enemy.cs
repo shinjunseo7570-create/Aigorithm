@@ -38,48 +38,6 @@ public class Enemy : MonoBehaviour
 
     int typeId;
 
-    /*float CalcElementMultiplier(ElementType elem)
-    {
-        // 데미지 연산
-        float mult = 1f;
-
-        if (elem == ElementType.Wind || elem == ElementType.Earth)
-            mult = 0.5f;
-
-        switch (typeId)
-        {
-            case 0: // 박쥐
-                if (elem == ElementType.Fire)
-                {
-                    mult = 2f;
-                }
-                else if (elem == ElementType.Water)
-                {
-                    mult = 0f;
-                }
-                break;
-
-            case 1: // 크랩
-                if (elem == ElementType.Fire)
-                {
-                    mult = 0f;
-                }
-                else if (elem == ElementType.Water)
-                {
-                    mult = 2f;
-                }
-                break;
-
-            case 2: // 골렘
-                if (elem == ElementType.Fire || elem == ElementType.Water)
-                {
-                    mult = 2f;
-                }
-                break;
-        }
-        return mult;
-    }*/
-
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();

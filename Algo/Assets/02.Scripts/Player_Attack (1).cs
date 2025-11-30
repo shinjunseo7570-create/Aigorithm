@@ -123,46 +123,36 @@ public class Player_Attack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 스윙 중이 아닐 때 들어온 충돌은 무시
         if (!isSwinging) return;
+        if (!collision.CompareTag("Enemy")) return;
 
-        // Enemy 태그인 애 처리
-        if (collision.CompareTag("Enemy"))
+        float damage = stats != null ? stats.RollDamage() : 10f;
+
+        // 1) Enemy
+        Enemy enemy = collision.GetComponent<Enemy>();
+        if (enemy != null)
         {
-            Enemy enemy = collision.GetComponent<Enemy>();
-            if (enemy == null) return;
-
-            // 플레이어 공격력으로 데미지 굴리기
-            float damage = stats != null ? stats.RollDamage() : 10f;
             enemy.TakeDamage(damage);
-
             Debug.Log($"[Player_Attack] Enemy hit! damage = {damage}");
+            return;
         }
 
-        // Banshee 태그인 애 처리
-        if (collision.CompareTag("Banshee"))
+        // 2) Enemy07
+        Enemy07 enemy07 = collision.GetComponent<Enemy07>();
+        if (enemy07 != null)
         {
-            Enemy10 Banshee = collision.GetComponent<Enemy10>();
-            if (Banshee == null) return;
-
-            // 플레이어 공격력으로 데미지 굴리기
-            float damage = stats != null ? stats.RollDamage() : 10f;
-            Banshee.TakeDamage(damage);
-
-            Debug.Log($"[Player_Attack] Banshee hit! damage = {damage}");
+            enemy07.TakeDamage(damage);
+            Debug.Log($"[Player_Attack] Enemy07 hit! damage = {damage}");
+            return;
         }
 
-        // Boss10인 태그인 애 처리
-        if (collision.CompareTag("Clone"))
+        // 3) Mimic
+        Mimic mimic = collision.GetComponent<Mimic>();
+        if (mimic != null)
         {
-            EnemyClone Boss10 = collision.GetComponent<EnemyClone>();
-            if (Boss10 == null) return;
-
-            // 플레이어 공격력으로 데미지 굴리기
-            float damage = stats != null ? stats.RollDamage() : 10f;
-            Boss10.TakeDamage(damage);
-
-            Debug.Log($"[Player_Attack] EnemyClone hit! damage = {damage}");
+            mimic.TakeDamage(damage);
+            Debug.Log($"[Player_Attack] Mimic hit! damage = {damage}");
+            return;
         }
     }
 

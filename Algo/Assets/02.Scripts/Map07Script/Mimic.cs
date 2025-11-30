@@ -13,6 +13,7 @@ public class Mimic : MonoBehaviour
     public Rigidbody2D target;
     public bool isMove = false;
     public bool isBoss = false;
+    public float ATK = 10f;
 
     public static Action<Mimic> OnEnemyDead;
 
@@ -159,9 +160,23 @@ public class Mimic : MonoBehaviour
         maxHealth = data.Health;
         health = data.Health;
         attackRange = data.Range;
+        ATK = data.ATK;
 
         float spawnDist = Vector2.Distance(target.position, rigid.position);
         Debug.Log($"[Enemy.Init] spawnDist = {spawnDist}");
+    }
+
+    public void TakeDamage(float amount)
+    {
+        if (!isLive) return;
+
+        health -= amount;
+        Debug.Log($"[Mimic] {amount} 만큼 데미지 받음.");
+
+        if (health <= 0f)
+        {
+            Dead();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -174,17 +189,14 @@ public class Mimic : MonoBehaviour
 
             if (skill == null)
                 return;
-            Debug.Log("스킬 데미지: " + skill.Damage);
-            float finalDamage = skill.Damage;
-            Debug.Log("최종 데미지: " +  finalDamage);
-            Debug.Log("공격 받기 전 HP: " + health);
-            health -= finalDamage;
-            Debug.Log("공격 받은 후 HP: " + health);
 
-            if (health <= 0)
-            {
-                Dead();
-            }
+
+            
+            float finalDamage = skill.Damage;
+            Debug.Log("스킬 데미지: " + skill.Damage);
+            Debug.Log("최종 데미지: " +  finalDamage);
+
+            TakeDamage(finalDamage);
         }
     }
 
@@ -196,7 +208,11 @@ public class Mimic : MonoBehaviour
 
             if (player != null && !player.IsInvincible)
             {
-                Damaged();
+                PlayerStats stats = collision.gameObject.GetComponent<PlayerStats>();
+                if (stats != null)
+                {
+                    Damaged(stats);
+                }
             }
         }
     }
@@ -209,15 +225,19 @@ public class Mimic : MonoBehaviour
 
             if (player != null && !player.IsInvincible)
             {
-                Damaged();
+                PlayerStats stats = collision.gameObject.GetComponent<PlayerStats>();
+                if (stats != null)
+                {
+                    Damaged(stats);
+                }
             }
         }
     }
 
-    void Damaged()
+    void Damaged(PlayerStats playerStats)
     {
-        Debug.Log("GameOver");
-        return;
+        if (playerStats == null) return;
+        playerStats.TakeDamage(ATK);
     }
 
     void Dead()

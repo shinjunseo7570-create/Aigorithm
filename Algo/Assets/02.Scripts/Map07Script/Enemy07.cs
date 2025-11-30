@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class Enemy07 : MonoBehaviour
@@ -9,8 +10,10 @@ public class Enemy07 : MonoBehaviour
     public float speed;
     public float health;
     public float maxHealth;
+    public float ATK = 10f;
     public RuntimeAnimatorController[] animCon;
     public Rigidbody2D target;
+    
 
     public bool isBoss = false;
 
@@ -35,47 +38,6 @@ public class Enemy07 : MonoBehaviour
 
     int typeId;
 
-    float CalcElementMultiplier(ElementType elem)
-    {
-        // 데미지 연산
-        float mult = 1f;
-
-        if (elem == ElementType.Wind || elem == ElementType.Earth)
-            mult = 0.5f;
-
-        switch (typeId)
-        {
-            case 0: // 박쥐
-                if (elem == ElementType.Fire)
-                {
-                    mult = 2f;
-                }
-                else if (elem == ElementType.Water)
-                {
-                    mult = 0f;
-                }
-                break;
-
-            case 1: // 크랩
-                if (elem == ElementType.Fire)
-                {
-                    mult = 0f;
-                }
-                else if (elem == ElementType.Water)
-                {
-                    mult = 2f;
-                }
-                break;
-
-            case 2: // 골렘
-                if (elem == ElementType.Fire || elem == ElementType.Water)
-                {
-                    mult = 2f;
-                }
-                break;
-        }
-        return mult;
-    }
 
     void Awake()
     {
@@ -184,9 +146,23 @@ public class Enemy07 : MonoBehaviour
         maxHealth = data.Health;
         health = data.Health;
         attackRange = data.Range;
-
+        ATK = data.ATK;
         float spawnDist = Vector2.Distance(target.position, rigid.position);
         Debug.Log($"[Enemy.Init] spawnDist = {spawnDist}");
+    }
+
+    public void TakeDamage(float amount)
+    {
+        if (!isLive) return;
+
+        health -= amount;
+
+        Debug.Log($"[Enemy07] {amount} 만큼 데미지 받음.");
+
+        if (health <= 0f)
+        {
+            Dead();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -198,16 +174,11 @@ public class Enemy07 : MonoBehaviour
             if (skill == null)
                 return;
 
-            float multiplier = CalcElementMultiplier(skill.Element);
-            float finalDamage = skill.Damage * multiplier;
+            
+            float finalDamage = skill.Damage;
             health -= finalDamage;
 
-            Debug.Log($"[Enemy] type={typeId}, elem={skill.Element}, mult={multiplier}, dmg={skill.Damage} -> {finalDamage}");
-
-            if (health <= 0)
-            {
-                Dead();
-            }
+            TakeDamage(finalDamage);
         }
     }
 
@@ -219,7 +190,11 @@ public class Enemy07 : MonoBehaviour
 
             if (player != null && !player.IsInvincible)
             {
-                Damaged();
+                PlayerStats stats = collision.gameObject.GetComponent<PlayerStats>();
+                if (stats != null)
+                {
+                    Damaged(stats);
+                }
             }
         }
     }
@@ -230,17 +205,17 @@ public class Enemy07 : MonoBehaviour
         {
             PlayerInteract player = collision.gameObject.GetComponent<PlayerInteract>();
 
-            if (player != null && !player.IsInvincible)
+            PlayerStats stats = collision.gameObject.GetComponent<PlayerStats>();
+            if (stats != null)
             {
-                Damaged();
+                Damaged(stats);
             }
         }
     }
 
-    void Damaged()
+    void Damaged(PlayerStats playerStats)
     {
-        Debug.Log("GameOver");
-        return;
+        playerStats.TakeDamage(ATK);
     }
 
     void Dead()

@@ -163,6 +163,7 @@ public class SpawnData07
     public int Health;
     public int Speed;
     public float Range; // 사정거리
+    public float ATK;
 }
 
 [System.Serializable]
