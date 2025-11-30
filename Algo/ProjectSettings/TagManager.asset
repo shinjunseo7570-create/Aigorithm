@@ -6,8 +6,6 @@ TagManager:
   tags:
   - Enemy
   - Skill
-  - Banshee
-  - Clone
   layers:
   - Default
   - TransparentFX

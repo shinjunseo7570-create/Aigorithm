@@ -136,13 +136,48 @@ public class PlayerQSkillController : MonoBehaviour
         
             if (!collision.CompareTag("Enemy")) return;
 
-            Enemy enemy = collision.GetComponent<Enemy>();
-            if (enemy == null) return;
             if (stats == null) return;
-
-        
             float damage = stats.RollDamage() * 2;   // 스킬이라 최종 뎀지에서 x2 했는데 밸런스 조정 필요하면 여기 건드리면 됨.
 
-            enemy.TakeDamage(damage);
+            // 1) Enemy
+            Enemy enemy = collision.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+                Debug.Log($"[Player_Attack] Enemy hit(Q)! damage = {damage}");
+                return;
+            }
+            // 2) Enemy07
+            Enemy07 enemy07 = collision.GetComponent<Enemy07>();
+            if (enemy07 != null)
+            {
+                enemy07.TakeDamage(damage);
+                Debug.Log($"[Player_Attack] Enemy07 hit(Q)! damage = {damage}");
+                return;
+            }
+            // 3) Mimic
+            Mimic mimic = collision.GetComponent<Mimic>();
+            if (mimic != null)
+            {
+                mimic.TakeDamage(damage);
+                Debug.Log($"[Player_Attack] Mimic hit(Q)! damage = {damage}");
+                return;
+            }
+            // 4) Enemy10(Banshee)
+            Enemy10 Banshee = collision.GetComponent<Enemy10>();
+            if (Banshee != null)
+            {
+                Banshee.TakeDamage(damage);
+                Debug.Log($"[Player_Attack] Banshee hit(Q)! damage = {damage}");
+                return;
+            }
+            // 5) EnemyClone
+            EnemyClone enemyClone = collision.GetComponent<EnemyClone>();
+            if (enemyClone != null)
+            {
+                enemyClone.TakeDamage(damage);
+                Debug.Log($"[Player_Attack] enemyClone hit(Q)! damage = {damage}");
+                return;
+            }
     }
 }

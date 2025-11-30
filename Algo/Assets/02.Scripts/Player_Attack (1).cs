@@ -154,6 +154,24 @@ public class Player_Attack : MonoBehaviour
             Debug.Log($"[Player_Attack] Mimic hit! damage = {damage}");
             return;
         }
+
+        // 4) Enemy10(Banshee)
+        Enemy10 Banshee = collision.GetComponent<Enemy10>();
+        if (Banshee != null)
+        {
+            Banshee.TakeDamage(damage);
+            Debug.Log($"[Player_Attack] Banshee hit! damage = {damage}");
+            return;
+        }
+
+        // 5) EnemyClone
+        EnemyClone enemyClone = collision.GetComponent<EnemyClone>();
+        if (enemyClone != null)
+        {
+            enemyClone.TakeDamage(damage);
+            Debug.Log($"[Player_Attack] enemyClone hit! damage = {damage}");
+            return;
+        }
     }
 
 }

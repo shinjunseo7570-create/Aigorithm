@@ -22165,7 +22165,7 @@ MonoBehaviour:
     Health: 1
     Speed: 1
     Range: 1
-  spawnInterval: 2
+  spawnInterval: 1
 --- !u!1 &961872410
 GameObject:
   m_ObjectHideFlags: 0
@@ -22571,9 +22571,9 @@ GameObject:
   - component: {fileID: 1532027047}
   - component: {fileID: 1532027045}
   - component: {fileID: 1532027046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mastery_Sword_0
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25528,9 +25528,9 @@ GameObject:
   - component: {fileID: 1881794784}
   - component: {fileID: 1881794785}
   - component: {fileID: 1881794783}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: firesword_0
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28765,5 +28765,5 @@ SceneRoots:
   - {fileID: 926707391}
   - {fileID: 57610580}
   - {fileID: 1159960814}
-  - {fileID: 1532027048}
   - {fileID: 1271143872}
+  - {fileID: 1532027048}
