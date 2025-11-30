@@ -205,9 +205,10 @@ public class Spawner : MonoBehaviour
 public class SpawnData
 {
     public int spriteType;
-    public int Health;
-    public int Speed;
+    public float Health;
+    public float Speed;
     public float Range; // 사정거리
+    public float ATK;
 }
 
 [System.Serializable]

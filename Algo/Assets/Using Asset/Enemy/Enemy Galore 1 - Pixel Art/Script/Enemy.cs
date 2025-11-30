@@ -29,13 +29,16 @@ public class Enemy : MonoBehaviour
 
     bool isLive = true;
 
+    public float ATK = 10f;
+
+
     Rigidbody2D rigid;
     Animator anim;
     SpriteRenderer spriter;
 
     int typeId;
 
-    float CalcElementMultiplier(ElementType elem)
+    /*float CalcElementMultiplier(ElementType elem)
     {
         // 데미지 연산
         float mult = 1f;
@@ -75,7 +78,7 @@ public class Enemy : MonoBehaviour
                 break;
         }
         return mult;
-    }
+    }*/
 
     void Awake()
     {
@@ -184,6 +187,7 @@ public class Enemy : MonoBehaviour
         maxHealth = data.Health;
         health = data.Health;
         attackRange = data.Range;
+        ATK = data.ATK;
 
         float spawnDist = Vector2.Distance(target.position, rigid.position);
         Debug.Log($"[Enemy.Init] spawnDist = {spawnDist}");
@@ -198,16 +202,11 @@ public class Enemy : MonoBehaviour
             if (skill == null)
                 return;
 
-            float multiplier = CalcElementMultiplier(skill.Element);
-            float finalDamage = skill.Damage * multiplier;
+
+            float finalDamage = skill.Damage;
             health -= finalDamage;
 
-            Debug.Log($"[Enemy] type={typeId}, elem={skill.Element}, mult={multiplier}, dmg={skill.Damage} -> {finalDamage}");
-
-            if (health <= 0)
-            {
-                Dead();
-            }
+            TakeDamage(finalDamage);
         }
     }
 
@@ -219,7 +218,11 @@ public class Enemy : MonoBehaviour
 
             if (player != null && !player.IsInvincible)
             {
-                Damaged();
+                PlayerStats stats = collision.gameObject.GetComponent<PlayerStats>();
+                if (stats != null)
+                {
+                    Damaged(stats);
+                }
             }
         }
     }
@@ -232,15 +235,31 @@ public class Enemy : MonoBehaviour
 
             if (player != null && !player.IsInvincible)
             {
-                Damaged();
+                PlayerStats stats = collision.gameObject.GetComponent<PlayerStats>();
+                if (stats != null)
+                {
+                    Damaged(stats);
+                }
             }
         }
     }
 
-    void Damaged()
+    public void TakeDamage(float amount)
     {
-        Debug.Log("GameOver");
-        return;
+        if (!isLive) return;
+
+        health -= amount;
+        Debug.Log($"enemy {amount}만큼 데미지 받음.");
+
+        if(health <= 0f)
+        {
+            Dead();
+        }
+    }
+
+    void Damaged(PlayerStats playerStats)
+    {
+        playerStats.TakeDamage(ATK);
     }
 
     void Dead()

@@ -4,7 +4,7 @@ public class SkillController : MonoBehaviour
 {
     private float moveSpeed;
     private float maxRange;
-    private float damage;
+    public float damage;
 
     private Vector3 startPosition; // 발사 시작 위치
 
@@ -56,6 +56,9 @@ public class SkillController : MonoBehaviour
     // 충돌
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (!other.CompareTag("Enemy"))
+            return;
+
         // 'Enemy' 태그를 가진 오브젝트와 부딪혔을 때
         if (other.CompareTag("Enemy"))
         {
