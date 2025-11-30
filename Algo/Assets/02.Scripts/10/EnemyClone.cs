@@ -5,8 +5,8 @@ public class EnemyClone : MonoBehaviour
 {
     [Header("Clone Stats")]
     public float speed = 3f;
-    public float health;       // 플레이어 체력 복사 예정
-    public float attackPower;  // 플레이어 공격력 복사 예정
+    public float health;       // 플레이어 체력 복사
+    public float attackPower;  // 플레이어 공격력 복사
     public float attackRange = 1.5f;
 
     bool isLive = true;
@@ -30,10 +30,10 @@ public class EnemyClone : MonoBehaviour
         StartCoroutine(CopyPlayerInfoRoutine());
     }
 
-    // ★ 핵심: 플레이어의 능력치와 외형을 베끼는 함수
+    // 플레이어의 능력치와 외형을 가져오는 함수
     IEnumerator CopyPlayerInfoRoutine()
     {
-        // 1. 플레이어가 로딩될 때까지 아주 잠깐 대기 (안전장치)
+        // 1. 플레이어가 로딩될 때까지 잠깐 대기
         yield return null;
 
         if (GameManager10.instance.player != null)
@@ -45,7 +45,7 @@ public class EnemyClone : MonoBehaviour
             target = playerObj.GetComponent<Rigidbody2D>();
 
             // 3. 외형(애니메이션) 복사
-            // 플레이어가 쓰는 애니메이터 컨트롤러를 그대로 뺏어옵니다.
+            // 플레이어가 쓰는 애니메이터 컨트롤러를 그대로 가져옴
             if (playerObj.GetComponent<Animator>() != null)
             {
                 anim.runtimeAnimatorController = playerObj.GetComponent<Animator>().runtimeAnimatorController;
@@ -68,7 +68,7 @@ public class EnemyClone : MonoBehaviour
             // attackPower = playerScript.damage;
 
             // (임시) 변수가 없으면 기본값 적용
-            health = 10f;
+            health = 100f;
             attackPower = 10f;
         }
     }
@@ -119,25 +119,16 @@ public class EnemyClone : MonoBehaviour
         isAttacking = false;
     }
 
-    // 플레이어의 공격(Skill)에 맞았을 때
-    void OnTriggerEnter2D(Collider2D collision)
+    public void TakeDamage(float amount)
     {
         if (!isLive) return;
 
-        if (collision.CompareTag("Skill"))
-        {
-            // 스킬 데미지 받아오기
-            SkillController skill = collision.GetComponent<SkillController>();
-            if (skill != null)
-            {
-                health -= skill.Damage;
-                // 피격 애니메이션 or 효과
-            }
+        health -= amount;
+        Debug.Log($"클론 {amount}만큼 데미지 받음.");
 
-            if (health <= 0)
-            {
-                Dead();
-            }
+        if (health <= 0f)
+        {
+            Dead();
         }
     }
 
@@ -147,11 +138,8 @@ public class EnemyClone : MonoBehaviour
         rigid.linearVelocity = Vector2.zero;
         anim.SetBool("IsRunning", false);
 
-        // ★ 게임 클리어 조건 달성!
-        Debug.Log("도플갱어 처치! 게임 클리어!");
-
-        // 게임 매니저에 승리 함수가 있다면 호출
-        // GameManager10.instance.GameWin(); 
+        GameManager10.instance.GameWin(
+        GameManager10.instance.GetPlayer()); 
 
         Destroy(gameObject); // 혹은 사라지는 연출
     }

@@ -7,12 +7,11 @@ public class GameManager10 : MonoBehaviour
 
 
     [Header("게임 설정")]
-    public float limitTime = 60f; // 제한 시간 (예: 60초)
+    public float limitTime = 60f; // 제한 시간
     bool isGameOver = false;
 
     public static GameManager10 instance;
     public PlayerInteract player;
-    public PoolManager10 pool;
 
     [Header("UI 연결")]
     public GameObject gameClearScreen;
@@ -39,28 +38,27 @@ public class GameManager10 : MonoBehaviour
         // 1. 시간 줄이기
         limitTime -= Time.deltaTime;
 
-        // (선택사항) UI에 남은 시간 표시
+        // UI에 남은 시간 표시
         // if(timeText != null) timeText.text = $"Time: {limitTime:F1}";
 
-        // 2. 시간이 0보다 작아지면? -> 실패(Fail)!
+        // 2. 시간이 0보다 작아지면? -> 실패
         if (limitTime <= 0)
         {
             GameFail();
         }
     }
-    public void GameWin()
+
+    public PlayerInteract GetPlayer()
     {
-        Debug.Log("축하합니다! 게임 클리어!");
+        return player;
+    }
 
-        // 게임 시간 멈추기 (선택사항)
-        // Time.timeScale = 0;
-        // Time.timeScale = 0;으로 시간을 멈춘 뒤에, '다시하기(Restart)' 버튼을 눌러서
-        // 씬(Scene)을 재시작하면 오류남 그래서
-        // Time.timeScale = 1f; 를 Awake나 Start 할 때 넣어줘야 함
-
+    public void GameWin(PlayerInteract player)
+    {
         // 클리어 화면 띄우기
-
+        Debug.Log("축하합니다! 게임 클리어!");
         gameClearScreen.SetActive(true);
+        player.transform.Find("Stage10Spawner").gameObject.SetActive(false);
     }
 
     public void GameFail()

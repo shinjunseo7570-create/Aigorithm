@@ -263,10 +263,17 @@ public class Enemy10 : MonoBehaviour
     }
     */
 
-    void Damaged()
+    public void TakeDamage(float amount)
     {
-        Debug.Log("GameOver");
-        return;
+        if (!isLive) return;
+
+        health -= amount;
+        Debug.Log($"밴시 {amount}만큼 데미지 받음.");
+
+        if (health <= 0f)
+        {
+            Dead();
+        }
     }
 
     void Dead()

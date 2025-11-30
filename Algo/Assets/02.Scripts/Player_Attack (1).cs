@@ -126,7 +126,7 @@ public class Player_Attack : MonoBehaviour
         // 스윙 중이 아닐 때 들어온 충돌은 무시
         if (!isSwinging) return;
 
-        // Enemy 태그인 애만 맞은 걸로 처리
+        // Enemy 태그인 애 처리
         if (collision.CompareTag("Enemy"))
         {
             Enemy enemy = collision.GetComponent<Enemy>();
@@ -137,6 +137,32 @@ public class Player_Attack : MonoBehaviour
             enemy.TakeDamage(damage);
 
             Debug.Log($"[Player_Attack] Enemy hit! damage = {damage}");
+        }
+
+        // Banshee 태그인 애 처리
+        if (collision.CompareTag("Banshee"))
+        {
+            Enemy10 Banshee = collision.GetComponent<Enemy10>();
+            if (Banshee == null) return;
+
+            // 플레이어 공격력으로 데미지 굴리기
+            float damage = stats != null ? stats.RollDamage() : 10f;
+            Banshee.TakeDamage(damage);
+
+            Debug.Log($"[Player_Attack] Banshee hit! damage = {damage}");
+        }
+
+        // Boss10인 태그인 애 처리
+        if (collision.CompareTag("Clone"))
+        {
+            EnemyClone Boss10 = collision.GetComponent<EnemyClone>();
+            if (Boss10 == null) return;
+
+            // 플레이어 공격력으로 데미지 굴리기
+            float damage = stats != null ? stats.RollDamage() : 10f;
+            Boss10.TakeDamage(damage);
+
+            Debug.Log($"[Player_Attack] EnemyClone hit! damage = {damage}");
         }
     }
 

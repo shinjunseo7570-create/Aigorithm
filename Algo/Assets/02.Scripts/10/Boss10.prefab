@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -1352205354623480529}
   m_Layer: 0
   m_Name: Boss10
-  m_TagString: Enemy
+  m_TagString: Clone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b54bf83c6650434c98f5431f162a675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyClone
-  speed: 3.5
-  health: 10
+  speed: 4
+  health: 100
   attackPower: 10
   attackRange: 1.5
