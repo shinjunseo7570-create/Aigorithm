@@ -57,8 +57,8 @@ public class EnemyClone : MonoBehaviour
                 spriter.sprite = playerObj.GetComponent<SpriteRenderer>().sprite;
             }
 
-            // 구분을 위해 약간 검붉은 색으로 틴트 (선택사항)
-            spriter.color = new Color(0.2f, 0.2f, 0.2f);
+            // 클론의 색은 검정색으로
+            spriter.color = new Color(0f, 0f, 0f);
 
             // 4. 스탯 복사 (플레이어 스크립트에 변수가 있다고 가정)
             // 주의: PlayerInteract에 maxHealth, damage 변수가 있어야 합니다.
