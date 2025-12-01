@@ -3,7 +3,7 @@ using UnityEngine;
 public class SelectScene : MonoBehaviour
 {
     public static string targetScene = null;
-    void OnMouseDown()
+    public void LoadScene()
     {
         if (targetScene != null)
         {
@@ -15,16 +15,5 @@ public class SelectScene : MonoBehaviour
         {
             Debug.Log("씬이 선택되지 않음");
         }
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    }   
 }

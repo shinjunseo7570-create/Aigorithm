@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,25 +6,25 @@ public class GameManager10 : MonoBehaviour
 {
 
 
-    [Header("°ÔÀÓ ¼³Á¤")]
-    public float limitTime = 60f; // Á¦ÇÑ ½Ã°£
+    [Header("ê²Œì„ ì„¤ì •")]
+    public float limitTime = 60f; // ì œí•œ ì‹œê°„
     bool isGameOver = false;
 
     public static GameManager10 instance;
     public PlayerInteract player;
 
-    [Header("UI ¿¬°á")]
+    [Header("UI ì—°ê²°")]
     public GameObject gameClearScreen;
     public GameObject gameOverScreen;
 
-    // °ÔÀÓ Àü¹İÀ» °ü¸®ÇÏ´Â ½ºÅ©¸³Æ®
+    // ê²Œì„ ì „ë°˜ì„ ê´€ë¦¬í•˜ëŠ” ìŠ¤í¬ë¦½íŠ¸
 
     void Awake()
     {
-        // GameManager¸¦ °ÔÀÓ ³»¿¡¼­ À¯ÀÏÇÑ °ü¸®ÀÚ·Î ¸¸µé°í, ´Ù¸¥ ½ºÅ©¸³Æ®¿¡¼­ ½±°Ô Á¢±ÙÇÒ ¼ö ÀÖ°Ô ÇÕ´Ï´Ù.
-        // static º¯¼öÀÎ instance¿¡ ÀÚ±â ÀÚ½Å(this)À» ÇÒ´çÇÕ´Ï´Ù.
-        // »ç¿ë ¿¹: ´Ù¸¥ ½ºÅ©¸³Æ®(¿¹: ÇÃ·¹ÀÌ¾î, Àû)¿¡¼­ GameManager.instance.gameTime°ú °°ÀÌ ÄÚµå¸¦ ÀÛ¼ºÇÏ¿©
-        // ÀÌ ¸Å´ÏÀúÀÇ º¯¼ö³ª ÇÔ¼ö¸¦ ¹Ù·Î °¡Á®´Ù ¾µ ¼ö ÀÖ½À´Ï´Ù.
+        // GameManagerë¥¼ ê²Œì„ ë‚´ì—ì„œ ìœ ì¼í•œ ê´€ë¦¬ìë¡œ ë§Œë“¤ê³ , ë‹¤ë¥¸ ìŠ¤í¬ë¦½íŠ¸ì—ì„œ ì‰½ê²Œ ì ‘ê·¼í•  ìˆ˜ ìˆê²Œ í•©ë‹ˆë‹¤.
+        // static ë³€ìˆ˜ì¸ instanceì— ìê¸° ìì‹ (this)ì„ í• ë‹¹í•©ë‹ˆë‹¤.
+        // ì‚¬ìš© ì˜ˆ: ë‹¤ë¥¸ ìŠ¤í¬ë¦½íŠ¸(ì˜ˆ: í”Œë ˆì´ì–´, ì )ì—ì„œ GameManager.instance.gameTimeê³¼ ê°™ì´ ì½”ë“œë¥¼ ì‘ì„±í•˜ì—¬
+        // ì´ ë§¤ë‹ˆì €ì˜ ë³€ìˆ˜ë‚˜ í•¨ìˆ˜ë¥¼ ë°”ë¡œ ê°€ì ¸ë‹¤ ì“¸ ìˆ˜ ìˆìŠµë‹ˆë‹¤.
         instance = this;
     }
     
@@ -32,16 +32,16 @@ public class GameManager10 : MonoBehaviour
     {
 
 
-        // °ÔÀÓ ¿À¹ö³ª Å¬¸®¾î »óÅÂ¸é Å¸ÀÌ¸Ó ¸ØÃã
+        // ê²Œì„ ì˜¤ë²„ë‚˜ í´ë¦¬ì–´ ìƒíƒœë©´ íƒ€ì´ë¨¸ ë©ˆì¶¤
         if (isGameOver) return;
 
-        // 1. ½Ã°£ ÁÙÀÌ±â
+        // 1. ì‹œê°„ ì¤„ì´ê¸°
         limitTime -= Time.deltaTime;
 
-        // UI¿¡ ³²Àº ½Ã°£ Ç¥½Ã
+        // UIì— ë‚¨ì€ ì‹œê°„ í‘œì‹œ
         // if(timeText != null) timeText.text = $"Time: {limitTime:F1}";
 
-        // 2. ½Ã°£ÀÌ 0º¸´Ù ÀÛ¾ÆÁö¸é? -> ½ÇÆĞ
+        // 2. ì‹œê°„ì´ 0ë³´ë‹¤ ì‘ì•„ì§€ë©´? -> ì‹¤íŒ¨
         if (limitTime <= 0)
         {
             GameFail();
@@ -55,8 +55,8 @@ public class GameManager10 : MonoBehaviour
 
     public void GameWin(PlayerInteract player)
     {
-        // Å¬¸®¾î È­¸é ¶ç¿ì±â
-        Debug.Log("ÃàÇÏÇÕ´Ï´Ù! °ÔÀÓ Å¬¸®¾î!");
+        // í´ë¦¬ì–´ í™”ë©´ ë„ìš°ê¸°
+        Debug.Log("ì¶•í•˜í•©ë‹ˆë‹¤! ê²Œì„ í´ë¦¬ì–´!");
         gameClearScreen.SetActive(true);
         player.transform.Find("Stage10Spawner").gameObject.SetActive(false);
     }
@@ -66,8 +66,8 @@ public class GameManager10 : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true;
 
-        Debug.Log("°ÔÀÓ ¿À¹ö (½Ã°£ ÃÊ°ú or »ç¸Á)");
-        Time.timeScale = 0; // ½Ã°£ Á¤Áö
+        Debug.Log("ê²Œì„ ì˜¤ë²„ (ì‹œê°„ ì´ˆê³¼ or ì‚¬ë§)");
+        Time.timeScale = 0; // ì‹œê°„ ì •ì§€
         if (gameOverScreen != null) gameOverScreen.SetActive(true);
     }
 }

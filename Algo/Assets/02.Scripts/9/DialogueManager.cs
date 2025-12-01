@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using TMPro; // TextMeshPro를 쓰기 위해 필수!
-using System.Collections; // 코루틴을 쓰기 위해 필수!
+using TMPro;
+using System.Collections; // 코루틴을 쓰기 위해
 
 public class DialogueManager : MonoBehaviour
 {

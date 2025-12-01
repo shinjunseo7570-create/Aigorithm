@@ -44,7 +44,7 @@ public class EnemyClone : MonoBehaviour
             // 타겟 설정
             target = playerObj.GetComponent<Rigidbody2D>();
 
-            // 3. 외형(애니메이션) 복사
+            // 외형(애니메이션) 복사
             // 플레이어가 쓰는 애니메이터 컨트롤러를 그대로 가져옴
             if (playerObj.GetComponent<Animator>() != null)
             {
@@ -60,8 +60,8 @@ public class EnemyClone : MonoBehaviour
             // 클론의 색은 검정색으로
             spriter.color = new Color(0f, 0f, 0f);
 
-            // 4. 스탯 복사 (플레이어 스크립트에 변수가 있다고 가정)
-            // 주의: PlayerInteract에 maxHealth, damage 변수가 있어야 합니다.
+            // 스탯 복사 (플레이어 스크립트에 변수가 있다고 가정)
+            // PlayerInteract에 maxHealth, damage 변수가 있어야 합니다.
             // 없다면 임의의 값을 넣거나 변수를 만들어주세요.
 
             // health = playerScript.maxHealth; 
