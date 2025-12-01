@@ -6,6 +6,11 @@ public class PlayerStats : MonoBehaviour
     public float maxHealth = 100f;
     public float health = 100f;
 
+    [Header("Stamina")] // 스테미나 관련 변
+    public int maxStamina = 100;
+    public int currentStamina = 100;
+    public bool hasStaminaGuard = false; // [아이템] 스테미나 감소 방지권
+
     [Header("공격력")]
     public float attackPower = 10f;  // 기본 10
 

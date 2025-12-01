@@ -189,7 +189,7 @@ public class Mimic : MonoBehaviour
         if (collision.CompareTag("Skill"))
         {
             isMove = true;
-            anim.SetBool("isMoving", true);
+            anim.SetBool("IsMoving", true);
             SkillController skill = collision.GetComponent<SkillController>();
 
             if (skill == null)
@@ -207,18 +207,21 @@ public class Mimic : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && isAttacking)
+        if (collision.gameObject.CompareTag("Player"))
         {
             isMove = true;
-            anim.SetBool("isMoving", true);
-            PlayerInteract player = collision.gameObject.GetComponent<PlayerInteract>();
-
-            if (player != null && !player.IsInvincible)
+            anim.SetBool("IsMoving", true);
+            if (isAttacking)
             {
-                PlayerStats stats = collision.gameObject.GetComponent<PlayerStats>();
-                if (stats != null)
+                PlayerInteract player = collision.gameObject.GetComponent<PlayerInteract>();
+
+                if (player != null && !player.IsInvincible)
                 {
-                    Damaged(stats);
+                    PlayerStats stats = collision.gameObject.GetComponent<PlayerStats>();
+                    if (stats != null)
+                    {
+                        Damaged(stats);
+                    }
                 }
             }
         }

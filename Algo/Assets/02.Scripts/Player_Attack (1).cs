@@ -155,6 +155,7 @@ public class Player_Attack : MonoBehaviour
             return;
         }
 
+
         // 4) Enemy10(Banshee)
         Enemy10 Banshee = collision.GetComponent<Enemy10>();
         if (Banshee != null)
@@ -170,6 +171,15 @@ public class Player_Attack : MonoBehaviour
         {
             enemyClone.TakeDamage(damage);
             Debug.Log($"[Player_Attack] enemyClone hit! damage = {damage}");
+            return;
+        }
+
+        // 6) Enemy03
+        Pot pot = collision.GetComponent<Pot>();
+        if (pot != null)
+        {
+            pot.TakeDamage(damage);
+            Debug.Log($"[Player_Attack] Enemy07 hit! damage = {damage}");
             return;
         }
     }

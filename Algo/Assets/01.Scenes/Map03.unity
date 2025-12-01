@@ -13995,16 +13995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e0e479c90999e44a755fb84dfcc0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSkillController
-  currentElement: 0
-  currentAttackMode: {fileID: 11400000, guid: 0b9397be1a6650b4f97b39b734d56728, type: 2}
-  availableAttackModes:
-  - {fileID: 11400000, guid: 0b9397be1a6650b4f97b39b734d56728, type: 2}
-  - {fileID: 11400000, guid: 5af539b897daab14b8f178b600eb3118, type: 2}
-  - {fileID: 11400000, guid: 6e370936cf201ed48a369b32ef8751d3, type: 2}
-  - {fileID: 11400000, guid: 026fdc1c72879ea498faf06c28e9ea1c, type: 2}
-  elementSelectionUI: {fileID: 0}
-  attackSelectionUI: {fileID: 0}
-  Balsa: {fileID: 1497414296}
 --- !u!114 &37717545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14021,6 +14011,7 @@ MonoBehaviour:
   sprintDistance: 2
   sprintDuration: 0.1
   sprintCooltime: 2
+  isStunned: 0
 --- !u!1001 &68769498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27151,6 +27142,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 6455217424030838562, guid: ba360eb9f8f842c4e8d40963954bdc8d, type: 3}
     - {fileID: 562535944196639170, guid: ba360eb9f8f842c4e8d40963954bdc8d, type: 3}
+    - {fileID: 316294757481659458, guid: ba360eb9f8f842c4e8d40963954bdc8d, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8328494215038516754, guid: ba360eb9f8f842c4e8d40963954bdc8d, type: 3}
       insertIndex: -1
