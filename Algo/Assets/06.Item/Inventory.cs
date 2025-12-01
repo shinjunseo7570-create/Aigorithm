@@ -1,28 +1,28 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI; // UI °Çµå·Á¾ß ÇÏ´Ï ÇÊ¼ö
+using UnityEngine.UI; // UI ï¿½Çµï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½Ê¼ï¿½
 
 public class Inventory : MonoBehaviour
 {
-    [Header("¿¬°á Á¤º¸")]
-    public PlayerStats playerStats;  // ½ºÅÈ Àû¿ëÀ» À§ÇØ ÇÊ¿ä
-    public GameObject inventory; // ÀÎº¥Åä¸® Ã¢ (UI Panel)
-    public Transform slotParent;     // ½½·ÔÀÌ »ý¼ºµÉ ºÎ¸ð (Grid Layout GroupÀÌ ÀÖ´Â ÆÐ³Î)
-    public GameObject slotPrefab;    // ¾Æ±î ¸¸µç ½½·Ô ÇÁ¸®ÆÕ (ItemSlot)
+    /*[Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
+    public PlayerStats playerStats;  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
+    public GameObject inventory; // ï¿½Îºï¿½ï¿½ä¸® Ã¢ (UI Panel)
+    public Transform slotParent;     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¸ï¿½ (Grid Layout Groupï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Ð³ï¿½)
+    public GameObject slotPrefab;    // ï¿½Æ±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ItemSlot)
 
-    [Header("ÀúÀå µ¥ÀÌÅÍ")]
-    public List<ItemData> myItems = new List<ItemData>(); // È¹µæÇÑ ¾ÆÀÌÅÛ ¸ñ·Ï
+    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    public List<ItemData> myItems = new List<ItemData>(); // È¹ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 
     void Start()
     {
-        // ½ÃÀÛÇÒ ¶§ ÀÎº¥Åä¸® Ã¢Àº ²¨µÎ±â
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Îºï¿½ï¿½ä¸® Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½Î±ï¿½
         if (inventory != null) inventory.SetActive(false);
     }
 
     void Update()
     {
-        // 'I' Å°¸¦ ´©¸£¸é ÀÎº¥Åä¸® ²°´Ù Ä×´Ù ÇÏ±â
+        // 'I' Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½ ï¿½×´ï¿½ ï¿½Ï±ï¿½
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (inventory != null)
@@ -30,33 +30,33 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // [ÇÙ½É] ¿ÜºÎ¿¡¼­ ¾ÆÀÌÅÛÀ» ¸Ô¾úÀ» ¶§ ºÎ¸£´Â ÇÔ¼ö
+    // [ï¿½Ù½ï¿½] ï¿½ÜºÎ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¾ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Î¸ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     public void AddItem(ItemData item)
     {
-        // 1. ¸®½ºÆ®¿¡ Ãß°¡ (µ¥ÀÌÅÍ ÀúÀå)
+        // 1. ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ß°ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
         myItems.Add(item);
 
-        // 2. ÇÃ·¹ÀÌ¾î ½ºÅÈ¿¡ È¿°ú Àû¿ë (PlayerStats·Î Åä½º)
+        // 2. ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½È¿ï¿½ È¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (PlayerStatsï¿½ï¿½ ï¿½ä½º)
         if (playerStats != null) playerStats.ApplyItem(item);
 
-        // 3. UI¿¡ ¾ÆÀÌÄÜ Ãß°¡ (´«¿¡ º¸ÀÌ°Ô)
+        // 3. UIï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½)
         CreateSlot(item);
     }
 
-    // ½½·Ô ÇÏ³ª¸¦ »ý¼ºÇØ¼­ ±×¸²À» ³Ö¾îÁÖ´Â ÇÔ¼ö
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Ö´ï¿½ ï¿½Ô¼ï¿½
     void CreateSlot(ItemData item)
     {
         if (slotPrefab == null || slotParent == null) return;
 
-        // ½½·Ô »ý¼º (ºÎ¸ð¸¦ slotParent·Î ÁöÁ¤)
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½Î¸ï¿½ slotParentï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
         GameObject newSlot = Instantiate(slotPrefab, slotParent);
 
-        // ¾ÆÀÌÄÜ ÀÌ¹ÌÁö º¯°æ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Image iconImage = newSlot.GetComponent<Image>();
         if (item.icon != null)
         {
             iconImage.sprite = item.icon;
         }
-        // ¾ÆÀÌÄÜÀÌ ¾ø´Ù¸é ±×³É ±âº» Èò»öÀÌ ¶ä
-    }
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½×³ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+    }*/
 }

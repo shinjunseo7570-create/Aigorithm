@@ -6,10 +6,10 @@ using TMPro;
 public class MainSceneManager : MonoBehaviour
 {
 
-    [Header("ÇÃ·¹ÀÌ¾î ¼³Á¤")]
+    [Header("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     public GameObject player;
 
-    [Header("UI ¿¬°á")]
+    [Header("UI ï¿½ï¿½ï¿½ï¿½")]
     public Slider staminaSlider;
     public TextMeshProUGUI staminaText;
 
@@ -26,18 +26,18 @@ public class MainSceneManager : MonoBehaviour
 
     IEnumerator InitMainSceneRoutine()
     {
-        // Àá½Ã ´ë±â
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         yield return null;
 
-        // ÇÃ·¹ÀÌ¾î Á¤º¸ ¹Þ¾Æ¿À±â
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
         PlayerStats playerStats = player.GetComponent<PlayerStats>();
         PlayerInteract playerInteract = player.GetComponent<PlayerInteract>();
 
-        // 1. ½ºÅÂ¹Ì³ª ½ºÅÈÀ» ÃÊ±âÈ­
+        // 1. ï¿½ï¿½ï¿½Â¹Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         staminaSlider.value = (playerStats.currentStamina * 0.01f);
         staminaText.text = playerStats.currentStamina.ToString();
 
-        // 2. ¸¶Áö¸·À¸·Î ÀÔÀåÇÑ ¸ÊÀÇ ÅÂ±×¸¦ °¡Á®¿Â ÈÄ, ±× °ªÀ» ¹ÙÅÁÀ¸·Î ÁÖº¯ºÎ¸¦ ¹àÈü´Ï´Ù.
+        // 2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Â±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Öºï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 
 
         switch(playerInteract.lastStageNum)

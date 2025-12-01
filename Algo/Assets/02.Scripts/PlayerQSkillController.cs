@@ -179,5 +179,13 @@ public class PlayerQSkillController : MonoBehaviour
                 Debug.Log($"[Player_Attack] enemyClone hit(Q)! damage = {damage}");
                 return;
             }
+        // 6) Enemy03
+        Pot pot = collision.GetComponent<Pot>();
+        if (pot != null)
+        {
+            pot.TakeDamage(damage);
+            Debug.Log($"[Player_Attack] Enemy07 hit! damage = {damage}");
+            return;
+        }
     }
 }

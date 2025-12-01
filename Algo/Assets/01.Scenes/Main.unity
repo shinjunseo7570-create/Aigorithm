@@ -1752,7 +1752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 912a0ac54a701bc40b4d247661afd010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetNextScene
-  SceneName: SampleScene
+  SceneName: Map01
 --- !u!61 &902770549
 BoxCollider2D:
   m_ObjectHideFlags: 0

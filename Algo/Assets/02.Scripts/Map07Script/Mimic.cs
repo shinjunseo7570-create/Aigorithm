@@ -177,7 +177,7 @@ public class Mimic : MonoBehaviour
     public void TakeDamage(float amount)
     {
         if (!isLive) return;
-
+        if (!isMove) { isMove = true; anim.SetBool("IsMoving", true); }
         health -= amount;
         Debug.Log($"[Mimic] {amount} 만큼 데미지 받음.");
 
