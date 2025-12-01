@@ -27,5 +27,11 @@ public class ItemEffect
 public class ItemData : ScriptableObject
 {
     public string itemName;
+    public Sprite icon;
+    
+    [TextArea]
+    public string description;
+
+    [Header("효과 목록")]
     public List<ItemEffect> effects;
 }

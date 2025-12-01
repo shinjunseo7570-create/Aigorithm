@@ -1,28 +1,28 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI; // UI �ǵ���� �ϴ� �ʼ�
+using UnityEngine.UI; // UI 건드려야 하니 필수
 
 public class Inventory : MonoBehaviour
 {
-    /*[Header("���� ����")]
-    public PlayerStats playerStats;  // ���� ������ ���� �ʿ�
-    public GameObject inventory; // �κ��丮 â (UI Panel)
-    public Transform slotParent;     // ������ ������ �θ� (Grid Layout Group�� �ִ� �г�)
-    public GameObject slotPrefab;    // �Ʊ� ���� ���� ������ (ItemSlot)
+    [Header("연결 정보")]
+    public PlayerStats playerStats;  // 스탯 적용을 위해 필요
+    public GameObject inventory; // 인벤토리 창 (UI Panel)
+    public Transform slotParent;     // 슬롯이 생성될 부모 (Grid Layout Group이 있는 패널)
+    public GameObject slotPrefab;    // 아까 만든 슬롯 프리팹 (ItemSlot)
 
-    [Header("���� ������")]
-    public List<ItemData> myItems = new List<ItemData>(); // ȹ���� ������ ���
+    [Header("저장 데이터")]
+    public List<ItemData> myItems = new List<ItemData>(); // 획득한 아이템 목록
 
     void Start()
     {
-        // ������ �� �κ��丮 â�� ���α�
+        // 시작할 때 인벤토리 창은 꺼두기
         if (inventory != null) inventory.SetActive(false);
     }
 
     void Update()
     {
-        // 'I' Ű�� ������ �κ��丮 ���� �״� �ϱ�
+        // 'I' 키를 누르면 인벤토리 껐다 켰다 하기
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (inventory != null)
@@ -30,33 +30,33 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // [�ٽ�] �ܺο��� �������� �Ծ��� �� �θ��� �Լ�
+    // [핵심] 외부에서 아이템을 먹었을 때 부르는 함수
     public void AddItem(ItemData item)
     {
-        // 1. ����Ʈ�� �߰� (������ ����)
+        // 1. 리스트에 추가 (데이터 저장)
         myItems.Add(item);
 
-        // 2. �÷��̾� ���ȿ� ȿ�� ���� (PlayerStats�� �佺)
+        // 2. 플레이어 스탯에 효과 적용 (PlayerStats로 토스)
         if (playerStats != null) playerStats.ApplyItem(item);
 
-        // 3. UI�� ������ �߰� (���� ���̰�)
+        // 3. UI에 아이콘 추가 (눈에 보이게)
         CreateSlot(item);
     }
 
-    // ���� �ϳ��� �����ؼ� �׸��� �־��ִ� �Լ�
+    // 슬롯 하나를 생성해서 그림을 넣어주는 함수
     void CreateSlot(ItemData item)
     {
         if (slotPrefab == null || slotParent == null) return;
 
-        // ���� ���� (�θ� slotParent�� ����)
+        // 슬롯 생성 (부모를 slotParent로 지정)
         GameObject newSlot = Instantiate(slotPrefab, slotParent);
 
-        // ������ �̹��� ����
+        // 아이콘 이미지 변경
         Image iconImage = newSlot.GetComponent<Image>();
         if (item.icon != null)
         {
             iconImage.sprite = item.icon;
         }
-        // �������� ���ٸ� �׳� �⺻ ����� ��
-    }*/
+        // 아이콘이 없다면 그냥 기본 흰색이 뜸
+    }
 }
