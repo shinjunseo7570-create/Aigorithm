@@ -3966,6 +3966,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1765439358}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1937140180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1937140182}
+  - component: {fileID: 1937140181}
+  m_Layer: 0
+  m_Name: ItemSelectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1937140181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937140180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9203c82947e1174b87ea60c276d4541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSelectManager
+  selectPanel: {fileID: 3172548545403369358, guid: 2f48578856887154bb04d6152d001e63, type: 3}
+  playerInventory: {fileID: 0}
+  leftButton: {fileID: 3681845885255853500, guid: 29f08be71627e7f43aa5b69dfc09046c, type: 3}
+  leftIcon: {fileID: 0}
+  leftName: {fileID: 0}
+  leftDesc: {fileID: 0}
+  rightButton: {fileID: 3681845885255853500, guid: 29f08be71627e7f43aa5b69dfc09046c, type: 3}
+  rightIcon: {fileID: 0}
+  rightName: {fileID: 0}
+  rightDesc: {fileID: 0}
+  allItems: []
+--- !u!4 &1937140182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937140180}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1946575714
 GameObject:
   m_ObjectHideFlags: 0
@@ -4375,3 +4430,4 @@ SceneRoots:
   - {fileID: 592197084}
   - {fileID: 1505092696}
   - {fileID: 289015753}
+  - {fileID: 1937140182}
