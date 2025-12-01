@@ -3,12 +3,12 @@ using TMPro;
 
 public class DevilShop : MonoBehaviour
 {
-    public PlayerStatus player; // 플레이어 참조
+    public PlayerStatus player;
     [Header("연결")]
     public DialogueManager dialogueManager;
     public StartShopSceneManager startShopSceneManager;
 
-    [Header("스탯 표시 텍스트 연결")]
+    [Header("스탯 표시 텍스트")]
     public TextMeshProUGUI statusText;
 
     // 버튼에 이 함수를 연결하고, 해당 버튼이 파는 아이템 데이터(ScriptableObject)를 인자로 넣습니다.
@@ -23,7 +23,7 @@ public class DevilShop : MonoBehaviour
             GameObject.Find("Character Image").transform.Find("Image 2").gameObject.SetActive(false);
             GameObject.Find("Character Image").transform.Find("Image 1").gameObject.SetActive(true);
 
-            dialogueManager.ShowMessage("거래가 성사되었다... (히죽)");
+            dialogueManager.ShowMessage("거래가 성사되었다...");
             startShopSceneManager.ShowCurrentStatus();
         }
         else
@@ -35,7 +35,7 @@ public class DevilShop : MonoBehaviour
         }
     }
 
-    // 1. 구매 가능 여부 확인
+    // 구매 가능 여부 확인
     bool CanAfford(ShopItemData item)
     {
         switch (item.costType)
@@ -53,7 +53,7 @@ public class DevilShop : MonoBehaviour
         return false;
     }
 
-    // 2. 대가 지불 (Cost 차감)
+    // 대가 지불 (Cost 차감)
     void PayCost(ShopItemData item)
     {
         switch (item.costType)

@@ -1,5 +1,3 @@
-
-
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -32,7 +30,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // 외부에서 아이템을 먹었을 때 부르는 함수
+    // [핵심] 외부에서 아이템을 먹었을 때 부르는 함수
     public void AddItem(ItemData item)
     {
         // 1. 리스트에 추가 (데이터 저장)
@@ -62,4 +60,3 @@ public class Inventory : MonoBehaviour
         // 아이콘이 없다면 그냥 기본 흰색이 뜸
     }
 }
-

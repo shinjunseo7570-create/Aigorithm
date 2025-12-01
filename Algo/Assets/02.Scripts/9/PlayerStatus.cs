@@ -11,7 +11,7 @@ public class PlayerStatus : MonoBehaviour
     public float currentStamina;
 
     [Header("Stats")]
-    public int strength = 10; // 예시 스탯 (공격력 등)
+    public int strength = 10; // 예시 스탯
 
     void Start()
     {

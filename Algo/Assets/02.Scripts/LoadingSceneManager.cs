@@ -25,6 +25,12 @@ public class LoadingSceneManager : MonoBehaviour
         SceneManager.LoadScene("Loading"); // 중간에 Loading Scene을 불러온다.
     }
 
+    public static void LoadSceneVar(string targetScene)
+    {
+        nextScene = targetScene; // 받아온 Scene의 이름을 저장
+        SceneManager.LoadScene("Loading"); // 중간에 Loading Scene을 불러온다.
+    }
+
     IEnumerator LoadingSceneProcess()
 
     {
