@@ -1,3 +1,5 @@
+
+/*
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -60,3 +62,5 @@ public class Inventory : MonoBehaviour
         // 아이콘이 없다면 그냥 기본 흰색이 뜸
     }
 }
+
+*/
