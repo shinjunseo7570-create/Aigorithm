@@ -13995,6 +13995,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e0e479c90999e44a755fb84dfcc0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSkillController
+  Balsa: {fileID: 0}
+  skillData: {fileID: 0}
 --- !u!114 &37717545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27909,6 +27911,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 6455217424030838562, guid: ba360eb9f8f842c4e8d40963954bdc8d, type: 3}
     - {fileID: 562535944196639170, guid: ba360eb9f8f842c4e8d40963954bdc8d, type: 3}
+    - {fileID: 316294757481659458, guid: ba360eb9f8f842c4e8d40963954bdc8d, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8328494215038516754, guid: ba360eb9f8f842c4e8d40963954bdc8d, type: 3}
       insertIndex: 0

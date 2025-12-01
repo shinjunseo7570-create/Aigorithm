@@ -45,6 +45,7 @@ public class Mimic : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(isMove) {
         if (!isLive || target == null)
             return;
 
@@ -59,20 +60,20 @@ public class Mimic : MonoBehaviour
         }
 
         // 2) 기본 상태: 항상 플레이어 쪽으로 날아간다
-        if (isMove)
-        {
+       
             Chase();
-        }
-        else if (origin != null)
-        {
-            FixPosition();
-        }
+        
 
         // 3) 사정거리 안 + 쿨타임 끝났으면 공격 시작
         if (distance <= attackRange && attackTimer >= attackDelay && isMove)
         {
             attackTimer = 0f;
             StartCoroutine(AttackRoutine());
+        }
+        }
+        else if (origin != null)
+        {
+            FixPosition();
         }
     }
 
@@ -84,7 +85,7 @@ public class Mimic : MonoBehaviour
         rigid.MovePosition(rigid.position + nextVec);
 
         // 평소 상태는 공격 아님
-        anim.SetBool("isAttack", false);
+        //anim.SetBool("isAttack", false);
     }
 
     void AttackPlayer()
@@ -98,7 +99,7 @@ public class Mimic : MonoBehaviour
 
         // 공격 시작: 이동 멈추고, 공격 애니메이션
         rigid.linearVelocity = Vector2.zero;
-        anim.SetBool("isAttack", true);
+        //anim.SetBool("isAttack", true);
 
         // 필요하다면 타격 타이밍 맞춰서 약간 딜레이 줘도 됨
         // yield return new WaitForSeconds(0.2f);
@@ -108,17 +109,20 @@ public class Mimic : MonoBehaviour
         yield return new WaitForSeconds(attackAnimDuration);
 
         // 공격 끝나면 다시 평상시 상태로
-        anim.SetBool("isAttack", false);
+       // anim.SetBool("isAttack", false);
         isAttacking = false;
     }
 
     void LateUpdate()
     {
-        if (!isLive || target == null)
-            return;
+        if (isMove)
+        {
+            if (!isLive || target == null)
+                return;
 
-        // 플레이어의 X축 값과 적의 X축 값을 비교하여 작으면 true
-        spriter.flipX = target.position.x < rigid.position.x;
+            // 플레이어의 X축 값과 적의 X축 값을 비교하여 작으면 true
+            spriter.flipX = target.position.x < rigid.position.x;
+        }
     }
 
     void OnEnable()
@@ -155,7 +159,7 @@ public class Mimic : MonoBehaviour
     {
         typeId = data.spriteType;
 
-        anim.runtimeAnimatorController = animCon[data.spriteType];
+        anim.runtimeAnimatorController = animCon[0];
         speed = data.Speed;
         maxHealth = data.Health;
         health = data.Health;
@@ -185,6 +189,7 @@ public class Mimic : MonoBehaviour
         if (collision.CompareTag("Skill"))
         {
             isMove = true;
+            anim.SetBool("isMoving", true);
             SkillController skill = collision.GetComponent<SkillController>();
 
             if (skill == null)
@@ -204,6 +209,8 @@ public class Mimic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && isAttacking)
         {
+            isMove = true;
+            anim.SetBool("isMoving", true);
             PlayerInteract player = collision.gameObject.GetComponent<PlayerInteract>();
 
             if (player != null && !player.IsInvincible)
