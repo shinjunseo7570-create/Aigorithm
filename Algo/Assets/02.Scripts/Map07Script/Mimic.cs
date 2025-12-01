@@ -41,6 +41,7 @@ public class Mimic : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriter = GetComponent<SpriteRenderer>();
+        anim.SetBool("IsMoving",  false);
     }
 
     void FixedUpdate()
@@ -48,6 +49,7 @@ public class Mimic : MonoBehaviour
         if(isMove) {
         if (!isLive || target == null)
             return;
+
 
         float distance = Vector2.Distance(target.position, rigid.position);
         attackTimer += Time.fixedDeltaTime;
@@ -58,18 +60,22 @@ public class Mimic : MonoBehaviour
             rigid.linearVelocity = Vector2.zero;
             return;
         }
+            // 2) 기본 상태: 항상 플레이어 쪽으로 날아간다
 
-        // 2) 기본 상태: 항상 플레이어 쪽으로 날아간다
-       
+
             Chase();
+
+
         
 
-        // 3) 사정거리 안 + 쿨타임 끝났으면 공격 시작
-        if (distance <= attackRange && attackTimer >= attackDelay && isMove)
-        {
-            attackTimer = 0f;
-            StartCoroutine(AttackRoutine());
-        }
+            // 3) 사정거리 안 + 쿨타임 끝났으면 공격 시작
+            if (distance <= attackRange && attackTimer >= attackDelay && isMove)
+            {
+                attackTimer = 0f;
+                StartCoroutine(AttackRoutine());
+            }
+
+
         }
         else if (origin != null)
         {
@@ -120,7 +126,8 @@ public class Mimic : MonoBehaviour
             if (!isLive || target == null)
                 return;
 
-            // 플레이어의 X축 값과 적의 X축 값을 비교하여 작으면 true
+     // 플레이어의 X축 값과 적의 X축 값을 비교하여 작으면 true
+
             spriter.flipX = target.position.x < rigid.position.x;
         }
     }
@@ -190,6 +197,8 @@ public class Mimic : MonoBehaviour
         {
             isMove = true;
             anim.SetBool("IsMoving", true);
+
+
             SkillController skill = collision.GetComponent<SkillController>();
 
             if (skill == null)
@@ -208,6 +217,7 @@ public class Mimic : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
+
         {
             isMove = true;
             anim.SetBool("IsMoving", true);
