@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class TreasureBox : MonoBehaviour
 {
+    Vector2 origin;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
 
@@ -31,12 +32,12 @@ public class TreasureBox : MonoBehaviour
     }
     void Start()
     {
-       
+       origin = gameObject.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        gameObject.transform.position = origin;
     }
 }

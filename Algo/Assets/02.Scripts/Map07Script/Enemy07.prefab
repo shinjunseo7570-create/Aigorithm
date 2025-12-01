@@ -229,16 +229,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   animCon:
-  - {fileID: 9100000, guid: ec24e4ddfe3ded84495eefe4576cc9fe, type: 2}
-  - {fileID: 9100000, guid: baa67eee7fa8b9c4ba2715714aefac30, type: 2}
-  - {fileID: 9100000, guid: de73cdbd51b1a4e429a03c2fe0f351a1, type: 2}
-  - {fileID: 9100000, guid: 006d284ae59a5a947ae44f27bb565865, type: 2}
-  - {fileID: 9100000, guid: b6552c3aebf2795439614ec6931df748, type: 2}
-  - {fileID: 9100000, guid: 1a04e66e23439834a8372f45a9744e82, type: 2}
-  - {fileID: 9100000, guid: 3b4dcabd457a113438c359a82ff2c898, type: 2}
-  - {fileID: 9100000, guid: b2af98cfbf96ce841963b37ec392cf64, type: 2}
-  - {fileID: 9100000, guid: eee5ae94b5fdd4949a11c40843de3ff3, type: 2}
-  - {fileID: 9100000, guid: 31193055c1a5c4d46acf0cf8d3686ea8, type: 2}
+  - {fileID: 9100000, guid: 4ccb0c63842ad2d4ebb5a975b266dd82, type: 2}
   target: {fileID: 0}
   isMove: 0
   isBoss: 0

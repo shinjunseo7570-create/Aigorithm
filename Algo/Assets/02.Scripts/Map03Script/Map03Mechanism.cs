@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Map07Mechanism : MonoBehaviour
+public class Map03Mechanism : MonoBehaviour
 {
     public Transform[] spawnPoint;
     public RoundData07[] rounds;

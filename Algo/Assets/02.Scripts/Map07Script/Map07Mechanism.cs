@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Map03Mechanism : MonoBehaviour
+public class Map07Mechanism : MonoBehaviour
 {
     public Transform[] spawnPoint;
     public RoundData07[] rounds;
@@ -140,6 +140,7 @@ public class Map03Mechanism : MonoBehaviour
             Mimic mimic = mimicObj.GetComponent<Mimic>();
             enemyScript = mimicObj.GetComponent<Enemy07>();
             Destroy(enemyScript);
+            mimicObj.transform.localScale = new Vector3(-1, 1, 1);
             Vector3 pos = spawnPoint[i].position;
             pos.x = Mathf.Clamp(pos.x, -8f, 8f);
             pos.y = Mathf.Clamp(pos.y, -4f, 4f);

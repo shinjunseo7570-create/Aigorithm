@@ -126,6 +126,7 @@ public class Enemy07 : MonoBehaviour
         else
         {
             target = null;
+            Debug.Log("타겟 널");
         }
 
         isLive = true;
