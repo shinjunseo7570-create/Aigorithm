@@ -122,6 +122,9 @@ public class Mimic : MonoBehaviour
         {
             if (!isLive || target == null)
                 return;
+
+     // 플레이어의 X축 값과 적의 X축 값을 비교하여 작으면 true
+
             spriter.flipX = target.position.x < rigid.position.x;
         }
     }
@@ -191,7 +194,6 @@ public class Mimic : MonoBehaviour
         {
             isMove = true;
             anim.SetBool("IsMoving", true);
-
             SkillController skill = collision.GetComponent<SkillController>();
 
             if (skill == null)
