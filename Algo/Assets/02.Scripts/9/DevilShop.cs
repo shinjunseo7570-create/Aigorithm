@@ -24,7 +24,6 @@ public class DevilShop : MonoBehaviour
             GameObject.Find("Character Image").transform.Find("Image 1").gameObject.SetActive(true);
 
             dialogueManager.ShowMessage("거래가 성사되었다...");
-            startShopSceneManager.ShowCurrentStatus();
         }
         else
         {

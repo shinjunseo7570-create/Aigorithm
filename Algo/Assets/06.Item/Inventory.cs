@@ -11,8 +11,15 @@ public class Inventory : MonoBehaviour
     public Transform slotParent;     // 슬롯이 생성될 부모 (Grid Layout Group이 있는 패널)
     public GameObject slotPrefab;    // 아까 만든 슬롯 프리팹 (ItemSlot)
 
+    [Header("오디오 설정")]
+    public AudioSource audioSource;
+    public AudioClip clickSound;
+
     [Header("저장 데이터")]
     public List<ItemData> myItems = new List<ItemData>(); // 획득한 아이템 목록
+
+    
+
 
     void Start()
     {
@@ -27,7 +34,9 @@ public class Inventory : MonoBehaviour
         {
             if (inventory != null)
                 inventory.SetActive(!inventory.activeSelf);
+            audioSource.PlayOneShot(clickSound);
         }
+       
     }
 
     // [핵심] 외부에서 아이템을 먹었을 때 부르는 함수
