@@ -128,11 +128,17 @@ public class Player_Attack : MonoBehaviour
 
         float damage = stats != null ? stats.RollDamage() : 10f;
 
+        if (stats == null)
+        {
+            Debug.LogWarning("PlayerStats가 연결되지 않아 흡혈 로직을 수행할 수 없습니다.");
+        }
+
         // 1) Enemy
         Enemy enemy = collision.GetComponent<Enemy>();
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
+            if (stats != null) stats.OnAttackHit();
             Debug.Log($"[Player_Attack] Enemy hit! damage = {damage}");
             return;
         }
@@ -142,6 +148,7 @@ public class Player_Attack : MonoBehaviour
         if (enemy07 != null)
         {
             enemy07.TakeDamage(damage);
+            if (stats != null) stats.OnAttackHit();
             Debug.Log($"[Player_Attack] Enemy07 hit! damage = {damage}");
             return;
         }
@@ -151,6 +158,7 @@ public class Player_Attack : MonoBehaviour
         if (mimic != null)
         {
             mimic.TakeDamage(damage);
+            if (stats != null) stats.OnAttackHit();
             Debug.Log($"[Player_Attack] Mimic hit! damage = {damage}");
             return;
         }
@@ -161,6 +169,7 @@ public class Player_Attack : MonoBehaviour
         if (Banshee != null)
         {
             Banshee.TakeDamage(damage);
+            if (stats != null) stats.OnAttackHit();
             Debug.Log($"[Player_Attack] Banshee hit! damage = {damage}");
             return;
         }
@@ -170,6 +179,7 @@ public class Player_Attack : MonoBehaviour
         if (enemyClone != null)
         {
             enemyClone.TakeDamage(damage);
+            if (stats != null) stats.OnAttackHit();
             Debug.Log($"[Player_Attack] enemyClone hit! damage = {damage}");
             return;
         }
