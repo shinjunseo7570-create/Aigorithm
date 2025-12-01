@@ -51,18 +51,17 @@ public class Mimic : MonoBehaviour
             return;
 
 
-        float distance = Vector2.Distance(target.position, rigid.position);
-        attackTimer += Time.fixedDeltaTime;
+            float distance = Vector2.Distance(target.position, rigid.position);
+            attackTimer += Time.fixedDeltaTime;
 
-        // 1) 공격 중이면 자리에서 멈추고 애니메이션만 재생
-        if (isAttacking)
-        {
-            rigid.linearVelocity = Vector2.zero;
-            return;
-        }
+            // 1) 공격 중이면 자리에서 멈추고 애니메이션만 재생
+            if (isAttacking)
+            {
+                rigid.linearVelocity = Vector2.zero;
+                return;
+            }
+
             // 2) 기본 상태: 항상 플레이어 쪽으로 날아간다
-
-
             Chase();
 
 
@@ -74,8 +73,6 @@ public class Mimic : MonoBehaviour
                 attackTimer = 0f;
                 StartCoroutine(AttackRoutine());
             }
-
-
         }
         else if (origin != null)
         {
@@ -197,8 +194,6 @@ public class Mimic : MonoBehaviour
         {
             isMove = true;
             anim.SetBool("IsMoving", true);
-
-
             SkillController skill = collision.GetComponent<SkillController>();
 
             if (skill == null)
@@ -216,9 +211,9 @@ public class Mimic : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player")) 
+        { 
 
-        {
             isMove = true;
             anim.SetBool("IsMoving", true);
             if (isAttacking)

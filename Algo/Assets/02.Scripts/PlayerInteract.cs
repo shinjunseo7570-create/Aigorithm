@@ -12,6 +12,9 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] float sprintDuration = 0.1f; // 무적 판정
     [SerializeField] float sprintCooltime = 2f; // 쿨타임 2초
 
+    [Header ("마지막으로 접속한 Scene Tag")]
+    public int lastStageNum = 1;
+
     // [SerializeField] float runSpeed = 10;
     public static int stemina = 100;
     Vector2 moveInput;

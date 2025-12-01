@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC544\uBB34 \uACF3\uC774\uB098 \uD074\uB9AD\uD558\uC138\uC694"
+  m_text: Press Any Screen
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 166610b182cb95e4988e6bf4a9e4943d, type: 2}
   m_sharedMaterial: {fileID: 6627647773418662596, guid: 166610b182cb95e4988e6bf4a9e4943d, type: 2}
@@ -203,15 +203,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: -4
   m_wordSpacing: 0
@@ -825,7 +825,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1024, y: 122}
+  m_SizeDelta: {x: 518, y: 166}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1506756227
 MonoBehaviour:

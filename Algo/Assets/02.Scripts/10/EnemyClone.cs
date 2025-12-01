@@ -26,14 +26,14 @@ public class EnemyClone : MonoBehaviour
 
     void Start()
     {
-        // 게임 시작 시 플레이어 정보를 복사하기 위해 코루틴 실행
+        // 게임 시작 시 플레이어 정보를 복사하기 위한 코루틴 실행
         StartCoroutine(CopyPlayerInfoRoutine());
     }
 
     // 플레이어의 능력치와 외형을 가져오는 함수
     IEnumerator CopyPlayerInfoRoutine()
     {
-        // 1. 플레이어가 로딩될 때까지 잠깐 대기
+        // 플레이어가 로딩될 때까지 잠깐 대기
         yield return null;
 
         if (GameManager10.instance.player != null)
@@ -41,7 +41,7 @@ public class EnemyClone : MonoBehaviour
             PlayerInteract playerScript = GameManager10.instance.player;
             GameObject playerObj = playerScript.gameObject;
 
-            // 2. 타겟 설정
+            // 타겟 설정
             target = playerObj.GetComponent<Rigidbody2D>();
 
             // 3. 외형(애니메이션) 복사
