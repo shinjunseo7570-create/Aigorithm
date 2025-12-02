@@ -152,12 +152,12 @@ MonoBehaviour:
   playerInventory: {fileID: 37717555}
   leftButton: {fileID: 1882773859}
   leftIcon: {fileID: 1683801393}
-  leftName: {fileID: 900727930}
-  leftDesc: {fileID: 1961328330}
+  leftName: {fileID: 0}
+  leftDesc: {fileID: 0}
   rightButton: {fileID: 666656315}
   rightIcon: {fileID: 1233212511}
-  rightName: {fileID: 1098908384}
-  rightDesc: {fileID: 1355287650}
+  rightName: {fileID: 0}
+  rightDesc: {fileID: 0}
   allItems:
   - {fileID: 11400000, guid: f80d4f98c5b6ea845b53bcabde37df18, type: 2}
   - {fileID: 11400000, guid: 6a946e7aa4405d04f9b59fb981fc9f55, type: 2}
@@ -14109,7 +14109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   playerStats: {fileID: 37717548}
   inventory: {fileID: 1292609267}
-  slotParent: {fileID: 1292609268}
+  slotParent: {fileID: 1432929367}
   slotPrefab: {fileID: 7714511808079154781, guid: fb5a79430431bbd48a17896b2636bf33, type: 3}
   audioSource: {fileID: 1292609269}
   clickSound: {fileID: 8300000, guid: 09a72cc7d7e0271489c1926c067a703d, type: 3}
@@ -21766,17 +21766,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f241f40782315bb46b9cf591501d3026, type: 3}
---- !u!114 &900727930 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7832210959079003798, guid: 2f48578856887154bb04d6152d001e63, type: 3}
-  m_PrefabInstance: {fileID: 743376754}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &926707389
 GameObject:
   m_ObjectHideFlags: 0
@@ -21825,17 +21814,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1098908384 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1167625673396555956, guid: 2f48578856887154bb04d6152d001e63, type: 3}
-  m_PrefabInstance: {fileID: 743376754}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &1181204045 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4896941118259186456, guid: f11f9ba470980534cbe2ae82f3423866, type: 3}
@@ -22009,17 +21987,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a6b75079a67a6b439874edb7c526b49, type: 3}
---- !u!114 &1355287650 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 454738139714603884, guid: 2f48578856887154bb04d6152d001e63, type: 3}
-  m_PrefabInstance: {fileID: 743376754}
+--- !u!224 &1432929367 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5213210398480386503, guid: f241f40782315bb46b9cf591501d3026, type: 3}
+  m_PrefabInstance: {fileID: 883283245}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1497414295
 GameObject:
   m_ObjectHideFlags: 0
@@ -27634,17 +27606,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!114 &1961328330 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8847931619667610958, guid: 2f48578856887154bb04d6152d001e63, type: 3}
-  m_PrefabInstance: {fileID: 743376754}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &2057446684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27775,55 +27736,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a6b75079a67a6b439874edb7c526b49, type: 3}
---- !u!1 &2107951757
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2107951759}
-  - component: {fileID: 2107951758}
-  m_Layer: 0
-  m_Name: StatsManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2107951758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107951757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4d62e41507253042bfe8794d3cfb36f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StatsManager
-  statsMenu: {fileID: 0}
-  player: {fileID: 0}
-  statusText: {fileID: 0}
-  audioSource: {fileID: 0}
-  clickSound: {fileID: 0}
---- !u!4 &2107951759
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107951757}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 876.9525, y: 483.84198, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6064433657735281471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27946,7 +27858,6 @@ SceneRoots:
   - {fileID: 1646817367}
   - {fileID: 6064433657735281471}
   - {fileID: 1292326036}
-  - {fileID: 2107951759}
   - {fileID: 1878526336}
   - {fileID: 68769498}
   - {fileID: 515049203}
