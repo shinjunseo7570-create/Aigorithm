@@ -35,7 +35,7 @@ public class Pot : MonoBehaviour
 
     public void BreakPot()
     {
-        int per = UnityEngine.Random.Range(0, 3);
+        int per = UnityEngine.Random.Range(0, 12);
         if(per < 4)
         {
             Debug.Log("버프");
@@ -54,7 +54,7 @@ public class Pot : MonoBehaviour
     }
     void buf()
     {
-        int bufnum = UnityEngine.Random.Range(0, 1);
+        int bufnum = UnityEngine.Random.Range(0, 7);
         if (bufnum == 0) 
         {
             ItemSelectManager.Instance.ShowItemSelection();

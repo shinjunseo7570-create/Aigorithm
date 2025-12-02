@@ -16,7 +16,7 @@ public class DPRoute : MonoBehaviour
     List<int> route = new List<int>();
     int[] points = new int[10]
         {
-            1, 5, 7, 0, 8, 1, 3, 4, 5, 6 //<- 각 노드 포인트 정의
+            1, 8, 7, 1, 8, 1, 1, 6, 5, 6 //<- 각 노드 포인트 정의
 //          1  2     3  4     5  6     7 <- 레벨
         };
     int[,] routeMap = new int[10, 10]
