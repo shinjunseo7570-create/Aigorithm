@@ -669,7 +669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3147627854532090205, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: m_Name
-      value: Stage Icon (6)
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3536562203163713984, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: m_Group
@@ -830,7 +830,7 @@ PrefabInstance:
       objectReference: {fileID: 135681911}
     - target: {fileID: 3536562203163713984, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3536562203163713984, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -2596,7 +2596,7 @@ GameObject:
   - component: {fileID: 1162359691}
   - component: {fileID: 1162359690}
   m_Layer: 0
-  m_Name: SetNextScene
+  m_Name: SetTargetScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2835,7 +2835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d61d6b06706564fbeda1628f1ee260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainSceneManager
-  player: {fileID: 0}
+  player: {fileID: 1039396421}
   staminaSlider: {fileID: 1933963311}
   staminaText: {fileID: 2031517584}
 --- !u!4 &1233175722
@@ -3765,19 +3765,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 2
   m_HorizontalAlignment: 4
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 32
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -4141,7 +4141,7 @@ PrefabInstance:
       objectReference: {fileID: 135681911}
     - target: {fileID: 3536562203163713984, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3536562203163713984, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -4587,6 +4587,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DPRoute
   routeText: {fileID: 1562649144}
+  stageParentGroup: {fileID: 135681910}
+  setTargetScene: {fileID: 1162359690}
 --- !u!4 &1758069372
 Transform:
   m_ObjectHideFlags: 0

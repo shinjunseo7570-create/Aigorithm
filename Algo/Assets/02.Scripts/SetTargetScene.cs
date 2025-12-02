@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SetNextScene : MonoBehaviour
+public class SetTargetScene : MonoBehaviour
 {
     public void changeTargetScene(string SceneName)
     {

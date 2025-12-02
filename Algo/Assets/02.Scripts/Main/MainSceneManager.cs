@@ -6,10 +6,10 @@ using TMPro;
 public class MainSceneManager : MonoBehaviour
 {
 
-    [Header("�÷��̾� ����")]
+    [Header("플레이어 연결")]
     public GameObject player;
 
-    [Header("UI ����")]
+    [Header("UI 연결")]
     public Slider staminaSlider;
     public TextMeshProUGUI staminaText;
 
@@ -26,24 +26,15 @@ public class MainSceneManager : MonoBehaviour
 
     IEnumerator InitMainSceneRoutine()
     {
-        // ��� ���
+        // 잠시 대기
         yield return null;
 
-        // �÷��̾� ���� �޾ƿ���
+        // 플레이어 가져오기
         PlayerStats playerStats = player.GetComponent<PlayerStats>();
         PlayerInteract playerInteract = player.GetComponent<PlayerInteract>();
 
-        // 1. ���¹̳� ������ �ʱ�ȭ
+        // 스태미나 UI
         staminaSlider.value = (playerStats.currentStamina * 0.01f);
         staminaText.text = playerStats.currentStamina.ToString();
-
-        // 2. ���������� ������ ���� �±׸� ������ ��, �� ���� �������� �ֺ��θ� �����ϴ�.
-
-
-        switch(playerInteract.lastStageNum)
-        {
-            case 1:
-                break;
-        }
     }
 }
