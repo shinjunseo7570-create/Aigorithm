@@ -1,11 +1,11 @@
-using UnityEngine;
-using Unity.Cinemachine; // [Áß¿ä] ³×ÀÓ½ºÆäÀÌ½º°¡ º¯°æµÇ¾ú½À´Ï´Ù.
+ï»¿using UnityEngine;
+using Unity.Cinemachine; // [ì¤‘ìš”] ë„¤ì„ìŠ¤í˜ì´ìŠ¤ê°€ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.
 
 public class CameraSetting : MonoBehaviour
 {
     void Start()
     {
-        // ÃßÀûÇÒ ´ë»ó(Player) Ã£±â
+        // ì¶”ì í•  ëŒ€ìƒ(Player) ì°¾ê¸°
         GameObject targetObject = GameObject.FindGameObjectWithTag("Player");
 
         if (targetObject != null)
@@ -16,15 +16,15 @@ public class CameraSetting : MonoBehaviour
 
     public void SetCamTarget(Transform target)
     {
-        // ³» ¿ÀºêÁ§Æ®¿¡ ºÙÀº CinemachineCamera ÄÄÆ÷³ÍÆ® °¡Á®¿À±â
+        // ë‚´ ì˜¤ë¸Œì íŠ¸ì— ë¶™ì€ CinemachineCamera ì»´í¬ë„ŒíŠ¸ ê°€ì ¸ì˜¤ê¸°
         CinemachineCamera cam = GetComponent<CinemachineCamera>();
 
         if (cam != null)
         {
-            // Å¸°Ù ¿¬°á
-            cam.Follow = target; // Ä«¸Ş¶ó°¡ µû¶ó´Ù´Ò ´ë»ó
+            // íƒ€ê²Ÿ ì—°ê²°
+            cam.Follow = target; // ì¹´ë©”ë¼ê°€ ë”°ë¼ë‹¤ë‹ ëŒ€ìƒ
 
-            Debug.Log($"Ä«¸Ş¶ó Å¸°ÙÀÌ {target.name}À¸·Î ¼³Á¤µÊ");
+            Debug.Log($"ì¹´ë©”ë¼ íƒ€ê²Ÿì´ {target.name}ìœ¼ë¡œ ì„¤ì •ë¨");
         }
     }
 }

@@ -1,42 +1,42 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections.Generic;
 public class MapDataManager : MonoBehaviour
 {
-    // ¸Ê Á¤º¸ ÇÏ³ª¸¦ Á¤ÀÇÇÏ´Â Å¬·¡½º »ı¼º
-    // List ³»ÀÇ ³»¿ë¹°À» ¸ğµÎ º¸ÀÌ°Ô ÇÏ±â À§ÇØ System.Serializable »ç¿ë
+    // ë§µ ì •ë³´ í•˜ë‚˜ë¥¼ ì •ì˜í•˜ëŠ” í´ë˜ìŠ¤ ìƒì„±
+    // List ë‚´ì˜ ë‚´ìš©ë¬¼ì„ ëª¨ë‘ ë³´ì´ê²Œ í•˜ê¸° ìœ„í•´ System.Serializable ì‚¬ìš©
     [System.Serializable]
     public class StageData
     {
-        public int mapID;                        // °Ë»ö¿ë ¸Ê ID
-        public string mapName;                   // ¸Ê ÀÌ¸§
-        [TextArea] public string mapDescription; // ¸Ê ¼³¸í
+        public int mapID;                        // ê²€ìƒ‰ìš© ë§µ ID
+        public string mapName;                   // ë§µ ì´ë¦„
+        [TextArea] public string mapDescription; // ë§µ ì„¤ëª…
 
-        public int rewardPoints;                 // º¸»ó Æ÷ÀÎÆ®
-        public int staminaCost;                  // ¼Ò¸ğ ½ºÅÂ¹Ì³ª
+        public int rewardPoints;                 // ë³´ìƒ í¬ì¸íŠ¸
+        public int staminaCost;                  // ì†Œëª¨ ìŠ¤íƒœë¯¸ë‚˜
 
-        public List<string> enemyList;           // Àû ¸ñ·Ï
-        public string clearCondition;            // Å¬¸®¾î Á¶°Ç
+        public List<string> enemyList;           // ì  ëª©ë¡
+        public string clearCondition;            // í´ë¦¬ì–´ ì¡°ê±´
     }
 
-    // ¸ğµç ¸Ê µ¥ÀÌÅÍ¸¦ ´ã¾ÆµÑ ¸®½ºÆ® (inspector¿¡¼­ ÀÔ·Â)
-    [Header("¸Ê µ¥ÀÌÅÍ ¸®½ºÆ®")]
+    // ëª¨ë“  ë§µ ë°ì´í„°ë¥¼ ë‹´ì•„ë‘˜ ë¦¬ìŠ¤íŠ¸ (inspectorì—ì„œ ì…ë ¥)
+    [Header("ë§µ ë°ì´í„° ë¦¬ìŠ¤íŠ¸")]
     public List<StageData> mapDataList = new List<StageData>();
 
-    // ID¸¦ ÁÖ¸é µ¥ÀÌÅÍ¸¦ Ã£¾Æ¼­ ²¨³»ÁÖ´Â ÇÔ¼ö
+    // IDë¥¼ ì£¼ë©´ ë°ì´í„°ë¥¼ ì°¾ì•„ì„œ êº¼ë‚´ì£¼ëŠ” í•¨ìˆ˜
     public StageData GetStageDataByID(int id)
     {
-        // ¸®½ºÆ®¿¡ ÀÖ´Â µ¥ÀÌÅÍ¸¦ ÇÏ³ª¾¿ ²¨³»¼­ °Ë»ç
+        // ë¦¬ìŠ¤íŠ¸ì— ìˆëŠ” ë°ì´í„°ë¥¼ í•˜ë‚˜ì”© êº¼ë‚´ì„œ ê²€ì‚¬
         foreach (StageData data in mapDataList)
         {
-            // ¸¸¾à ²¨³½ µ¥ÀÌÅÍÀÇ ID°¡ ³»°¡ Ã£´Â ID¶û °°´Ù¸é
+            // ë§Œì•½ êº¼ë‚¸ ë°ì´í„°ì˜ IDê°€ ë‚´ê°€ ì°¾ëŠ” IDë‘ ê°™ë‹¤ë©´
             if (data.mapID == id)
             {
-                return data; // ±× µ¥ÀÌÅÍ¸¦ ¹İÈ¯
+                return data; // ê·¸ ë°ì´í„°ë¥¼ ë°˜í™˜
             }
         }
 
-        // ¸®½ºÆ®¸¦ ³¡±îÁö Å½»öÇØµµ ¾ø´Ù¸é
-        Debug.LogWarning($"mapID {id}¿¡ ÇÒ´çµÈ µ¥ÀÌÅÍ ¾øÀ½");
-        return null; // null ¹İÈ¯
+        // ë¦¬ìŠ¤íŠ¸ë¥¼ ëê¹Œì§€ íƒìƒ‰í•´ë„ ì—†ë‹¤ë©´
+        Debug.LogWarning($"mapID {id}ì— í• ë‹¹ëœ ë°ì´í„° ì—†ìŒ");
+        return null; // null ë°˜í™˜
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
@@ -6,16 +6,16 @@ using UnityEngine.Audio;
 
 public class StatsManager : MonoBehaviour
 {
-    [Header("½ºÅÈ ¸Ş´º ¿¬°á")]
+    [Header("ìŠ¤íƒ¯ ë©”ë‰´ ì—°ê²°")]
     public GameObject statsMenu;
 
-    [Header("ÇÃ·¹ÀÌ¾î ¿¬°á")]
+    [Header("í”Œë ˆì´ì–´ ì—°ê²°")]
     public PlayerStats player;
 
-    [Header("½ºÅÈ Ç¥½Ã ÅØ½ºÆ® ¿¬°á")]
+    [Header("ìŠ¤íƒ¯ í‘œì‹œ í…ìŠ¤íŠ¸ ì—°ê²°")]
     public TextMeshProUGUI statusText;
 
-    [Header("¿Àµğ¿À ¼³Á¤")]
+    [Header("ì˜¤ë””ì˜¤ ì„¤ì •")]
     public AudioSource audioSource;
     public AudioClip clickSound;
 
@@ -28,7 +28,7 @@ public class StatsManager : MonoBehaviour
 
     void Update()
     {
-        // 'I' Å°¸¦ ´©¸£¸é ÀÎº¥Åä¸® ²°´Ù Ä×´Ù ÇÏ±â
+        // 'I' í‚¤ë¥¼ ëˆ„ë¥´ë©´ ì¸ë²¤í† ë¦¬ ê»ë‹¤ ì¼°ë‹¤ í•˜ê¸°
         if (Input.GetKeyDown(KeyCode.O))
         {
             if (statsMenu != null)
@@ -40,16 +40,16 @@ public class StatsManager : MonoBehaviour
 
     IEnumerator ShowStatusRoutine()
     {
-        // Àá½Ã ´ë±â
+        // ì ì‹œ ëŒ€ê¸°
         yield return null;
 
         statusText.text =
-            ($"{player.health} / {player.maxHealth}\n" + // Ã¼·Â
-            $"{player.currentStamina} /{ player.maxStamina}\n" + // ½ºÅÂ¹Ì³ª
-            $"{player.attackPower}\n" + // °ø°İ·Â
-            $"{player.attackSpeed} / {player.maxAttackSpeed}\n" + // °ø°İ ¼Óµµ
-            $"{player.moveSpeed} / {player.maxMoveSpeed}\n" + // ÀÌµ¿ ¼Óµµ
-            $"{player.critRate}\n" + // Ä¡¸íÅ¸ È®·ü
-            $"{player.attackRange}"); // °ø°İ »ç°Å¸®
+            ($"{player.health} / {player.maxHealth}\n" + // ì²´ë ¥
+            $"{player.currentStamina} /{ player.maxStamina}\n" + // ìŠ¤íƒœë¯¸ë‚˜
+            $"{player.attackPower}\n" + // ê³µê²©ë ¥
+            $"{player.attackSpeed} / {player.maxAttackSpeed}\n" + // ê³µê²© ì†ë„
+            $"{player.moveSpeed} / {player.maxMoveSpeed}\n" + // ì´ë™ ì†ë„
+            $"{player.critRate}\n" + // ì¹˜ëª…íƒ€ í™•ë¥ 
+            $"{player.attackRange}"); // ê³µê²© ì‚¬ê±°ë¦¬
     }
 }

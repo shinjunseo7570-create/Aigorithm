@@ -1,25 +1,25 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using TMPro;
 
 public class UIConnector : MonoBehaviour
 {
 
-    // ÀÎº¥Åä¸®, ½ºÅÈ Ã¢ UI¸¦ ÇÃ·¹ÀÌ¾î¿Í ¿¬°áÇØ ÁÙ ½ºÅ©¸³Æ®
+    // ì¸ë²¤í† ë¦¬, ìŠ¤íƒ¯ ì°½ UIë¥¼ í”Œë ˆì´ì–´ì™€ ì—°ê²°í•´ ì¤„ ìŠ¤í¬ë¦½íŠ¸
 
-    [Header("1. ÀÎº¥Åä¸® UI ¿¬°á")]
-    public GameObject inventoryPanel; // ÀÎº¥Åä¸® ÆĞ³Î
-    public Transform inventorySlotParent; // ¾ÆÀÌÅÛ ½½·ÔÀÌ »ı¼ºµÉ ºÎ¸ğ (Grid Layout GroupÀÌ ÀÖ´Â Content ¿ÀºêÁ§Æ®)
+    [Header("1. ì¸ë²¤í† ë¦¬ UI ì—°ê²°")]
+    public GameObject inventoryPanel; // ì¸ë²¤í† ë¦¬ íŒ¨ë„
+    public Transform inventorySlotParent; // ì•„ì´í…œ ìŠ¬ë¡¯ì´ ìƒì„±ë  ë¶€ëª¨ (Grid Layout Groupì´ ìˆëŠ” Content ì˜¤ë¸Œì íŠ¸)
 
-    [Header("2. ½ºÅÈ UI ¿¬°á")]
+    [Header("2. ìŠ¤íƒ¯ UI ì—°ê²°")]
     public GameObject statsPanel;
     public TextMeshProUGUI statusText;
 
     void Start()
     {
-        // ¾ÈÀüÀåÄ¡
+        // ì•ˆì „ì¥ì¹˜
         if (inventoryPanel == null || statsPanel == null || statusText == null || inventorySlotParent == null)
         {
-            Debug.LogError($"[UIConnector] Inspector ¿¬°áÀ» È®ÀÎÇØÁÖ¼¼¿ä! (ºóÄ­ÀÌ ÀÖ½À´Ï´Ù)");
+            Debug.LogError($"[UIConnector] Inspector ì—°ê²°ì„ í™•ì¸í•´ì£¼ì„¸ìš”! (ë¹ˆì¹¸ì´ ìˆìŠµë‹ˆë‹¤)");
             return;
         }
 
@@ -27,33 +27,33 @@ public class UIConnector : MonoBehaviour
 
         if (player != null)
         {
-            // Inventory ¿¬°á
+            // Inventory ì—°ê²°
             var inventory = player.GetComponent<Inventory>();
             if (inventory != null)
             {
-                // Inventory.csÀÇ 'inventory' º¯¼ö¿¡ -> ³» 'inventoryPanel'À» ³ÖÀ½
+                // Inventory.csì˜ 'inventory' ë³€ìˆ˜ì— -> ë‚´ 'inventoryPanel'ì„ ë„£ìŒ
                 inventory.inventory = this.inventoryPanel;
 
-                // Inventory.csÀÇ 'slotParent' º¯¼ö¿¡ -> ³» 'inventorySlotParent'¸¦ ³ÖÀ½
+                // Inventory.csì˜ 'slotParent' ë³€ìˆ˜ì— -> ë‚´ 'inventorySlotParent'ë¥¼ ë„£ìŒ
                 inventory.slotParent = this.inventorySlotParent;
             }
 
-            // StatsManager ¿¬°á
+            // StatsManager ì—°ê²°
             var statsManager = player.GetComponent<StatsManager>();
             if (statsManager != null)
             {
-                // StatsManager.csÀÇ 'statsMenu' º¯¼ö¿¡ -> ³» 'statsPanel'À» ³ÖÀ½
+                // StatsManager.csì˜ 'statsMenu' ë³€ìˆ˜ì— -> ë‚´ 'statsPanel'ì„ ë„£ìŒ
                 statsManager.statsMenu = this.statsPanel;
 
-                // StatsManager.csÀÇ 'statusText' º¯¼ö¿¡ -> ³» 'statusText'¸¦ ³ÖÀ½
+                // StatsManager.csì˜ 'statusText' ë³€ìˆ˜ì— -> ë‚´ 'statusText'ë¥¼ ë„£ìŒ
                 statsManager.statusText = this.statusText;
 
-                // ÅØ½ºÆ® °»½ÅÀ» À§ÇØ ÄÚ·çÆ¾ Àç½ÇÇà
-                statsManager.StopAllCoroutines(); // È¤½Ã ¸ğ¸¦ Áßº¹ ¹æÁö
+                // í…ìŠ¤íŠ¸ ê°±ì‹ ì„ ìœ„í•´ ì½”ë£¨í‹´ ì¬ì‹¤í–‰
+                statsManager.StopAllCoroutines(); // í˜¹ì‹œ ëª¨ë¥¼ ì¤‘ë³µ ë°©ì§€
                 statsManager.StartCoroutine("ShowStatusRoutine");
             }
 
-            Debug.Log($"UI ¿¬°á ¿Ï·á: {player.name}");
+            Debug.Log($"UI ì—°ê²° ì™„ë£Œ: {player.name}");
         }
     }
 }
