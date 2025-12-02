@@ -126,28 +126,22 @@ public class Spawner06 : MonoBehaviour
 
         Enemy06 enemy = enemyObj.GetComponent<Enemy06>();
 
-        int rand = Random.Range(0, spawnPoint.Length);
+        if(enemy == null)
+        {
+            return;
+        }
 
+        int rand = Random.Range(0,spawnPoint.Length);
         Vector3 pos = spawnPoint[rand].position;
-
         enemyObj.transform.position = pos;
 
         if (GameManager.instance != null && GameManager.instance.player != null)
         {
             Vector3 playerPos = GameManager.instance.player.transform.position;
 
-            float minDistance = 2f;
-            if (Vector3.Distance(pos, playerPos) < minDistance)
+            if (Vector3.Distance(pos, playerPos) < 2f)
                 return; 
         }
-
-
-
-
-
-
-        enemy.isBoss = false;
-
 
         enemy.Init(round.mobSpawnData);
 

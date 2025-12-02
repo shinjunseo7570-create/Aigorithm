@@ -219,8 +219,6 @@ public class Enemy06 : MonoBehaviour
         }
 
         isLive = true;
-        maxHealth = health;  
-        health = maxHealth;
 
         attackTimer = 0f;
         isAttacking = false;
@@ -503,6 +501,12 @@ public class Enemy06 : MonoBehaviour
 
         float spawnDist = Vector2.Distance(target.position, rigid.position);
         Debug.Log($"[Enemy.Init] spawnDist = {spawnDist}");
+
+        Enemy06_Hp hp = GetComponentInChildren<Enemy06_Hp>();
+        if(hp != null)
+        {
+            hp.Setup(this);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)

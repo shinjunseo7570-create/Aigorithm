@@ -36,6 +36,20 @@ public class PlayerStats : MonoBehaviour
     public float treasureChance = 0f;         // 보물 확률 추가
     public float healOnAttackChance = 0f;// 생흡
 
+    private static PlayerStats instance;
+    void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // --- [핵심] 아이템 획득 시 호출 ---
     public void ApplyItem(ItemData item)
     {
@@ -177,6 +191,8 @@ public class PlayerStats : MonoBehaviour
             }
         }
     }
+
+    
 
     public void Die()
     {

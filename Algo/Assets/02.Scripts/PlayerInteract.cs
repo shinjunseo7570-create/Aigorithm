@@ -32,8 +32,20 @@ public class PlayerInteract : MonoBehaviour
 
     public bool isStunned = false; // 다른 곳(이동, 공격)에서 이 변수가 true면 동작 안 하게 막아야 함
 
+    private static PlayerInteract instance;
 
-
+    void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {

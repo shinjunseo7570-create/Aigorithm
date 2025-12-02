@@ -14014,7 +14014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PoolManager
   prefabs:
-  - {fileID: 8105024668573574288, guid: cd40bacb99db0fe49bc4088cf3c32d96, type: 3}
+  - {fileID: 9041011755640850248, guid: 42c57181b131c485093c4407621a798b, type: 3}
 --- !u!4 &57610580
 Transform:
   m_ObjectHideFlags: 0

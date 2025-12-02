@@ -19,7 +19,7 @@ public class DPRoute : MonoBehaviour
             { null, null, null, null, null, null, null, null, null,  910},
             { null, null, null, null, null, null, null, null, null, null}
         };
-        findRoute(pointMap);
+        // findRoute(pointMap);
     }
 
     // Update is called once per frame
