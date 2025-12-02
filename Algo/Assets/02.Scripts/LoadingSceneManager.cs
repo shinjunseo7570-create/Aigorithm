@@ -10,7 +10,7 @@ public class LoadingSceneManager : MonoBehaviour
     public static string nextScene;
 
     [Header("최소로 보장해줄 로딩 시간")]
-    public float minDuration = 1.0f;
+    public float minDuration = 0.5f;
 
     void Start()
     {

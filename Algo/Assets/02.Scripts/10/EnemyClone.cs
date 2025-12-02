@@ -71,6 +71,7 @@ public class EnemyClone : MonoBehaviour
             health = 100f;
             attackPower = 10f;
         }
+        else Debug.Log("EnemyClone 스크립트에서 PlayerInteract에 연결 실패");
     }
 
     void FixedUpdate()

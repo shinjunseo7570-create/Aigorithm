@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 public class MapDataManager : MonoBehaviour
 {
-    // 맵 정보 하나를 정의하는 설계도
+    // 맵 정보 하나를 정의하는 클래스 생성
+    // List 내의 내용물을 모두 보이게 하기 위해 System.Serializable 사용
     [System.Serializable]
     public class StageData
     {
@@ -24,14 +25,18 @@ public class MapDataManager : MonoBehaviour
     // ID를 주면 데이터를 찾아서 꺼내주는 함수
     public StageData GetStageDataByID(int id)
     {
-        // 리스트에서 mapID가 같은 것을 찾는다.
-        StageData foundData = mapDataList.Find(x => x.mapID == id);
-
-        if (foundData == null)
+        // 리스트에 있는 데이터를 하나씩 꺼내서 검사
+        foreach (StageData data in mapDataList)
         {
-            Debug.LogWarning($"ID [{id}]에 해당하는 맵 데이터를 찾을 수 없습니다!");
+            // 만약 꺼낸 데이터의 ID가 내가 찾는 ID랑 같다면
+            if (data.mapID == id)
+            {
+                return data; // 그 데이터를 반환
+            }
         }
 
-        return foundData;
+        // 리스트를 끝까지 탐색해도 없다면
+        Debug.LogWarning($"mapID {id}에 할당된 데이터 없음");
+        return null; // null 반환
     }
 }

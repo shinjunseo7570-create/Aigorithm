@@ -11,11 +11,13 @@ public class GameManager10 : MonoBehaviour
     bool isGameOver = false;
 
     public static GameManager10 instance;
+    public GameObject playerObject;
     public PlayerInteract player;
 
-    [Header("UI 연결")]
+    [Header("연결")]
     public GameObject gameClearScreen;
     public GameObject gameOverScreen;
+    public GameObject stageSpawner;
 
     // 게임 전반을 관리하는 스크립트
 
@@ -27,7 +29,13 @@ public class GameManager10 : MonoBehaviour
         // 이 매니저의 변수나 함수를 바로 가져다 쓸 수 있습니다.
         instance = this;
     }
-    
+
+    void Start()
+    {
+        playerObject = GameObject.FindWithTag("Player");
+        player = playerObject.GetComponent<PlayerInteract>();
+    }
+
     void Update()
     {
 
@@ -57,8 +65,20 @@ public class GameManager10 : MonoBehaviour
     {
         // 클리어 화면 띄우기
         Debug.Log("축하합니다! 게임 클리어!");
-        gameClearScreen.SetActive(true);
-        player.transform.Find("Stage10Spawner").gameObject.SetActive(false);
+        if (gameClearScreen != null) gameClearScreen.SetActive(true);
+        if (stageSpawner != null)
+        {
+            stageSpawner.SetActive(false);
+        }
+        else
+        {
+            // 혹시 연결을 까먹고 안 했다 -> 이름으로 찾아서 끄기
+            GameObject spawnerObject = GameObject.Find("Stage10Spawner");
+            if (spawnerObject != null) spawnerObject.SetActive(false);
+            Debug.LogWarning("Stage Spawner가 inspector에서 연결되지 않아 GameObject.Find함");
+        }
+        // 5초 후에 맵 선택으로 돌아가기
+        StartCoroutine(WaitAndLoadScene());
     }
 
     public void GameFail()
@@ -69,6 +89,19 @@ public class GameManager10 : MonoBehaviour
         Debug.Log("게임 오버 (시간 초과 or 사망)");
         Time.timeScale = 0; // 시간 정지
         if (gameOverScreen != null) gameOverScreen.SetActive(true);
+
+        // 5초 후에 맵 선택으로 돌아가기
+        StartCoroutine(WaitAndLoadScene());
+    }
+
+    IEnumerator WaitAndLoadScene()
+    {
+        // Time.timeScale이 0일 때도 시간이 흐르도록 Realtime을 사용합니다.
+        yield return new WaitForSecondsRealtime(5f);
+
+        // 다음 씬을 위해 시간을 다시 정상으로 돌려놓습니다.
+        Time.timeScale = 1f;
+        LoadingSceneManager.LoadScene("Main");
     }
 }
 

@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 public class StageNode : MonoBehaviour
 {
+
+    // 스테이지 토글에 직접 넣을 스크립트
+    // 맵 번호만 입력하면 됨
+
     [Header("스테이지 정보 입력")]
     public int mapID; // 맵 번호
 
@@ -14,7 +18,7 @@ public class StageNode : MonoBehaviour
 
         if (toggle != null)
         {
-            // 2. 클릭하면 OnClicked 함수 실행
+            // 클릭하면 OnClicked 함수 실행
             toggle.onValueChanged.AddListener(OnClicked);
         }
     }
@@ -24,20 +28,21 @@ public class StageNode : MonoBehaviour
     {
         if (isOn)
         {
-            // 1. 데이터 매니저(MapDataManager)를 찾습니다.
-            MapDataManager dataManager = FindFirstObjectByType<MapDataManager>();
-            // 2. UI 매니저(StageUIManager)를 찾습니다.
-            StageUIManager uiManager = FindFirstObjectByType<StageUIManager>();
+            // MapDataManager, StageUIManager 찾기
+            // FindFirstObjectByType<T>()는 자동으로 스크립트를 찾아 연결해줌
+            MapDataManager mapDataManager = FindFirstObjectByType<MapDataManager>();
+            StageUIManager stageUiManager = FindFirstObjectByType<StageUIManager>();
 
-            if (dataManager != null && uiManager != null)
+            if (mapDataManager != null && stageUiManager != null)
             {
-                // 3. ID를 이용해 데이터 매니저에서 정보를 가져옵니다.
-                var data = dataManager.GetStageDataByID(mapID);
+                // ID를 이용해 MapDataManager에서 정보를 가져옴
+                MapDataManager.StageData data = mapDataManager.GetStageDataByID(mapID);
 
                 if (data != null)
                 {
-                    // 4. 가져온 정보를 UI 매니저에게 넘겨줘서 화면에 띄웁니다.
-                    uiManager.UpdateStageInfoUI(
+                    // 가져온 정보를 StageUIManager의 UpdateStageInfoUI에게 넘겨줌
+                    // 정보를 바탕으로 UI를 변경해주는 스크립트
+                    stageUiManager.UpdateStageInfoUI(
                         data.mapID,
                         data.mapName,
                         data.mapDescription,
@@ -47,12 +52,12 @@ public class StageNode : MonoBehaviour
                         data.staminaCost
                     );
                 }
-                else Debug.LogWarning("mapID에 연결된 data가 없음");
+                else Debug.LogWarning("mapID에 연결된 데이터 없음");
             }
             else
             {
-                if (dataManager == null) Debug.LogError("MapDataManager 없음");
-                if (uiManager == null) Debug.LogError("StageUIManager 없음");
+                if (mapDataManager == null) Debug.LogError("발견된 MapDataManager 없음");
+                if (stageUiManager == null) Debug.LogError("발견된 StageUIManager 없음");
             }
         }
     }

@@ -36,7 +36,7 @@ public class PlayerStats : MonoBehaviour
     public float treasureChance = 0f;         // 보물 확률 추가
     public float healOnAttackChance = 0f;// 생흡
 
-    private static PlayerStats instance;
+    public static PlayerStats instance;
     void Awake()
     {
         if(instance == null)

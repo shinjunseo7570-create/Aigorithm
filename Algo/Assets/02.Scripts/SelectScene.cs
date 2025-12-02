@@ -8,8 +8,12 @@ public class SelectScene : MonoBehaviour
         if (targetScene != null)
         {
             Debug.Log("씬 로드중: " + targetScene);
-            PlayerInteract.stemina -= 10;
-            LoadingSceneManager.LoadScene(targetScene);
+
+            GameObject player = GameObject.FindWithTag("Player");
+            PlayerStats playerStats = player.GetComponent<PlayerStats>();
+            playerStats.currentStamina -= 10;
+
+            LoadingSceneManager.LoadScene("Map" + targetScene);
         }
         else
         {
