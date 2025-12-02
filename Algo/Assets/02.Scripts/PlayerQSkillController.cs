@@ -132,8 +132,6 @@ public class PlayerQSkillController : MonoBehaviour
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (!isQActive) return;
-
-        
             if (!collision.CompareTag("Enemy")) return;
 
             if (stats == null) return;
@@ -147,6 +145,15 @@ public class PlayerQSkillController : MonoBehaviour
                 Debug.Log($"[Player_Attack] Enemy hit(Q)! damage = {damage}");
                 return;
             }
+
+            Enemy06 enemy06 = collision.GetComponent<Enemy06>();
+            if (enemy06 != null)
+            {
+                enemy06.TakeDamage(damage * 0.5f);
+                Debug.Log($"[Player_Attack] Enemy hit(Q)! damage = {damage}");
+                return;
+            }
+
             // 2) Enemy07
             Enemy07 enemy07 = collision.GetComponent<Enemy07>();
             if (enemy07 != null)

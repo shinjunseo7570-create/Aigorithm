@@ -136,6 +136,7 @@ public class Enemy : MonoBehaviour
         spawnTime = Time.time;
     }
 
+
     public void Init(SpawnData data)
     {
         typeId = data.spriteType;

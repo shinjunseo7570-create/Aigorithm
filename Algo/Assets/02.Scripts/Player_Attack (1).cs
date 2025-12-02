@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player_Attack : MonoBehaviour
@@ -63,6 +64,7 @@ public class Player_Attack : MonoBehaviour
         // 칼 스프라이트가 위로 향해 있으니까 -90 조정
     }
 
+
     public void EnableWeapon(bool enable)
     {
         if(weaponCollider != null)
@@ -70,6 +72,8 @@ public class Player_Attack : MonoBehaviour
             weaponCollider.enabled = enable;
         }
     }
+
+
 
     IEnumerator Swing()
     {
@@ -120,6 +124,16 @@ public class Player_Attack : MonoBehaviour
 
         isSwinging = false;
     }
+    private void OnDisable()
+    {
+        isSwinging = false;
+
+        if (weaponCollider != null)
+        {
+            weaponCollider.enabled = false;
+
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -140,6 +154,15 @@ public class Player_Attack : MonoBehaviour
             enemy.TakeDamage(damage);
             if (stats != null) stats.OnAttackHit();
             Debug.Log($"[Player_Attack] Enemy hit! damage = {damage}");
+            return;
+        }
+
+        Enemy06 enemy06 = collision.GetComponent<Enemy06>();
+        if (enemy06 != null)
+        {
+            enemy06.TakeDamage(damage);
+            if (stats != null) stats.OnAttackHit();
+            Debug.Log($"[Player_Attack] Enemy06 hit! damage = {damage}");
             return;
         }
 
