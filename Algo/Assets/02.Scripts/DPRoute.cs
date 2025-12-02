@@ -38,7 +38,6 @@ public class DPRoute : MonoBehaviour
 
     void Start()
     {
-<<<<<<< Updated upstream
         pointMap = new int?[10, 10]
         {
             { null,   12,   13,   14, null, null, null, null, null, null},
@@ -56,10 +55,8 @@ public class DPRoute : MonoBehaviour
     }
     void findRoute(int?[,] point)
     {
-=======
         route.Add(0);
         findRoute(pointMap, 0);
->>>>>>> Stashed changes
 
         GameObject toggleGroup = GameObject.Find("ToggleGroup");
         Transform[] allChildren = toggleGroup.GetComponentsInChildren<Transform>(true); // true -> 비활성화된 오브젝트같이 찾아냄
