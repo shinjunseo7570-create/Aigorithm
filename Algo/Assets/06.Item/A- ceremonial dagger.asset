@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38aff28d7942c7b4595cb88f9daf62b3, type: 3}
   m_Name: A- ceremonial dagger
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: 
+  itemName: "\uAD50\uB2E8\uC758 \uC758\uC2DD\uC6A9 \uB2E8\uAC80"
+  icon: {fileID: 7630451698295714349, guid: 3be23e3ee1b181f4bb03f4db0e3b7623, type: 3}
+  description: "\uD50C\uB85C\uC2DC \uAD50\uB2E8\uC5D0\uC11C \uC0AC\uC6A9\uD588\uB358
+    \uC758\uC2DD\uC6A9 \uB2E8\uAC80\uC785\uB2C8\uB2E4."
   effects:
   - effectType: 10
     amount: 1

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: A- priest's uniform
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "\uD50C\uB85C\uC2DC \uAD50\uB2E8\uC758 \uC0AC\uC81C\uBCF5"
+  icon: {fileID: 618708316190554407, guid: 92945a6cc10116f4cb0e52fa0526a507, type: 3}
+  description: "\uAD50\uB2E8\uC5D0\uC11C \uC785\uC5C8\uB358 \uC0AC\uC81C\uBCF5\uC785\uB2C8\uB2E4."
   effects:
   - effectType: 4
     amount: 2

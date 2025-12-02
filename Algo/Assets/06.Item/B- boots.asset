@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: B- boots
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "\uC5C4\uB9C8\uAC00 \uC900 \uC7A5\uD654"
+  icon: {fileID: 8233076404894014368, guid: e9d67ab6841df204da342eba7f167636, type: 3}
+  description: "\uC5B4\uB5A4 \uAC8C\uC784\uC758 \uB7EC\uB2DD\uC288\uC988\uAC00 \uC0DD\uAC01\uB0A9\uB2C8\uB2E4."
   effects:
   - effectType: 6
     amount: 5

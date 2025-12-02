@@ -1,29 +1,30 @@
 using UnityEngine;
-using UnityEngine.UI; // UI »ç¿ë
+using UnityEngine.UI; // UI ì‚¬ìš©
 using System.Collections.Generic;
+using TMPro;
 
 public class ItemSelectManager : MonoBehaviour
 {
-    public static ItemSelectManager Instance; // ¾îµğ¼­µç ºÎ¸£±â ½±°Ô ½Ì±ÛÅæ Ã³¸®
+    public static ItemSelectManager Instance; // ì–´ë””ì„œë“  ë¶€ë¥´ê¸° ì‰½ê²Œ ì‹±ê¸€í†¤ ì²˜ë¦¬
 
-    [Header("¿¬°á ÇÊ¿ä")]
-    public GameObject selectPanel;   // UI ÆĞ³Î (ItemSelectPanel)
-    public Inventory playerInventory; // ¾ÆÀÌÅÛÀ» ³Ö¾îÁÙ ÀÎº¥Åä¸® (Player ¿¬°á)
+    [Header("ì—°ê²° í•„ìš”")]
+    public GameObject selectPanel;   // UI íŒ¨ë„ (ItemSelectPanel)
+    public Inventory playerInventory; // ì•„ì´í…œì„ ë„£ì–´ì¤„ ì¸ë²¤í† ë¦¬ (Player ì—°ê²°)
 
-    [Header("¿ŞÂÊ ¼±ÅÃÁö UI")]
+    [Header("ì™¼ìª½ ì„ íƒì§€ UI")]
     public Button leftButton;
     public Image leftIcon;
-    public Text leftName;
-    public Text leftDesc;
+    public TMP_Text leftName;
+    public TMP_Text leftDesc;
 
-    [Header("¿À¸¥ÂÊ ¼±ÅÃÁö UI")]
+    [Header("ì˜¤ë¥¸ìª½ ì„ íƒì§€ UI")]
     public Button rightButton;
     public Image rightIcon;
-    public Text rightName;
-    public Text rightDesc;
+    public TMP_Text rightName;
+    public TMP_Text rightDesc;
 
-    [Header("ÀüÃ¼ ¾ÆÀÌÅÛ µ¥ÀÌÅÍº£ÀÌ½º")]
-    public List<ItemData> allItems;  // [Áß¿ä] °ÔÀÓ¿¡ Á¸ÀçÇÏ´Â ¸ğµç ¾ÆÀÌÅÛÀ» ¿©±â¿¡ µå·¡±×!
+    [Header("ì „ì²´ ì•„ì´í…œ ë°ì´í„°ë² ì´ìŠ¤")]
+    public List<ItemData> allItems;  // [ì¤‘ìš”] ê²Œì„ì— ì¡´ì¬í•˜ëŠ” ëª¨ë“  ì•„ì´í…œì„ ì—¬ê¸°ì— ë“œë˜ê·¸!
 
     private ItemData currentLeftItem;
     private ItemData currentRightItem;
@@ -31,27 +32,27 @@ public class ItemSelectManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        selectPanel.SetActive(false); // ½ÃÀÛÇÒ ¶© ²û
+        selectPanel.SetActive(false); // ì‹œì‘í•  ë• ë”
     }
 
-    // --- [¿ÜºÎ¿¡¼­ È£Ãâ] ¼±ÅÃÃ¢ ¶ç¿ì±â ---
+    // --- [ì™¸ë¶€ì—ì„œ í˜¸ì¶œ] ì„ íƒì°½ ë„ìš°ê¸° ---
     public void ShowItemSelection()
     {
         if (allItems.Count < 2)
         {
-            Debug.LogError("¾ÆÀÌÅÛ µ¥ÀÌÅÍ°¡ ÃÖ¼Ò 2°³ ÀÌ»ó ÇÊ¿äÇÕ´Ï´Ù!");
+            Debug.LogError("ì•„ì´í…œ ë°ì´í„°ê°€ ìµœì†Œ 2ê°œ ì´ìƒ í•„ìš”í•©ë‹ˆë‹¤!");
             return;
         }
 
-        // 1. °ÔÀÓ ÀÏ½Ã Á¤Áö
-        Time.timeScale = 0f;
+        // 1. ê²Œì„ ì¼ì‹œ ì •ì§€
+        Time.timeScale = 0f; 
         selectPanel.SetActive(true);
 
-        // 2. ·£´ıÀ¸·Î 2°³ »Ì±â (Áßº¹ ¹æÁö)
+        // 2. ëœë¤ìœ¼ë¡œ 2ê°œ ë½‘ê¸° (ì¤‘ë³µ ë°©ì§€)
         int index1 = Random.Range(0, allItems.Count);
         int index2 = Random.Range(0, allItems.Count);
 
-        // È¤½Ã °°Àº°Ô ³ª¿À¸é ´Ù¸¦ ¶§±îÁö ´Ù½Ã »Ì±â
+        // í˜¹ì‹œ ê°™ì€ê²Œ ë‚˜ì˜¤ë©´ ë‹¤ë¥¼ ë•Œê¹Œì§€ ë‹¤ì‹œ ë½‘ê¸°
         while (index1 == index2)
         {
             index2 = Random.Range(0, allItems.Count);
@@ -60,12 +61,12 @@ public class ItemSelectManager : MonoBehaviour
         currentLeftItem = allItems[index1];
         currentRightItem = allItems[index2];
 
-        // 3. UI ¾÷µ¥ÀÌÆ® (¿ŞÂÊ)
+        // 3. UI ì—…ë°ì´íŠ¸ (ì™¼ìª½)
         UpdateUI(leftIcon, leftName, leftDesc, currentLeftItem);
-        // 4. UI ¾÷µ¥ÀÌÆ® (¿À¸¥ÂÊ)
+        // 4. UI ì—…ë°ì´íŠ¸ (ì˜¤ë¥¸ìª½)
         UpdateUI(rightIcon, rightName, rightDesc, currentRightItem);
 
-        // 5. ¹öÆ°¿¡ ±â´É ¿¬°á (±âÁ¸ ¸®½º³Ê Á¦°Å ÈÄ ´Ù½Ã ¿¬°á)
+        // 5. ë²„íŠ¼ì— ê¸°ëŠ¥ ì—°ê²° (ê¸°ì¡´ ë¦¬ìŠ¤ë„ˆ ì œê±° í›„ ë‹¤ì‹œ ì—°ê²°)
         leftButton.onClick.RemoveAllListeners();
         leftButton.onClick.AddListener(() => OnSelectItem(currentLeftItem));
 
@@ -73,23 +74,23 @@ public class ItemSelectManager : MonoBehaviour
         rightButton.onClick.AddListener(() => OnSelectItem(currentRightItem));
     }
 
-    // UI °»½Å ÇïÆÛ ÇÔ¼ö
-    void UpdateUI(Image icon, Text name, Text desc, ItemData data)
+    // UI ê°±ì‹  í—¬í¼ í•¨ìˆ˜
+    void UpdateUI(Image icon, TMP_Text name, TMP_Text desc, ItemData data)
     {
         if (data.icon != null) icon.sprite = data.icon;
         name.text = data.itemName;
-        desc.text = data.description; // ¼³¸íÀÌ ÀÖ´Ù¸é Ç¥½Ã
+        desc.text = data.description; // ì„¤ëª…ì´ ìˆë‹¤ë©´ í‘œì‹œ
     }
 
-    // --- ¾ÆÀÌÅÛ ¼±ÅÃ ½Ã ½ÇÇà ---
+    // --- ì•„ì´í…œ ì„ íƒ ì‹œ ì‹¤í–‰ ---
     void OnSelectItem(ItemData selectedItem)
     {
-        // 1. ÀÎº¥Åä¸®¿¡ Ãß°¡ (½ºÅÈ Àû¿ë Æ÷ÇÔ)
+        // 1. ì¸ë²¤í† ë¦¬ì— ì¶”ê°€ (ìŠ¤íƒ¯ ì ìš© í¬í•¨)
         playerInventory.AddItem(selectedItem);
-        Debug.Log($"¼±ÅÃ ¿Ï·á: {selectedItem.itemName}");
+        Debug.Log($"ì„ íƒ ì™„ë£Œ: {selectedItem.itemName}");
 
-        // 2. ÆĞ³Î ´İ±â ¹× °ÔÀÓ Àç°³
+        // 2. íŒ¨ë„ ë‹«ê¸° ë° ê²Œì„ ì¬ê°œ
         selectPanel.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = 1f; 
     }
 }
