@@ -108,8 +108,8 @@ public class Pot : MonoBehaviour
         }
         else if(13<= debufnum && debufnum <= 16)
         {
-            //포인트 감소 코드
-            Debug.Log("포인트 감소");
+            playerStats.point -= 10;
+            Debug.Log("포인트 감소" + playerStats.point);
         }
         else { return; }
     }

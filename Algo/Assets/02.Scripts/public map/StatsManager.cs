@@ -50,6 +50,7 @@ public class StatsManager : MonoBehaviour
             $"{player.attackSpeed} / {player.maxAttackSpeed}\n" + // 공격 속도
             $"{player.moveSpeed} / {player.maxMoveSpeed}\n" + // 이동 속도
             $"{player.critRate}\n" + // 치명타 확률
-            $"{player.attackRange}"); // 공격 사거리
+            $"{player.attackRange}\n" + //공격 사거리
+            $"{player.point}"); // 점수
     }
 }

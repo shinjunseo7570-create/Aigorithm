@@ -16,8 +16,8 @@ public class DPRoute : MonoBehaviour
     List<int> route = new List<int>();
     int[] points = new int[10]
         {
-            1, 8, 7, 1, 8, 1, 1, 6, 5, 6 //<- 각 노드 포인트 정의
-//          1  2     3  4     5  6     7 <- 레벨
+            1, 7, 3, 5, 3, 7, 10, 7, 3, 5 //<- 각 노드 포인트 정의
+//          1  2     3  4     5  6      7 <- 레벨
         };
     public static int[,] routeMap = new int[10, 10]
     {
@@ -130,7 +130,7 @@ public class DPRoute : MonoBehaviour
             }
             if (points[nodeNum + 3] != 0 && routeMap[nodeNum, nextNode] == 1 && routeMap[nextNode, nodeNum + 3] == 1) //다음 직진 노드가 0이 아니고 현재 노드 - 다음 노드 - 다음 직진노드의 루트가 이어져 있다면
             {
-
+                if(route[route.Count - 1] != nodeNum) route.Add(nodeNum);
                 route.Add(nextNode); //다음 노드를 리스트에 추가
                 route.Add(nodeNum + 3); //다음 직진노드가 0이 아니므로 최대 점수를 위해서 무조건 거쳐야 하니 리스트에 추가
                 findRoute(nodeNum + 3); //다음 직진 노드를 기반으로 재귀함수 진행

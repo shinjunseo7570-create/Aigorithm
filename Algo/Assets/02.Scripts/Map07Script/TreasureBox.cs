@@ -68,8 +68,8 @@ public class TreasureBox : MonoBehaviour
         }
         else if (bufnum == 7 || bufnum == 8)
         {
-            //포인트 증가 코드
-            Debug.Log("포인트 증가" + playerStats.health);
+            playerStats.point += 10;
+            Debug.Log("포인트 증가" + playerStats.point);
         }
         else { return; }
     }

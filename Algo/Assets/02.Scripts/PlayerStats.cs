@@ -35,6 +35,7 @@ public class PlayerStats : MonoBehaviour
     public float stunDurationMultiplier = 1f; // 1.0 = 100%, 0.7 = 70% (30% 감소)
     public float treasureChance = 0f;         // 보물 확률 추가
     public float healOnAttackChance = 0f;// 생흡
+    public int point = 0;
 
     public static int nodeNum = 0;
 
