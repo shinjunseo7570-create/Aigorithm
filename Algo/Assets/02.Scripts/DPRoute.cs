@@ -14,7 +14,7 @@ public class DPRoute : MonoBehaviour
 
     // 필드 선언 시 초기화
     List<int> route = new List<int>();
-    int[] points = new int[10]
+    public static int[] points = new int[10]
         {
             1, 7, 3, 5, 3, 7, 10, 7, 3, 5 //<- 각 노드 포인트 정의
 //          1  2     3  4     5  6      7 <- 레벨

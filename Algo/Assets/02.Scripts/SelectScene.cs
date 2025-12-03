@@ -7,13 +7,14 @@ public class SelectScene : MonoBehaviour
     static bool tutorial = false;
     public void LoadScene()
     {
-        if (targetScene != null && DPRoute.routeMap[PlayerStats.nodeNum, nodeNum] == 1 && searchLev(nodeNum) > searchLev(PlayerStats.nodeNum)) //조건 수정 필요
+        if (targetScene != null && DPRoute.routeMap[PlayerStats.nodeNum, nodeNum] == 1 && searchLev(nodeNum) > searchLev(PlayerStats.nodeNum)) 
         {
             Debug.Log("씬 로드중: " + targetScene);
 
             GameObject player = GameObject.FindWithTag("Player");
             PlayerStats playerStats = player.GetComponent<PlayerStats>();
             PlayerStats.nodeNum = nodeNum;
+            playerStats.point += DPRoute.points[nodeNum];
             playerStats.currentStamina -= 10;
 
             LoadingSceneManager.LoadScene("Map" + targetScene);
