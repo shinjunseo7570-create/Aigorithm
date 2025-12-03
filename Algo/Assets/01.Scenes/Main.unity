@@ -2906,6 +2906,10 @@ PrefabInstance:
       propertyPath: mapNumber
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4539103068294247222, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 2fbd4d54186a0504dacd06aa730f3aee, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

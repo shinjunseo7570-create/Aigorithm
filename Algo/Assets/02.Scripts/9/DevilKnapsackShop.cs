@@ -162,7 +162,7 @@ public class DevilKnapsackShop : MonoBehaviour
         bestHealthDeal.Clear();
 
         // 배낭 용량(플레이어의 체력 기준) 설정
-        // 현재 체력의 1만큼을 남기고 나머지를 최대 용량으로 사용 가능하게
+        // 현재 체력의 10만큼을 남기고 나머지를 최대 용량으로 사용 가능하게
         int capacity = player.maxHealth - 10;
 
         // 체력이 10 이하라면 거래 할 수 없음(return)
