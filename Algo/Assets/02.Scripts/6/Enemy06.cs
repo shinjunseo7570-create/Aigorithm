@@ -58,7 +58,10 @@ public class Enemy06 : MonoBehaviour
     Vector3 originPosition;
     bool originSaved = false;
 
-
+    void Start()
+    {
+        originPosition = transform.position;
+    }
 
     void Awake()
     {
@@ -225,7 +228,7 @@ public class Enemy06 : MonoBehaviour
         spawnTime = Time.time;
 
         
-        originPosition = transform.position;
+        
         
         
 
