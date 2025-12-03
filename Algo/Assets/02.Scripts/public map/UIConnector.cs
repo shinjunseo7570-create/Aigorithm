@@ -19,7 +19,7 @@ public class UIConnector : MonoBehaviour
         // 안전장치
         if (inventoryPanel == null || statsPanel == null || statusText == null || inventorySlotParent == null)
         {
-            Debug.LogError($"[UIConnector] Inspector 연결을 확인해주세요! (빈칸이 있습니다)");
+            Debug.LogError($"[UIConnector] Inspector 연결을 확인하세요.(빈칸 있음)");
             return;
         }
 
