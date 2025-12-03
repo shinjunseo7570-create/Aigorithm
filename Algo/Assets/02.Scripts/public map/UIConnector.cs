@@ -35,7 +35,8 @@ public class UIConnector : MonoBehaviour
                 inventory.inventory = this.inventoryPanel;
 
                 // Inventory.cs의 'slotParent' 변수에 -> 내 'inventorySlotParent'를 넣음
-                inventory.slotParent = this.inventorySlotParent;
+                // SetSlotParent : 설정과 새로고침을 한번에 함
+                inventory.SetSlotParent(this.inventorySlotParent);
             }
 
             // StatsManager 연결

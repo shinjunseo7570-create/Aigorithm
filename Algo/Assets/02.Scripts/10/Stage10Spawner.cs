@@ -47,6 +47,13 @@ public class Stage10Spawner : MonoBehaviour
     }
     void Update()
     {
+
+        // 스포너가 플레이어 위치를 계속 따라다님 (중심축 맞추기)
+        if (GameManager10.instance != null && GameManager10.instance.player != null)
+        {
+            transform.position = GameManager10.instance.player.transform.position;
+        }
+
         // ★ 핵심: 시간이 흐르면 벤시를 하나씩 계속 소환
         timer += Time.deltaTime;
 

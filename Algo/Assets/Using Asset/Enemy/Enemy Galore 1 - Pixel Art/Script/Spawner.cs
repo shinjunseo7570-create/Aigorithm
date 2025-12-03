@@ -68,6 +68,11 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance != null && GameManager.instance.player != null)
+        {
+            transform.position = GameManager.instance.player.transform.position;
+        }
+
         nowTime += Time.deltaTime;
         if (!(roundEnd))
         {

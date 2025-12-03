@@ -9,6 +9,8 @@ public class ItemSelectManager : MonoBehaviour
 
     [Header("연결 필요")]
     public GameObject selectPanel;   // UI 패널 (ItemSelectPanel)
+
+    [Header("연결하지 않아도 됨")]
     public Inventory playerInventory; // 아이템을 넣어줄 인벤토리 (Player 연결)
 
     [Header("왼쪽 선택지 UI")]
@@ -35,9 +37,24 @@ public class ItemSelectManager : MonoBehaviour
         selectPanel.SetActive(false); // 시작할 땐 끔
     }
 
-    // --- [외부에서 호출] 선택창 띄우기 ---
     public void ShowItemSelection()
     {
+        // 플레이어 인벤토리 인스펙터에 연결되지 않았다면
+        if (playerInventory == null)
+        {
+            // Tag로 플레이어를 찾아옴
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                playerInventory = player.GetComponent<Inventory>();
+            }
+            else
+            {
+                Debug.LogError("'Player' Tag를 가진 오브젝트를 찾을 수 없음");
+                return; // 플레이어가 있어야 기능 실행 가능
+            }
+        }
+
         if (allItems.Count < 2)
         {
             Debug.LogError("아이템 데이터가 최소 2개 이상 필요합니다!");
