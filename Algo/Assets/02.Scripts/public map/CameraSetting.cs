@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Unity.Cinemachine; // [중요] 네임스페이스가 변경되었습니다.
+using Unity.Cinemachine; 
 
 public class CameraSetting : MonoBehaviour
 {

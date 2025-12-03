@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 27afec152b0c2d54bbfad3175c3ddc72
+guid: 41430ec1439cd704fa40452bf8a05ce1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7516271193572666277
-    second: Glove_0
+      213: 2589673507136699090
+    second: "\uC9C4\uC2E4\uC758 \uB208\uB3D9\uC790 \uBAA9\uAC78\uC774_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Glove_0
+      name: "\uC9C4\uC2E4\uC758 \uB208\uB3D9\uC790 \uBAA9\uAC78\uC774_0"
       rect:
         serializedVersion: 2
-        x: 86
-        y: 23
-        width: 187
-        height: 169
+        x: 18
+        y: 4
+        width: 181
+        height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b54999f1c27d0b790800000000000000
-      internalID: -7516271193572666277
+      spriteID: 2da7f15855e50f320800000000000000
+      internalID: 2589673507136699090
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Glove_0: -7516271193572666277
+      "\uC9C4\uC2E4\uC758 \uB208\uB3D9\uC790 \uBAA9\uAC78\uC774_0": 2589673507136699090
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

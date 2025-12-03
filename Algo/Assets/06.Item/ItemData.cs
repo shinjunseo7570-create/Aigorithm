@@ -15,7 +15,13 @@ public enum ItemEffectType
     TreasureRateUp,
     HealOnAttack
 }
-
+public enum ItemGrade
+{
+    C,
+    B,
+    A,
+    S
+}
 [System.Serializable] // 인스펙터에 보이게 하기 위해 필수
 public class ItemEffect
 {
@@ -28,6 +34,7 @@ public class ItemData : ScriptableObject
 {
     public string itemName;
     public Sprite icon;
+    public ItemGrade grade;
     
     [TextArea]
     public string description;

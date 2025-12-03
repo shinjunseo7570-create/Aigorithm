@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "\uBD80\uC801"
   icon: {fileID: -1737561235052955956, guid: 8409109655251dd4abf9396abea56b48, type: 3}
+  grade: 2
   description: "\uBD80\uC801\uC785\uB2C8\uB2E4."
   effects:
   - effectType: 8

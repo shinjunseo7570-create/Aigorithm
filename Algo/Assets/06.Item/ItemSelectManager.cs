@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI; // UI 사용
+using UnityEngine.UI; 
 using System.Collections.Generic;
 using TMPro;
 
 public class ItemSelectManager : MonoBehaviour
 {
-    public static ItemSelectManager Instance; // 어디서든 부르기 쉽게 싱글톤 처리
+    public static ItemSelectManager Instance; // 어디서든 부르기 쉽게 
 
     [Header("연결 필요")]
     public GameObject selectPanel;   // UI 패널 (ItemSelectPanel)
@@ -26,7 +26,7 @@ public class ItemSelectManager : MonoBehaviour
     public TMP_Text rightDesc;
 
     [Header("전체 아이템 데이터베이스")]
-    public List<ItemData> allItems;  // [중요] 게임에 존재하는 모든 아이템을 여기에 드래그!
+    public List<ItemData> allItems;  
 
     private ItemData currentLeftItem;
     private ItemData currentRightItem;
@@ -99,7 +99,7 @@ public class ItemSelectManager : MonoBehaviour
         desc.text = data.description; // 설명이 있다면 표시
     }
 
-    // --- 아이템 선택 시 실행 ---
+    // 아이템 선택 시
     void OnSelectItem(ItemData selectedItem)
     {
         // 1. 인벤토리에 추가 (스탯 적용 포함)
