@@ -22,7 +22,7 @@ public class Spawner06 : MonoBehaviour
     bool isSpawning = true;
     bool usingScene = true;
 
-    void Awake()
+    void Start()
     {
         roundEnd = false;
         Transform[] points = GetComponentsInChildren<Transform>();

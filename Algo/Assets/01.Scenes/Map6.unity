@@ -13973,17 +13973,6 @@ PolygonCollider2D:
       - {x: -18.998228, y: -16.005226}
       - {x: 18.997194, y: -15.995314}
   m_UseDelaunayMesh: 0
---- !u!114 &37717545 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7782958242061378851, guid: b4a28dc2f246818428c33ec619694bb2, type: 3}
-  m_PrefabInstance: {fileID: 7918299998428144394}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ba5a24085b344b4c894bc5433e517ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
 --- !u!1 &57610578
 GameObject:
   m_ObjectHideFlags: 0
@@ -21126,7 +21115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   gameTime: 0
   maxGameTime: 20
-  player: {fileID: 37717545}
+  player: {fileID: 0}
+  playerInteract: {fileID: 0}
   pool: {fileID: 57610579}
 --- !u!4 &926707391
 Transform:
@@ -21227,6 +21217,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2629648264243440863, guid: b4a28dc2f246818428c33ec619694bb2, type: 3}
   m_PrefabInstance: {fileID: 7918299998428144394}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1375348473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1375348475}
+  - component: {fileID: 1375348474}
+  m_Layer: 0
+  m_Name: Spawner06
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1375348474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375348473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c881c00e6df9847a0a03895594933b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner06
+  spawnPoint: []
+  rounds: []
+  poolManager: {fileID: 0}
+  limitTime: 10
+  nowTime: 0
+  spawnDelay: 2
+  roundEnd: 0
+--- !u!4 &1375348475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375348473}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2497.2104, y: 524.4773, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1383612724 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8456575281825445278, guid: b4a28dc2f246818428c33ec619694bb2, type: 3}
@@ -26762,3 +26803,4 @@ SceneRoots:
   - {fileID: 1646817367}
   - {fileID: 7918299998428144394}
   - {fileID: 1292326036}
+  - {fileID: 1375348475}

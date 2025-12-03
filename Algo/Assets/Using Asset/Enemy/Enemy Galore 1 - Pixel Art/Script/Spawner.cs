@@ -78,6 +78,7 @@ public class Spawner : MonoBehaviour
         {
             if (nowTime > limitTime && !(roundEnd))
             {
+                
                 roundEnd = true;
                 Fail();
             }
@@ -90,6 +91,7 @@ public class Spawner : MonoBehaviour
             }
             if (currentRound >= rounds.Length && !(roundEnd))
             {
+                limitTime = nowTime + 5f;
                 roundEnd = true;
                 Ending();
                 return;
