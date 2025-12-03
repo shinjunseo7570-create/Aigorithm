@@ -1,34 +1,31 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ManageIconImage : MonoBehaviour
 {
-    [Header("»ç¿ëÇÒ ¿ÀºêÁ§Æ® ¿¬°á")]
+    [Header("ì‚¬ìš©í•  ì˜¤ë¸Œì íŠ¸ ì—°ê²°")]
     public Transform stageParentGroup;
-    // DPRoute ½ºÅ©¸³Æ®´Â static º¯¼ö(routeMap)¸¦ ¾²¹Ç·Î ¿¬°á ¾È ÇØµµ µÉ ¼ö ÀÖÁö¸¸, 
-    // È¤½Ã ¸ğ¸£´Ï ³²°ÜµÓ´Ï´Ù.
     public DPRoute dpRoute;
 
-    [Header("º¯°æÇÒ ÅØ½ºÃÄ")]
-    public Texture availableTexture; // °¥ ¼ö ÀÖÀ½
-    public Texture disabledTexture;  // ¸ø °¨
-    public Texture nowTexture;       // ÇöÀç À§Ä¡
-    public Texture routeTexture;     // (ÃßÈÄ »ç¿ë) °æ·Î
+    [Header("ë³€ê²½í•  í…ìŠ¤ì³")]
+    public Texture availableTexture; 
+    public Texture disabledTexture;
+    public Texture nowTexture;
+    public Texture routeTexture;
 
-    // Key: ½ºÅ×ÀÌÁö ¹øÈ£(ÀÌ¸§), Value: ÇØ´ç ½ºÅ×ÀÌÁöÀÇ Transform
+    // Key: ìŠ¤í…Œì´ì§€ ë²ˆí˜¸(ì´ë¦„), Value: í•´ë‹¹ ìŠ¤í…Œì´ì§€ì˜ Transform
     Dictionary<string, Transform> stageObjectMap = new Dictionary<string, Transform>();
 
     void Start()
     {
-        // 1. ¸ğµç ½ºÅ×ÀÌÁö ¿ÀºêÁ§Æ® Ã£¾Æ¼­ ÀúÀåÇÏ±â
+        // ëª¨ë“  ìŠ¤í…Œì´ì§€ ì˜¤ë¸Œì íŠ¸ ì°¾ì•„ì„œ ì €ì¥í•˜ê¸°
         if (stageParentGroup != null)
         {
             Transform[] allChildren = stageParentGroup.GetComponentsInChildren<Transform>(true);
             foreach (Transform child in allChildren)
             {
-                // ÀÌ¸§ÀÌ ¼ıÀÚ·Î µÈ °Íµé¸¸ µñ¼Å³Ê¸®¿¡ Ãß°¡ (0, 1, 2...)
-                // (TryParse¸¦ ½á¼­ ¼ıÀÚÀÎÁö È®ÀÎÇÏ´Â°Ô ¾ÈÀüÇÔ)
+                // ì´ë¦„ì´ ìˆ«ìë¡œ ëœ ê²ƒë“¤ë§Œ ë”•ì…”ë„ˆë¦¬ì— ì¶”ê°€
                 if (int.TryParse(child.name, out int _))
                 {
                     if (!stageObjectMap.ContainsKey(child.name))
@@ -39,50 +36,52 @@ public class ManageIconImage : MonoBehaviour
             }
         }
 
-        // 2. ÀÌ¹ÌÁö °»½Å ÇÔ¼ö È£Ãâ (¸Å°³º¯¼ö ÇÊ¿ä ¾øÀ½)
+        // ì´ë¯¸ì§€ ê°±ì‹  í•¨ìˆ˜ í˜¸ì¶œ
         ChangeAllIcons();
     }
 
-    // [¼öÁ¤µÊ] ¸ğµç ¾ÆÀÌÄÜÀ» ¼øÈ¸ÇÏ¸ç »óÅÂ¿¡ µû¶ó ÀÌ¹ÌÁö¸¦ ¹Ù²Ù´Â ÇÔ¼ö
+    // ëª¨ë“  ì•„ì´ì½˜ì„ ëŒë©° ìƒíƒœì— ë”°ë¼ ì´ë¯¸ì§€ë¥¼ ë°”ê¾¸ëŠ” í•¨ìˆ˜
     public void ChangeAllIcons()
     {
-        // PlayerStats.nodeNumÀº static º¯¼ö¶ó°í °¡Á¤ÇÕ´Ï´Ù.
         int currentNode = PlayerStats.nodeNum;
 
-        // DPRouteÀÇ ¸Ê µ¥ÀÌÅÍ°¡ ÁØºñµÇ¾ú´ÂÁö È®ÀÎ
+        // nullì´ë©´
         if (DPRoute.routeMap == null)
         {
-            Debug.LogWarning("DPRoute.routeMapÀÌ ¾ÆÁ÷ »ı¼ºµÇÁö ¾Ê¾Ò°Å³ª ºñ¾îÀÖ½À´Ï´Ù.");
+            Debug.LogWarning("DPRoute.routeMapì´ ì•„ì§ ìƒì„±ë˜ì§€ ì•Šì•˜ê±°ë‚˜ ë¹„ì–´ìˆìŠµë‹ˆë‹¤.");
             return;
         }
 
-        // µñ¼Å³Ê¸®¿¡ ÀúÀåµÈ ¸ğµç ½ºÅ×ÀÌÁö¸¦ ÇÏ³ª¾¿ ²¨³»¼­ °Ë»ç
+        // ì €ì¥ëœ ëª¨ë“  ìŠ¤í…Œì´ì§€ë¥¼ í•˜ë‚˜ì”© ê²€ì‚¬
         foreach (KeyValuePair<string, Transform> entry in stageObjectMap)
         {
-            string nodeName = entry.Key;      // "0", "1", "2"...
-            Transform targetStage = entry.Value; // ÇØ´ç ¿ÀºêÁ§Æ®
+            string nodeName = entry.Key;      // 0, 1, 2 ë“±ë“±
+            Transform targetStage = entry.Value; // í•´ë‹¹ ì˜¤ë¸Œì íŠ¸
 
-            // ÀÌ¸§À» ¼ıÀÚ·Î º¯È¯ (¹è¿­ ÀÎµ¦½º·Î ¾²±â À§ÇØ)
-            if (int.TryParse(nodeName, out int nodeIdx))
+            // ì´ë¦„ì„ ìˆ«ìë¡œ ë³€í™˜ (ë°°ì—´ ì¸ë±ìŠ¤ë¡œ ì“°ê¸° ìœ„í•´)
+            if (int.TryParse(nodeName, out int nodeIndex))
             {
-                // RawImage ÄÄÆ÷³ÍÆ® Ã£±â
-                RawImage rawImage = targetStage.GetComponentInChildren<RawImage>(); // ÀÚ½Ä¿¡ ÀÖÀ»¼öµµ ÀÖÀ¸´Ï InChildren ±ÇÀå
+                // RawImage ì»´í¬ë„ŒíŠ¸ ì°¾ê¸°
+                RawImage rawImage = targetStage.GetComponentInChildren<RawImage>();
 
                 if (rawImage != null)
                 {
-                    // 1. ÇöÀç ³»°¡ ÀÖ´Â ³ëµå¶ó¸é?
-                    if (nodeIdx == currentNode)
+                    // í˜„ì¬ ë‚´ê°€ ìˆëŠ” ë…¸ë“œì¸ì§€
+                    if (nodeIndex == currentNode)
                     {
+                        // í˜„ì¬ ìœ„ì¹˜ í…ìŠ¤ì³
                         rawImage.texture = nowTexture;
                     }
-                    // 2. ÇöÀç ³ëµå¿¡¼­ °¥ ¼ö ÀÖ´Â °÷ÀÎ°¡? (routeMap °ªÀÌ 1ÀÌ¸é ¿¬°áµÊ)
-                    // ¹è¿­ ¹üÀ§¸¦ ¹ş¾î³ªÁö ¾Ê°Ô Ã¼Å© ÇÊ¼ö
-                    else if (DPRoute.routeMap.GetLength(0) > currentNode && DPRoute.routeMap.GetLength(1) > nodeIdx)
+                    // í˜„ì¬ ë…¸ë“œì—ì„œ ê°ˆ ìˆ˜ ìˆëŠ” ë…¸ë“œì¸ì§€
+                    // ë°°ì—´ ë²”ìœ„ë¥¼ ë²—ì–´ë‚˜ì§€ ì•ŠëŠ”ì§€ ì²´í¬
+                    else if (DPRoute.routeMap.GetLength(0) > currentNode && DPRoute.routeMap.GetLength(1) > nodeIndex)
                     {
-                        if (DPRoute.routeMap[currentNode, nodeIdx] == 1)
+                        // ì´ìš©ê°€ëŠ¥ í…ìŠ¤ì³
+                        if (DPRoute.routeMap[currentNode, nodeIndex] == 1)
                         {
                             rawImage.texture = availableTexture;
                         }
+                        // ë¹„í™œì„±í™” í…ìŠ¤ì³
                         else
                         {
                             rawImage.texture = disabledTexture;

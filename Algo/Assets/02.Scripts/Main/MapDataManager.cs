@@ -22,21 +22,21 @@ public class MapDataManager : MonoBehaviour
     [Header("맵 데이터 리스트")]
     public List<StageData> mapDataList = new List<StageData>();
 
-    // ID를 주면 데이터를 찾아서 꺼내주는 함수
+    // ID로 data를 찾는 함수
     public StageData GetStageDataByID(int id)
     {
-        // 리스트에 있는 데이터를 하나씩 꺼내서 검사
+        // 리스트에 있는 데이터를 하나씩 검사
         foreach (StageData data in mapDataList)
         {
             // 만약 꺼낸 데이터의 ID가 내가 찾는 ID랑 같다면
             if (data.mapID == id)
             {
-                return data; // 그 데이터를 반환
+                return data; // 그 데이터를 return
             }
         }
 
-        // 리스트를 끝까지 탐색해도 없다면
+        // 끝까지 탐색해도 없다면
         Debug.LogWarning($"mapID {id}에 할당된 데이터 없음");
-        return null; // null 반환
+        return null; // null return
     }
 }
