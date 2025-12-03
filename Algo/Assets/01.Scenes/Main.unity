@@ -572,10 +572,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1338958719}
     m_Modifications:
-    - target: {fileID: 1036244845614614425, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 6cc00e6993d78ab4eb3a3e2d8bf74ba0, type: 3}
     - target: {fileID: 2038699968276410726, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -672,6 +668,10 @@ PrefabInstance:
       propertyPath: mapNumber
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4539103068294247222, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 885404c3413cfae40bb07b3258cc467a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -733,10 +733,6 @@ PrefabInstance:
       propertyPath: mapID
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1036244845614614425, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: c492b35efd307994097dfcd9a524f59a, type: 3}
     - target: {fileID: 2038699968276410726, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -873,13 +869,14 @@ PrefabInstance:
       propertyPath: mapDescription
       value: "\uC774 \uACF3\uC740 \uD55C \uB54C \uC6C5\uC7A5\uD55C \uC131\uC774\uC5C8\uC2B5\uB2C8\uB2E4..."
       objectReference: {fileID: 0}
+    - target: {fileID: 4539103068294247222, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 885404c3413cfae40bb07b3258cc467a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3147627854532090205, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 902770549}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
 --- !u!224 &259668435 stripped
 RectTransform:
@@ -1108,10 +1105,6 @@ PrefabInstance:
       propertyPath: mapID
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 1036244845614614425, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: f1eb6d83676c72744914c412635b6882, type: 3}
     - target: {fileID: 2038699968276410726, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1648,6 +1641,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623974609}
   m_CullTransparentMesh: 1
+--- !u!1 &780928887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 780928889}
+  - component: {fileID: 780928888}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &780928888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780928887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 370fdcb893cc2494390dd8f55846283f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManageIconImage
+  stageParentGroup: {fileID: 135681910}
+  dpRoute: {fileID: 1758069371}
+  availableTexture: {fileID: 2800000, guid: 121cc25d2181ad94aba9ae34db96e732, type: 3}
+  disabledTexture: {fileID: 2800000, guid: 5f826ebbd82160a458c206463c4029b8, type: 3}
+  nowTexture: {fileID: 2800000, guid: a1e789e68ec13f644920694e3bb1fb89, type: 3}
+  routeTexture: {fileID: 2800000, guid: cb42f9d90f6b8344d8203d68fc0d6a67, type: 3}
+--- !u!4 &780928889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780928887}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 949.7805, y: 646.11975, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &838845509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1744,6 +1787,10 @@ PrefabInstance:
     - target: {fileID: 4962530880684494272, guid: 91735fd87e1cca84298ab188aaa9ee99, type: 3}
       propertyPath: m_Name
       value: InGameScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962530880684494272, guid: 91735fd87e1cca84298ab188aaa9ee99, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1891,57 +1938,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873560637}
   m_CullTransparentMesh: 1
---- !u!1 &902770544 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3147627854532090205, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
-  m_PrefabInstance: {fileID: 259668434}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &902770549
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 902770544}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &951762940
 GameObject:
   m_ObjectHideFlags: 0
@@ -2166,10 +2162,6 @@ PrefabInstance:
       propertyPath: mapID
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 1036244845614614425, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 178c65e897546c24b932bbe25fc259e8, type: 3}
     - target: {fileID: 2038699968276410726, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2298,6 +2290,10 @@ PrefabInstance:
       propertyPath: mapNumber
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4539103068294247222, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 003b65dccb6e3ba4da592a329322d180, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2512,10 +2508,6 @@ PrefabInstance:
       propertyPath: mapID
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 1036244845614614425, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 3e85fdb0c2bb2e5468abb0f6c25a00b6, type: 3}
     - target: {fileID: 2038699968276410726, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2644,6 +2636,10 @@ PrefabInstance:
       propertyPath: mapNumber
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4539103068294247222, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: b4e740b873e5e7140a68e87c77aecf57, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2782,10 +2778,6 @@ PrefabInstance:
       propertyPath: mapID
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 1036244845614614425, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 740af91701969de40aed8dce9ca4d596, type: 3}
     - target: {fileID: 2038699968276410726, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3374,10 +3366,6 @@ PrefabInstance:
       propertyPath: mapID
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1036244845614614425, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 5c7c8265148378d4e9a1ee437cd5cd4b, type: 3}
     - target: {fileID: 2038699968276410726, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3506,6 +3494,10 @@ PrefabInstance:
       propertyPath: mapNumber
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4539103068294247222, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 6238143d95fa3be4ebee5c0302dc98b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4289,10 +4281,6 @@ PrefabInstance:
       propertyPath: mapID
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 1036244845614614425, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 178c65e897546c24b932bbe25fc259e8, type: 3}
     - target: {fileID: 2038699968276410726, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4425,6 +4413,10 @@ PrefabInstance:
       propertyPath: mapNumber
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4539103068294247222, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 003b65dccb6e3ba4da592a329322d180, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4576,10 +4568,6 @@ PrefabInstance:
       propertyPath: mapID
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 1036244845614614425, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 3e85fdb0c2bb2e5468abb0f6c25a00b6, type: 3}
     - target: {fileID: 2038699968276410726, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4708,6 +4696,10 @@ PrefabInstance:
       propertyPath: mapNumber
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4539103068294247222, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: b4e740b873e5e7140a68e87c77aecf57, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4913,10 +4905,6 @@ PrefabInstance:
       propertyPath: mapID
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1036244845614614425, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 5c7c8265148378d4e9a1ee437cd5cd4b, type: 3}
     - target: {fileID: 2038699968276410726, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5045,6 +5033,10 @@ PrefabInstance:
       propertyPath: mapNumber
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4539103068294247222, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 6238143d95fa3be4ebee5c0302dc98b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5617,10 +5609,6 @@ PrefabInstance:
       propertyPath: mapID
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 1036244845614614425, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 3e85fdb0c2bb2e5468abb0f6c25a00b6, type: 3}
     - target: {fileID: 2038699968276410726, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5749,6 +5737,10 @@ PrefabInstance:
       propertyPath: mapNumber
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4539103068294247222, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: b4e740b873e5e7140a68e87c77aecf57, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5771,10 +5763,6 @@ PrefabInstance:
       propertyPath: mapID
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1036244845614614425, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 5c7c8265148378d4e9a1ee437cd5cd4b, type: 3}
     - target: {fileID: 2038699968276410726, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5903,6 +5891,10 @@ PrefabInstance:
       propertyPath: mapNumber
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4539103068294247222, guid: 91a759f0d70fb2745b3a56fab80e0a76, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 6238143d95fa3be4ebee5c0302dc98b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6140,3 +6132,4 @@ SceneRoots:
   - {fileID: 1162359691}
   - {fileID: 1758069372}
   - {fileID: 80063861}
+  - {fileID: 780928889}
