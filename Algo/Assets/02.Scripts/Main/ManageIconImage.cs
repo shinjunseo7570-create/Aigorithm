@@ -4,91 +4,92 @@ using UnityEngine.UI;
 
 public class ManageIconImage : MonoBehaviour
 {
-    // ToggleGroup
     [Header("사용할 오브젝트 연결")]
     public Transform stageParentGroup;
+    // DPRoute 스크립트는 static 변수(routeMap)를 쓰므로 연결 안 해도 될 수 있지만, 
+    // 혹시 모르니 남겨둡니다.
     public DPRoute dpRoute;
 
     [Header("변경할 텍스쳐")]
-    public Texture availableTexture;
-    public Texture disabledTexture;
-    public Texture nowTexture;
-    public Texture routeTexture;
+    public Texture availableTexture; // 갈 수 있음
+    public Texture disabledTexture;  // 못 감
+    public Texture nowTexture;       // 현재 위치
+    public Texture routeTexture;     // (추후 사용) 경로
 
     // Key: 스테이지 번호(이름), Value: 해당 스테이지의 Transform
     Dictionary<string, Transform> stageObjectMap = new Dictionary<string, Transform>();
 
-    // 필드 선언 시 초기화
-    List<int> route = new List<int>();
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // 부모(ToggleGroup) 아래의 모든 자식을 찾음
+        // 1. 모든 스테이지 오브젝트 찾아서 저장하기
         if (stageParentGroup != null)
         {
-            Transform[] allChildren = stageParentGroup.GetComponentsInChildren<Transform>(true); // true로 비활성화 오브젝트까지 다 긁어옴
+            Transform[] allChildren = stageParentGroup.GetComponentsInChildren<Transform>(true);
             foreach (Transform child in allChildren)
             {
-                // 딕셔너리에 이름(ex: "0", "1")을 키로 저장
-                // 중복 방지를 위해 키가 없을 때만 추가
-                if (!stageObjectMap.ContainsKey(child.name))
+                // 이름이 숫자로 된 것들만 딕셔너리에 추가 (0, 1, 2...)
+                // (TryParse를 써서 숫자인지 확인하는게 안전함)
+                if (int.TryParse(child.name, out int _))
                 {
-                    // 오브젝트 이름과 트랜스폼을 매핑
-                    stageObjectMap.Add(child.name, child);
+                    if (!stageObjectMap.ContainsKey(child.name))
+                    {
+                        stageObjectMap.Add(child.name, child);
+                    }
                 }
             }
         }
 
-        changeRouteImage(route);
+        // 2. 이미지 갱신 함수 호출 (매개변수 필요 없음)
+        ChangeAllIcons();
     }
 
-    void changeRouteImage(List<int> route)
+    // [수정됨] 모든 아이콘을 순회하며 상태에 따라 이미지를 바꾸는 함수
+    public void ChangeAllIcons()
     {
-        GameObject player = GameObject.FindWithTag("Player");
-        PlayerStats playerStats = player.GetComponent<PlayerStats>();
+        // PlayerStats.nodeNum은 static 변수라고 가정합니다.
+        int currentNode = PlayerStats.nodeNum;
 
-        for (int i = 0; i < route.Count; i++)  // <- 추천 루트 노드 처음부터 끝까지 순서대로 반복됨 route[i]로 접근
+        // DPRoute의 맵 데이터가 준비되었는지 확인
+        if (DPRoute.routeMap == null)
         {
-            int nodeNum = route[i];
-            string nodeName = nodeNum.ToString(); // 게임오브젝트 이름(stageObjectMap의 string)을 처리하기 위해 nodeNum을 string으로 변환할 변수
+            Debug.LogWarning("DPRoute.routeMap이 아직 생성되지 않았거나 비어있습니다.");
+            return;
+        }
 
-            // Highlight Outline 켜기
-            // 미리 만들어둔 Dictionary에서 해당 번호의 오브젝트를 찾음
-            if (stageObjectMap.ContainsKey(nodeName))
+        // 딕셔너리에 저장된 모든 스테이지를 하나씩 꺼내서 검사
+        foreach (KeyValuePair<string, Transform> entry in stageObjectMap)
+        {
+            string nodeName = entry.Key;      // "0", "1", "2"...
+            Transform targetStage = entry.Value; // 해당 오브젝트
+
+            // 이름을 숫자로 변환 (배열 인덱스로 쓰기 위해)
+            if (int.TryParse(nodeName, out int nodeIdx))
             {
-                Transform targetStage = stageObjectMap[nodeName];
-
-                // 해당 스테이지 오브젝트 자식 "Raw Image"을 찾음
-                RawImage rawImage = targetStage.GetComponent<RawImage>();
+                // RawImage 컴포넌트 찾기
+                RawImage rawImage = targetStage.GetComponentInChildren<RawImage>(); // 자식에 있을수도 있으니 InChildren 권장
 
                 if (rawImage != null)
                 {
-
-                    if (DPRoute.routeMap[PlayerStats.nodeNum, nodeNum] != 1)
-                    {
-                        rawImage.texture = disabledTexture;
-                    }
-                    else if (PlayerStats.nodeNum == nodeNum)
+                    // 1. 현재 내가 있는 노드라면?
+                    if (nodeIdx == currentNode)
                     {
                         rawImage.texture = nowTexture;
                     }
-                    else
+                    // 2. 현재 노드에서 갈 수 있는 곳인가? (routeMap 값이 1이면 연결됨)
+                    // 배열 범위를 벗어나지 않게 체크 필수
+                    else if (DPRoute.routeMap.GetLength(0) > currentNode && DPRoute.routeMap.GetLength(1) > nodeIdx)
                     {
-                        rawImage.texture = availableTexture;
+                        if (DPRoute.routeMap[currentNode, nodeIdx] == 1)
+                        {
+                            rawImage.texture = availableTexture;
+                        }
+                        else
+                        {
+                            rawImage.texture = disabledTexture;
+                        }
                     }
-
-                }
-                else
-                {
-                    Debug.LogWarning($"'{nodeName}' 스테이지 아이콘에서 오류 발생!");
                 }
             }
-            else
-            {
-                Debug.LogWarning($"Hierarchy에서 '{nodeName}' 이름을 가진 오브젝트를 찾을 수 없습니다.");
-            }
-
         }
     }
 }
