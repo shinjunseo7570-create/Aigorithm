@@ -7,6 +7,14 @@ using UnityEngine;
 public class TreasureBox : MonoBehaviour
 {
     Vector2 origin;
+    GameObject player;
+    PlayerStats playerStats;
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+        playerStats = player.GetComponent<PlayerStats>();
+        origin = gameObject.transform.position;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
 
@@ -25,14 +33,45 @@ public class TreasureBox : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerInteract player = collision.gameObject.GetComponent<PlayerInteract>();
-            //���� �ִ� ��ũ��Ʈ
+            buf();
             Debug.Log("보물 획득");
             gameObject.SetActive(false);
         }
     }
-    void Start()
+    void buf()
     {
-       origin = gameObject.transform.position;
+        int bufnum = UnityEngine.Random.Range(0, 9);
+        if (bufnum == 0)
+        {
+            ItemSelectManager.Instance.ShowItemSelection();
+            Debug.Log("아이템 선택 스크린");
+        }
+        else if (bufnum == 1 || bufnum == 2)
+        {
+            playerStats.attackPower += 1;
+            Debug.Log("공격력 증가" + playerStats.attackPower);
+        }
+        else if (bufnum == 3 || bufnum == 4)
+        {
+            playerStats.maxHealth += 10;
+            playerStats.health += 10;
+            Debug.Log("체력 증가" + playerStats.health);
+        }
+        else if (bufnum == 5 || bufnum == 6)
+        {
+            playerStats.currentStamina += 10;
+            if (playerStats.currentStamina > playerStats.maxStamina)
+            {
+                playerStats.currentStamina = playerStats.maxStamina;
+            }
+            Debug.Log("스테미너 회복" + playerStats.currentStamina);
+        }
+        else if (bufnum == 7 || bufnum == 8)
+        {
+            //포인트 증가 코드
+            Debug.Log("포인트 증가" + playerStats.health);
+        }
+        else { return; }
     }
 
     // Update is called once per frame

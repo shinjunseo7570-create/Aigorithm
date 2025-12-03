@@ -36,10 +36,12 @@ public class PlayerStats : MonoBehaviour
     public float treasureChance = 0f;         // 보물 확률 추가
     public float healOnAttackChance = 0f;// 생흡
 
+    public static int nodeNum = 0;
+
     public static PlayerStats instance;
     void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -160,7 +162,7 @@ public class PlayerStats : MonoBehaviour
         bool isCrit = Random.value * 100f < effectiveCritRate;
         float dmg = effectiveAttackPower;
 
-        if(isCrit)
+        if (isCrit)
         {
             dmg *= critDamageMultiplier;
         }
@@ -192,11 +194,10 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    
+
 
     public void Die()
     {
         Debug.Log("Player 사망, GameOver");
     }
 }
-

@@ -88,7 +88,7 @@ public class Mimic : MonoBehaviour
         rigid.MovePosition(rigid.position + nextVec);
 
         // 평소 상태는 공격 아님
-        //anim.SetBool("isAttack", false);
+        anim.SetBool("isAttack", false);
     }
 
     void AttackPlayer()
@@ -102,7 +102,7 @@ public class Mimic : MonoBehaviour
 
         // 공격 시작: 이동 멈추고, 공격 애니메이션
         rigid.linearVelocity = Vector2.zero;
-        //anim.SetBool("isAttack", true);
+        anim.SetBool("isAttack", true);
 
         // 필요하다면 타격 타이밍 맞춰서 약간 딜레이 줘도 됨
         // yield return new WaitForSeconds(0.2f);
@@ -112,7 +112,7 @@ public class Mimic : MonoBehaviour
         yield return new WaitForSeconds(attackAnimDuration);
 
         // 공격 끝나면 다시 평상시 상태로
-       // anim.SetBool("isAttack", false);
+        anim.SetBool("isAttack", false);
         isAttacking = false;
     }
 

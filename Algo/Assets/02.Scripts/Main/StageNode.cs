@@ -26,6 +26,7 @@ public class StageNode : MonoBehaviour
     // 토글이 눌렸을 때 실행됨
     void OnClicked(bool isOn)
     {
+        SelectScene.nodeNum = int.Parse(gameObject.name);
         if (isOn)
         {
             // MapDataManager, StageUIManager 찾기

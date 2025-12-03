@@ -35,7 +35,7 @@ public class StatsManager : MonoBehaviour
                 statsMenu.SetActive(!statsMenu.activeSelf);
             audioSource.PlayOneShot(clickSound);
         }
-
+        StartCoroutine(ShowStatusRoutine());
     }
 
     IEnumerator ShowStatusRoutine()

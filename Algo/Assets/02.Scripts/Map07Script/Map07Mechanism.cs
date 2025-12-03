@@ -10,6 +10,7 @@ public class Map07Mechanism : MonoBehaviour
     public PoolManager07 poolManager;
     public Enemy07 enemyScript;
     public Mimic mimicScript;
+    GameObject potal;
 
     int currentRound = 0;
 
@@ -27,6 +28,8 @@ public class Map07Mechanism : MonoBehaviour
         roundEnd = false;
         Transform[] points = GetComponentsInChildren<Transform>();
         mimicSpawned = false;
+        potal = GameObject.FindWithTag("Potal");
+        potal.SetActive(false);
         spawnPoint = new Transform[points.Length - 1];
 
         for (int i = 1; i < points.Length; i++)
@@ -109,7 +112,7 @@ public class Map07Mechanism : MonoBehaviour
         mimicScript = enemyObj.GetComponent<Mimic>();
         Destroy(mimicScript);
 
-        int rand = Random.Range(0, spawnPoint.Length);
+        int rand = Random.Range(6, spawnPoint.Length);
         
         Vector3 pos = spawnPoint[rand].position;
 
@@ -153,6 +156,7 @@ public class Map07Mechanism : MonoBehaviour
     void Ending()
     {
         Debug.Log($"Game Clear!");
+        potal.SetActive(true);
         return;
     }
 }

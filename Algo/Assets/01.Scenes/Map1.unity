@@ -24304,7 +24304,7 @@ MonoBehaviour:
       Range: 0.6
       ATK: 15
   poolManager: {fileID: 57610579}
-  limitTime: 100
+  limitTime: 1
   nowTime: 0
   spawnDelay: 2
   roundEnd: 0

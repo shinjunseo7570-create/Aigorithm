@@ -11,7 +11,7 @@ public class Pot : MonoBehaviour
     GameObject player;
     PlayerStats playerStats;
     void Awake()
-    { 
+    {
         player = GameObject.FindWithTag("Player");
         playerStats = player.GetComponent<PlayerStats>();
     }

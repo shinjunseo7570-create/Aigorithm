@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Skill
+  - Potal
   layers:
   - Default
   - TransparentFX

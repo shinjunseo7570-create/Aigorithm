@@ -19,7 +19,7 @@ public class DPRoute : MonoBehaviour
             1, 8, 7, 1, 8, 1, 1, 6, 5, 6 //<- 각 노드 포인트 정의
 //          1  2     3  4     5  6     7 <- 레벨
         };
-    int[,] routeMap = new int[10, 10]
+    public static int[,] routeMap = new int[10, 10]
     {
         {0, 1, 1, 1, 0, 0, 0, 0, 0, 0 },
         {0, 0, 0, 1, 1, 0, 0, 0, 0, 0 },
@@ -45,6 +45,7 @@ public class DPRoute : MonoBehaviour
 
     void Start()
     {
+        route.Clear();
         // 부모(ToggleGroup) 아래의 모든 자식을 찾음
         if (stageParentGroup != null)
         {
@@ -61,10 +62,10 @@ public class DPRoute : MonoBehaviour
             }
         }
 
-        route.Add(0);
-        findRoute(0);
+        route.Add(PlayerStats.nodeNum);
+        findRoute(PlayerStats.nodeNum);
         visualizationRoute(route);
-       
+
     }
 
 
@@ -115,9 +116,9 @@ public class DPRoute : MonoBehaviour
         int thisLev = searchLev(nodeNum);
         int nextNode;
         if (nodeNum > points.Length) return;
-        if(thisLev == searchLev(points.Length))//지금 레벨이 최대 레벨과 동일 
+        if (thisLev == searchLev(points.Length))//지금 레벨이 최대 레벨과 동일 
         {
-            if (searchLev(route[route.Count-1]) != thisLev) route.Add(nodeNum); //하면서 동시에 지금 노드의 레벨에서 리스트에 등록이 안되어 있을 때
+            if (searchLev(route[route.Count - 1]) != thisLev) route.Add(nodeNum); //하면서 동시에 지금 노드의 레벨에서 리스트에 등록이 안되어 있을 때
             return; //결과와 무관하게 이게 마지막 노드이니 return으로 재귀 종료
         }
         if (thisLev % 2 == 1 && nodeNum + 3 <= points.Length) //홀수 레벨(위 아래에 노드 존재)이면서 다음 직진 노드 존재 시
@@ -127,11 +128,11 @@ public class DPRoute : MonoBehaviour
             {//이전 노드와 다음 노드가 직접 연결되어있지 않으면서 지금 노드는 양쪽 모두와 연결되어 있을 때 (왼쪽 아래 + 오른쪽 위가 최고값이며 현재값이 0이라 리스트에 등록이 되어있지 않을 때)
                 route.Add(nodeNum); //징검다리 역할로 0을 리스트에 추가
             }
-                if (points[nodeNum + 3] != 0 && routeMap[nodeNum, nextNode] == 1 && routeMap[nextNode, nodeNum+3] == 1) //다음 직진 노드가 0이 아니고 현재 노드 - 다음 노드 - 다음 직진노드의 루트가 이어져 있다면
-            { 
-                
+            if (points[nodeNum + 3] != 0 && routeMap[nodeNum, nextNode] == 1 && routeMap[nextNode, nodeNum + 3] == 1) //다음 직진 노드가 0이 아니고 현재 노드 - 다음 노드 - 다음 직진노드의 루트가 이어져 있다면
+            {
+
                 route.Add(nextNode); //다음 노드를 리스트에 추가
-                route.Add(nodeNum+3); //다음 직진노드가 0이 아니므로 최대 점수를 위해서 무조건 거쳐야 하니 리스트에 추가
+                route.Add(nodeNum + 3); //다음 직진노드가 0이 아니므로 최대 점수를 위해서 무조건 거쳐야 하니 리스트에 추가
                 findRoute(nodeNum + 3); //다음 직진 노드를 기반으로 재귀함수 진행
             }
             else if (points[nodeNum + 3] == 0 && routeMap[nodeNum, nextNode] == 1) //다음 직진 노드가 0이고 현재 노드 - 다음 노드가 이어져 있다면
@@ -139,14 +140,15 @@ public class DPRoute : MonoBehaviour
                 route.Add(nextNode); //다음 노드를 리스트에 추가
                 findRoute(nodeNum + 3); //직진 노드는 리스트에 추가하지 않고 다음 직진 노드를 기반으로 재귀함수 진행
             }
-        }/*else if(thisLev %2 == 0)
+        }
+        else if (thisLev % 2 == 0)
         {
-                   플레이어 현재 위치를 받아올 수 있게 된다면 다음 중간노드가 0아니면 거기로 가서 시작 아니면 0일때 하는것 처럼 findroute돌림
-        }*/
+            findRoute(thisLev + thisLev / 2);
+        }
     }
     int searchLev(int nodeNum)
     {
-        if(nodeNum % 3 == 0)
+        if (nodeNum % 3 == 0)
         {
             return (nodeNum / 3) * 2 + 1;
         }
