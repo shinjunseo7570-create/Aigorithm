@@ -20895,6 +20895,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3476302672700702147, guid: 91735fd87e1cca84298ab188aaa9ee99, type: 3}
+      propertyPath: m_text
+      value: "\uCCB4\uB825\n\uC2A4\uD0DC\uBBF8\uB098\n\uACF5\uACA9\uB825\n\uACF5\uACA9\uC18D\uB3C4\n\uC774\uB3D9\uC18D\uB3C4\n\uCE58\uBA85\uD0C0
+        \uD655\uB960\n\uACF5\uACA9 \uC0AC\uAC70\uB9AC\n\uD3EC\uC778\uD2B8"
+      objectReference: {fileID: 0}
     - target: {fileID: 3805389076148128368, guid: 91735fd87e1cca84298ab188aaa9ee99, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
